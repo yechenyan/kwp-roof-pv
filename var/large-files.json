@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "chunk_size": 95000000,
+  "files": [
+    {
+      "path": "var/checks/municipal-probe/models/best_timm-regnety_080_ch3_ep090.pt",
+      "size": 161704325,
+      "sha256": "938e7a6460f4ea517ab427a0a080653eec95fc99a5b15d6c5a8ce65fa3a1821e",
+      "parts": [
+        {
+          "path": "var/checks/municipal-probe/models/best_timm-regnety_080_ch3_ep090.pt.part001",
+          "size": 95000000,
+          "sha256": "17de6a1b4a028904c0050c55a667954449403b2010a00768978238b808af7147"
+        },
+        {
+          "path": "var/checks/municipal-probe/models/best_timm-regnety_080_ch3_ep090.pt.part002",
+          "size": 66704325,
+          "sha256": "cfdf2610cb3f961b1443295d547aca0ac9e165fe35dcc3f95fe5804a3a0cbd8e"
+        }
+      ]
+    },
+    {
+      "path": "var/checks/municipal-probe/models/best_timm-regnety_080_ch4_nir_ep070.pt",
+      "size": 161707361,
+      "sha256": "c750849b705c928918b599378b91ab9574ee6537e689ecec719f064549f92e34",
+      "parts": [
+        {
+          "path": "var/checks/municipal-probe/models/best_timm-regnety_080_ch4_nir_ep070.pt.part001",
+          "size": 95000000,
+          "sha256": "a1635281ecfc341278732be2ca05cf3fe95218a7bd1615db0702b360d3686d60"
+        },
+        {
+          "path": "var/checks/municipal-probe/models/best_timm-regnety_080_ch4_nir_ep070.pt.part002",
+          "size": 66707361,
+          "sha256": "cda035ab6744fe62170eef3cb377274fb8b4b0964cb4c20d5080caa832ef29d3"
+        }
+      ]
+    },
+    {
+      "path": "var/exports/municipal-27320a7f3fb1-r0-925fad1b.gpkg",
+      "size": 109494272,
+      "sha256": "f1d49c71ea84abe439779c77deb3d59cffefe5eb4fcba90ef816190e9aba17e6",
+      "parts": [
+        {
+          "path": "var/exports/municipal-27320a7f3fb1-r0-925fad1b.gpkg.part001",
+          "size": 95000000,
+          "sha256": "a2bf901fda25e8d8d2392c5872065293fc18651e2bcad8802c647ab7104c0dde"
+        },
+        {
+          "path": "var/exports/municipal-27320a7f3fb1-r0-925fad1b.gpkg.part002",
+          "size": 14494272,
+          "sha256": "0dc65e6141a13922ee55ed1bc6514c6de2681d4ef76867931c75461ed5b38371"
+        }
+      ]
+    },
+    {
+      "path": "var/models/best_timm-regnety_080_ch3_ep090.pt",
+      "size": 161704325,
+      "sha256": "938e7a6460f4ea517ab427a0a080653eec95fc99a5b15d6c5a8ce65fa3a1821e",
+      "parts": [
+        {
+          "path": "var/models/best_timm-regnety_080_ch3_ep090.pt.part001",
+          "size": 95000000,
+          "sha256": "17de6a1b4a028904c0050c55a667954449403b2010a00768978238b808af7147"
+        },
+        {
+          "path": "var/models/best_timm-regnety_080_ch3_ep090.pt.part002",
+          "size": 66704325,
+          "sha256": "cfdf2610cb3f961b1443295d547aca0ac9e165fe35dcc3f95fe5804a3a0cbd8e"
+        }
+      ]
+    },
+    {
+      "path": "var/models/best_timm-regnety_080_ch4_nir_ep070.pt",
+      "size": 161707361,
+      "sha256": "c750849b705c928918b599378b91ab9574ee6537e689ecec719f064549f92e34",
+      "parts": [
+        {
+          "path": "var/models/best_timm-regnety_080_ch4_nir_ep070.pt.part001",
+          "size": 95000000,
+          "sha256": "a1635281ecfc341278732be2ca05cf3fe95218a7bd1615db0702b360d3686d60"
+        },
+        {
+          "path": "var/models/best_timm-regnety_080_ch4_nir_ep070.pt.part002",
+          "size": 66707361,
+          "sha256": "cda035ab6744fe62170eef3cb377274fb8b4b0964cb4c20d5080caa832ef29d3"
+        }
+      ]
+    }
+  ]
+}

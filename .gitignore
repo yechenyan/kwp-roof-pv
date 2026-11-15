@@ -1,5 +1,4 @@
 .venv/
-var/
 node_modules/
 dist/
 __pycache__/
@@ -9,3 +8,10 @@ __pycache__/
 .DS_Store
 *.egg-info/
 *.tsbuildinfo
+
+# Reconstructed artifacts; commit their .partNNN files and var/large-files.json.
+/var/checks/municipal-probe/models/best_timm-regnety_080_ch3_ep090.pt
+/var/checks/municipal-probe/models/best_timm-regnety_080_ch4_nir_ep070.pt
+/var/models/best_timm-regnety_080_ch3_ep090.pt
+/var/models/best_timm-regnety_080_ch4_nir_ep070.pt
+/var/exports/municipal-27320a7f3fb1-r0-925fad1b.gpkg

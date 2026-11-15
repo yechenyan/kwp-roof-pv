@@ -45,6 +45,7 @@ Use Python 3.12, uv, Node.js 22 or later, and pnpm 9.0.2. Run commands from the 
 
 ```sh
 uv sync --all-packages --all-extras
+python3 scripts/large_files.py restore
 pnpm install --frozen-lockfile
 pnpm build
 uv run --package roof-pv-review roof-pv-review --port 8780
@@ -75,7 +76,7 @@ Treat an acquired source namespace as immutable. For a future imagery epoch, use
 
 The sample is 800 × 800 pixels, 160 × 160 m, from tile `33383-5837`. The imagery was captured on 2026-04-22 and published on 2026-10-09. See `configs/hn-center.json` and the prepared image's provenance sidecar.
 
-The current workspace has local weights and input files in ignored `var/`. To set up another checkout, download and extract the official [LGB RGBI product](https://data.geobasis-bb.de/geobasis/daten/dop/rgbi_tif/dop_33383-5837.zip) into `var/data/source/`, then:
+The current workspace has local weights and input files in `var/`. Five large artifacts are stored as `.partNNN` files of at most 95,000,000 bytes, with original paths, sizes and SHA-256 hashes in `var/large-files.json`. Run `python3 scripts/large_files.py restore` after cloning to reconstruct them before use. Restoration verifies every part and the complete output, and refuses to overwrite differing existing files. The five reconstructed originals are individually ignored by Git; other `var/` files and the parts remain eligible for tracking. Splitting preserves the exact model weights and GeoPackage bytes without reducing total storage. To set up sample imagery in another checkout, download and extract the official [LGB RGBI product](https://data.geobasis-bb.de/geobasis/daten/dop/rgbi_tif/dop_33383-5837.zip) into `var/data/source/`, then:
 
 ```sh
 uv run --package roof-pv-model roof-pv weights
