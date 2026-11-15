@@ -4,14 +4,16 @@ import json
 import os
 from pathlib import Path
 from typing import Literal
-from fastapi import FastAPI, HTTPException, Request
-from fastapi.responses import FileResponse, JSONResponse, RedirectResponse
+from fastapi import FastAPI, HTTPException, Request, Query, BackgroundTasks
+from fastapi.responses import FileResponse, JSONResponse, RedirectResponse, Response
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field, model_validator
 from .store import Store, Conflict, checksum
 from .export import export_snapshot
 from .tiles import render_tile
 from fastapi.middleware.gzip import GZipMiddleware
+from .viewport import ViewportService
+from .matching import MatchingService
 
 
 class Review(BaseModel):
@@ -72,12 +74,36 @@ class UndoRequest(BaseModel):
         return self
 
 
+class IdentityReview(BaseModel):
+    batch_id: str = Field(min_length=1, max_length=100)
+    solar_id: str = Field(pattern=r"^SEE\d+$")
+    expected_version: int = Field(ge=0)
+    state: Literal["pending", "rejected", "ambiguous", "probable_assignment", "verified_identity"]
+    reviewer: str = Field(min_length=1, max_length=100)
+    evidence_type: Literal["none", "attribute_comparison", "authorized_address", "operator_confirmation", "field_verification", "registry_coordinate_review"] = "none"
+    evidence: str = Field(default="", max_length=3000)
+    note: str = Field(default="", max_length=5000)
+    group_confirmed: bool = False
+
+    @model_validator(mode="after")
+    def valid_identity_review(self):
+        if not self.reviewer.strip():
+            raise ValueError("Reviewer is required.")
+        if self.state != "pending" and not self.evidence.strip():
+            raise ValueError("Record the evidence or reason for this identity decision.")
+        return self
+
+
 def create_app(root=None, frontend=None):
     root = Path(root or os.environ.get("ROOF_PV_HOME", "var")).resolve()
     store = Store(root)
     store.import_runs()
     app = FastAPI(title="Roof PV Review", version="0.1.0")
     app.state.store = store
+    viewport = ViewportService(store)
+    app.state.viewport = viewport
+    matching = MatchingService(store)
+    app.state.matching = matching
     app.add_middleware(GZipMiddleware, minimum_size=1000, compresslevel=4)
 
     @app.middleware("http")
@@ -103,7 +129,7 @@ def create_app(root=None, frontend=None):
 
     @app.get("/api/health")
     def health():
-        return {"status": "ok", "scope": "pv_image_review", "database_schema": 3}
+        return {"status": "ok", "scope": "pv_image_and_registry_review", "database_schema": 4}
 
     @app.get("/api/jobs")
     def jobs():
@@ -114,7 +140,7 @@ def create_app(root=None, frontend=None):
             values.append({"name": "Official imagery acquisition", "status": data["status"], "completed": sum(t["status"] == "completed" for t in data["tiles"]), "total": data["expected"]})
         for path in (root / "jobs").glob("*.json"):
             data = json.loads(path.read_text())
-            values.append({"name": "Municipal PV inference", "run_id": data["run_id"], "status": data["status"], "completed": data.get("completed_blocks", 0), "total": data.get("total_blocks", 0), "updated_at": data.get("updated_at")})
+            values.append({"name": data.get("name", "Municipal PV inference"), "run_id": data.get("run_id"), "status": data["status"], "completed": data.get("completed", data.get("completed_blocks", 0)), "total": data.get("total", data.get("total_blocks", 0)), "updated_at": data.get("updated_at")})
         return values
 
     @app.get("/api/runs")
@@ -127,11 +153,63 @@ def create_app(root=None, frontend=None):
     def snapshot(run_id: str):
         return store.snapshot(run_id, event_limit=50)
 
+    @app.get("/api/runs/{run_id}/workspace")
+    def workspace(run_id: str, request: Request):
+        data = viewport.state(run_id)["overview"]
+        tag = f'"{data["manifest_sha256"][:16]}-r{data["revision"]}-overview-v1"'
+        headers = {"ETag": tag, "Cache-Control": "private, no-cache"}
+        if request.headers.get("if-none-match") == tag:
+            return Response(status_code=304, headers=headers)
+        return JSONResponse(data, headers=headers)
+
+    @app.get("/api/runs/{run_id}/candidates/{candidate_id}")
+    def candidate_detail(run_id: str, candidate_id: str):
+        return viewport.detail(run_id, candidate_id)
+
+    @app.get("/api/runs/{run_id}/view")
+    def view(run_id: str, bbox: str, zoom: int = Query(ge=0, le=24), layers: str = "",
+             status: str = "all", category: str = "all", building: str = "all"):
+        return viewport.view(run_id, [float(v) for v in bbox.split(",")], zoom, [v for v in layers.split(",") if v],
+                             {"status": status, "category": category, "building": building})
+
+    @app.get("/api/runs/{run_id}/matching")
+    def matching_summary(run_id: str):
+        return matching.summary(run_id)
+
+    @app.post("/api/runs/{run_id}/matching/build", status_code=202)
+    def matching_build(run_id: str, tasks: BackgroundTasks):
+        with store.connection() as db:
+            store.manifest(db, run_id)
+        matching.registry()
+        matching.reserve_build(run_id)
+        tasks.add_task(matching.rebuild, run_id, True)
+        return {"status": "scheduled"}
+
+    @app.get("/api/runs/{run_id}/matching/units")
+    def registry_units(run_id: str, q: str = Query(default="", max_length=100), cohort: Literal["all", "target", "coordinates"] = "target", offset: int = Query(default=0, ge=0), limit: int = Query(default=30, ge=1, le=100), association: Literal["all", "unreviewed", "associated", "verified"] = "all"):
+        return matching.units(run_id, q, cohort, offset, limit, association)
+
+    @app.get("/api/runs/{run_id}/matching/units/{solar_id}")
+    def registry_unit(run_id: str, solar_id: str):
+        return matching.unit(run_id, solar_id)
+
+    @app.get("/api/runs/{run_id}/matching/candidates/{candidate_id}")
+    def candidate_associations(run_id: str, candidate_id: str):
+        return matching.candidate(run_id, candidate_id)
+
+    @app.get("/api/runs/{run_id}/matching/groups/{group_id}")
+    def group_associations(run_id: str, group_id: str):
+        return matching.group(run_id, group_id)
+
+    @app.patch("/api/runs/{run_id}/matching/groups/{group_id}")
+    def identity_review(run_id: str, group_id: str, data: IdentityReview):
+        return matching.review(run_id, group_id, data.model_dump())
+
     @app.get("/api/runs/{run_id}/tiles/{display}/{z}/{x}/{y}.png")
     def tile(run_id: str, display: str, z: int, x: int, y: int):
         with store.connection() as db:
             store.manifest(db, run_id)
-        return FileResponse(render_tile(root, run_id, display, z, x, y), media_type="image/png")
+        return FileResponse(render_tile(root, run_id, display, z, x, y), media_type="image/png", headers={"Cache-Control": "private, max-age=31536000, immutable"})
 
     @app.post("/api/runs/{run_id}/transform", status_code=201)
     def transform_candidates(run_id: str, data: TransformRequest):
@@ -169,7 +247,13 @@ def create_app(root=None, frontend=None):
 
     @app.post("/api/runs/{run_id}/exports", status_code=201)
     def export(run_id: str):
-        result = export_snapshot(root, store.snapshot(run_id))
+        try:
+            matching.batch(run_id)
+        except KeyError:
+            bundle = None
+        else:
+            bundle = matching.export_bundle(run_id)
+        result = export_snapshot(root, bundle["image_snapshot"] if bundle else store.snapshot(run_id), bundle)
         result["download_url"] = f"/api/exports/{result['export_id']}.gpkg"
         result["report_url"] = f"/api/exports/{result['export_id']}/report"
         return result

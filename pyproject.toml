@@ -8,10 +8,10 @@ dependencies = []
 package = false
 
 [tool.uv.workspace]
-members = ["packages/model-Brandenburg", "packages/web-app/backend"]
+members = ["packages/model-Brandenburg", "packages/registry-mastr", "packages/matching", "packages/web-app/backend"]
 
 [dependency-groups]
 dev = ["pytest>=8,<10", "httpx>=0.28,<1", "jsonschema>=4.23,<5"]
 
 [tool.pytest.ini_options]
-testpaths = ["packages/model-Brandenburg/tests", "packages/web-app/backend/tests"]
+testpaths = ["packages/model-Brandenburg/tests", "packages/registry-mastr/tests", "packages/matching/tests", "packages/web-app/backend/tests"]

@@ -25,3 +25,4 @@ import type { ReviewGeometry } from "./types";
 export type ReviewUpdate = Omit<components["schemas"]["Review"], "geometry"> & {
   geometry?: ReviewGeometry | null;
 };
+export type IdentityReview = components["schemas"]["IdentityReview"];

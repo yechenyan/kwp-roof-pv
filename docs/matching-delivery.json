@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "batch_id": "matching-1077534f5c31f8b6",
+  "status": "completed",
+  "identity": {
+    "run_id": "municipal-27320a7f3fb1",
+    "review_revision": 0,
+    "run_manifest_sha256": "4afc8d1e5be455ca937e42aa1481fa78026f23e99c43532dab990b08404959c3",
+    "registry_snapshot_id": "mastr-20261115-99075610",
+    "registry_manifest_sha256": "183ab6d500e5e1daad110b02c4d8d7779bef3496fb5645c4dd5ee41b9cc09e09",
+    "config": {
+      "algorithm": "array-ranking-v1",
+      "group_distance_m": 2.0,
+      "minimum_building_overlap": 0.2,
+      "alternatives": 5,
+      "coordinate_search_m": 100,
+      "area_weight": 0.65,
+      "power_area_weight": 0.35,
+      "coordinate_weight": 0.8,
+      "post_capture_factor": 0.7,
+      "validation": "Experimental proposal rules. Scores are not calibrated probabilities; automatic acceptance is disabled.",
+      "missing_features": [
+        "postcode_geometry",
+        "roof_plane_slope",
+        "panel_facing_azimuth",
+        "independent_small_unit_identity_truth"
+      ]
+    },
+    "code_sha256": "3711ef21354cbc8413aab3ab5c9d24bde5a7a70811a32f914407be1c03b2abbc"
+  },
+  "created_at": "2026-11-15T14:25:34.660657+00:00",
+  "summary": {
+    "array_groups": 5038,
+    "grouped_regions": 6355,
+    "multi_region_groups": 870,
+    "registry_records": 3476,
+    "states": {
+      "ambiguous": 2187,
+      "unmatched_registry": 1130,
+      "source_conflict": 2,
+      "post_capture": 157
+    },
+    "verified_identities": 0,
+    "automatic_acceptance": false
+  },
+  "artifacts": {
+    "groups.geojson": "cf4ff5017b353b380d9f359f6526c3666add82493868669f944ae4d3dd440597",
+    "rankings.json": "837e83491c3bbf84426f54cebb227c3d04140de900b19f0ec53e84971e236bf0"
+  }
+}

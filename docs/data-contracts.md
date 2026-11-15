@@ -6,6 +6,10 @@ GeoJSON follows RFC 7946 longitude/latitude order. IDs are scoped to a run. Cand
 
 The API publishes machine-readable OpenAPI at `/openapi.json` and interactive documentation at `/docs`. API request types are generated into the frontend from OpenAPI using `pnpm api:types`. GeoJSON artifact types follow the versioned file contracts.
 
+`GET /api/runs/{run_id}/workspace` returns a revision-cached navigation overview. Its candidate geometries are labelled envelopes and omit edit-only properties. `GET /api/runs/{run_id}/candidates/{candidate_id}` returns exact geometry and original geometry for editing. `GET /api/runs/{run_id}/view?bbox=west,south,east,north&zoom=18&layers=buildings,rgbi,rgb` queries geometry on the server, applies filters, reports truncation and enforces per-layer limits. The legacy full snapshot endpoint remains available for compatibility and GIS consumers.
+
+MaStR endpoints are under `/api/runs/{run_id}/matching`: summary; paginated `/units`; individual `/units/{solar_id}`; `/candidates/{candidate_id}` and `/groups/{group_id}` evidence; `PATCH /groups/{group_id}` identity review; and `POST /build` background generation. `IdentityReview` is an OpenAPI request schema and generated TypeScript type. The write pins batch ID, solar ID, expected identity-review version, reviewer, evidence and group confirmation. Source/member changes return conflicts. Scores are provisional; search-pool and equal-best counts distinguish five displayed examples from exhaustive alternatives.
+
 - `GET /api/runs`: completed imported runs.
 - `GET /api/runs/{run_id}`: a transactional state snapshot.
 - `GET /api/runs/{run_id}/assets/{asset}`: checksum-verified preview or model GeoJSON.

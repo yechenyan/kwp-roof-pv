@@ -130,9 +130,13 @@ beforeEach(() => {
       const value =
         url === "/api/runs"
           ? [{ run_id: "test-run", revision: 0, manifest: data.manifest }]
-          : url.includes("/assets/")
-            ? { type: "FeatureCollection", features: [] }
-            : data;
+          : url.endsWith("/matching")
+            ? { available: false, registry_ready: false }
+            : url.includes("/candidates/")
+              ? data.candidates.features[0]
+              : url.includes("/assets/")
+                ? { type: "FeatureCollection", features: [] }
+                : data;
       return new Response(JSON.stringify(value));
     }),
   );
@@ -144,11 +148,20 @@ afterEach(() => {
 
 async function ready() {
   render(<App />);
+  const user = userEvent.setup();
+  await user.click(await screen.findByRole("tab", { name: zh.imageReviewTab }));
   await screen.findByRole("button", { name: `✓ ${zh.confirm}` });
-  return userEvent.setup();
+  return user;
 }
 
 describe("review workspace", () => {
+  it("loads an overview and selected detail without downloading complete contextual layers", async () => {
+    await ready();
+    const urls = vi.mocked(fetch).mock.calls.map((call) => String(call[0]));
+    expect(urls).toContain("/api/runs/test-run/workspace");
+    expect(urls).toContain("/api/runs/test-run/candidates/candidate-1");
+    expect(urls.some((url) => url.includes("/assets/"))).toBe(false);
+  });
   it("requires saving edits before exporting a snapshot", async () => {
     const user = await ready();
     await user.type(screen.getByLabelText(zh.note), "Unsaved annotation");

@@ -12,12 +12,32 @@ Production repository for Brandenburg PV image recognition and human review. The
 - SQLite review persistence, optimistic version checks, and before/after audit events.
 - Version-pinned GeoPackage exports in EPSG:3035, including confirmed PV, confirmed rooftop PV, interior-point layers and an offline HTML report.
 - English archive of the completed multi-model experiment in `packages/model-diff`.
+- Frozen MaStR imports selected by municipality code, provisional image array grouping and alternative registry rankings.
+- Separate registry identity review with evidence, optimistic versions, stale-proposal checks and storage-location relationship exports.
 
-No MaStR unit matching, power estimation, battery association, LLM calls, or model retraining is included. Detection does not itself establish roof mounting. The sample CLI accepts verified four-band samples up to 16 million pixels. The municipal CLI uses bounded processing cores, a shared world grid, cross-source context and cross-core component stitching. Independent local accuracy annotation remains a separate human task.
+MaStR associations remain provisional until independently evidenced human verification. No automatic identity acceptance, image-based power estimation, exclusive battery allocation, LLM calls, or model retraining is included. Detection does not itself establish roof mounting. The sample CLI accepts verified four-band samples up to 16 million pixels. The municipal CLI uses bounded processing cores, a shared world grid, cross-source context and cross-core component stitching. Independent local accuracy annotation remains a separate human task.
 
 ## Current local delivery
 
 The completed run is recorded in [municipal-delivery.json](docs/municipal-delivery.json): 6,355 candidates, 471 processing blocks, and zero missing target pixels. The initial GeoPackage and offline HTML report are in `var/exports/`. The review workspace is served at <http://127.0.0.1:8780>. See [quality notes](docs/quality-notes.md) and [independent verification](docs/municipal-verification.json). All initial candidates remain unreviewed.
+
+A read-only comparison with the retained MaStR snapshot and a proposed next-stage design are in [MaStR matching plan](docs/mastr-matching-plan.md), with [machine-readable audit results](docs/mastr-readiness.json). Registry identities have not been assigned.
+
+## MaStR workflow
+
+See the [current MaStR delivery and limitations](docs/mastr-delivery.md), [proposal batch](docs/matching-delivery.json), and [real-data/GIS verification](docs/mastr-workflow-verification.json).
+
+The implemented proposal stage is documented in [registry-mastr](packages/registry-mastr/README.md) and [matching](packages/matching/README.md). Import a pinned official snapshot, then build against the current image review:
+
+```sh
+uv run --package roof-pv-registry roof-pv-registry acquire \
+  --url https://download.marktstammdatenregister.de/Gesamtdatenexport_20261115_26.2.zip --workers 3
+uv run --package roof-pv-review python scripts/build_mastr_proposals.py
+```
+
+The website uses a map-centred workspace: select a MaStR record in the left list, click its numbered image candidate on the centre map, and inspect saved links or potential registrations in the right panel. The right panel has separate registry-matching and image-review tabs. Enter the reviewer name in the top context bar before saving identity evidence. Image-PV confirmation and registry identity confirmation are separate operations. Rebuild proposals after editing or confirming image members; stale associations never enter verified identity exports. The export button includes the current registry snapshot and matching batch when available, together with every unmatched registry record and non-exclusive storage relationship. See the [map review guide](docs/map-review-workspace.md).
+
+The UI loads a compact overview first; original edit geometry is fetched only on selection. Candidate, building and model geometry is queried by viewport with explicit limits. Overviews use the frozen image preview and closer views use original-image XYZ tiles. See [HTTP performance measurements](docs/web-performance.json); these measure local response sizes and timings, not browser rendering.
 
 ## Setup
 

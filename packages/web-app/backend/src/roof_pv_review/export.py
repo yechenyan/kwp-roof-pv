@@ -45,7 +45,7 @@ def layer(features):
     return frame
 
 
-def export_snapshot(root, snapshot):
+def export_snapshot(root, snapshot, registry_bundle=None):
     root = Path(root)
     run_id, revision = snapshot["run_id"], snapshot["revision"]
     export_id = f"{run_id}-r{revision}-{uuid.uuid4().hex[:8]}"
@@ -59,6 +59,26 @@ def export_snapshot(root, snapshot):
     datasets["confirmed_rooftop_pv"] = [f for f in snapshot["candidates"]["features"] if f["properties"]["status"] == "confirmed" and f["properties"].get("mounting") == "roof"]
     datasets["candidate_points"] = datasets["candidates"]
     datasets["confirmed_rooftop_points"] = datasets["confirmed_rooftop_pv"]
+    if registry_bundle is not None:
+        bundle = registry_bundle
+        registry = bundle["registry"]
+        batch = bundle["batch"]
+        if checksum(registry.folder / "manifest.json") != batch["manifest"]["identity"]["registry_manifest_sha256"]:
+            raise ValueError("Registry provenance changed since matching.")
+        groups = []
+        for feature in batch["groups"]["features"]:
+            groups.append({**feature, "properties": {**feature["properties"], "stale": feature["id"] in bundle["stale_groups"], "batch_id": batch["manifest"]["batch_id"]}})
+        datasets["array_groups"] = groups
+        verified = [r for r in bundle["reviews"] if r["state"] == "verified_identity" and r["group_id"] not in bundle["stale_groups"]]
+        datasets["verified_mastr_pv"] = [{"type": "Feature", "geometry": batch["by_id"][r["group_id"]]["geometry"], "properties": {**r, "registry_snapshot_id": registry.manifest["snapshot_id"]}} for r in verified]
+        datasets["verified_mastr_points"] = datasets["verified_mastr_pv"]
+        manifest["matching"] = {"batch_id": batch["manifest"]["batch_id"], "registry_snapshot_id": registry.manifest["snapshot_id"],
+                                "registry_snapshot_date": registry.manifest["snapshot_date"], "registry_manifest_sha256": checksum(registry.folder / "manifest.json"),
+                                "review_event_revision": max((e["id"] for e in bundle["events"]), default=0),
+                                "stale_group_count": len(bundle["stale_groups"]), "verified_identity_count": len(verified),
+                                "association_review_count": len(bundle["reviews"]), "array_group_count": len(groups),
+                                "automatic_acceptance": False, "battery_allocation": "Registry location relationships only; no exclusive allocation or repeated-capacity totals."}
+        manifest["scope"] = "PV image review and versioned MaStR association proposals; only independently evidenced, current human identity decisions enter verified layers."
     for optional in ["buildings", "municipalities", "pixel_coverage"]:
         source = root / "runs" / run_id / (optional + ".geojson")
         if source.name in snapshot["manifest"]["artifacts"]:
@@ -93,6 +113,23 @@ def export_snapshot(root, snapshot):
             db.executemany("INSERT INTO review_events VALUES(?,?,?,?,?,?)", [(e["revision"], e["item_id"], e["kind"], e["reviewer"], e["created_at"], e["payload"]) for e in snapshot["events"]])
             for table in ["export_metadata", "review_events", "inference_provenance"]:
                 db.execute("INSERT INTO gpkg_contents(table_name,data_type,identifier,description,srs_id) VALUES(?,?,?,?,NULL)", (table, "attributes", table, "Version-pinned review metadata"))
+            if registry_bundle is not None:
+                def attribute_table(name, columns, values):
+                    db.execute(f"CREATE TABLE {name} ({columns})")
+                    if values:
+                        db.executemany(f"INSERT INTO {name} VALUES({','.join('?' for _ in values[0])})", values)
+                    db.execute("INSERT INTO gpkg_contents(table_name,data_type,identifier,description,srs_id) VALUES(?,?,?,?,NULL)", (name, "attributes", name, "Frozen public MaStR data or explicitly provisional association evidence"))
+                attribute_table("mastr_solar", "solar_id TEXT PRIMARY KEY,ags TEXT,cohort TEXT,power_kw REAL,module_count REAL,commissioned TEXT,postcode TEXT,location_id TEXT,row_json TEXT", [(u["id"], u["ags"], u["cohort"], u["power_kw"], u["module_count"], u["commissioned"], u["postcode"], u["location_id"], json.dumps(u, ensure_ascii=False)) for u in registry.data["solar_units"]])
+                for name, key in [("storage_units", "EinheitMastrNummer"), ("storage_systems", "MaStRNummer"), ("locations", "MastrNummer")]:
+                    attribute_table("mastr_" + name, "id TEXT PRIMARY KEY,row_json TEXT", [(r[key], json.dumps(r, ensure_ascii=False)) for r in registry.data[name]])
+                attribute_table("mastr_storage_relationships", "solar_id TEXT,storage_id TEXT,location_id TEXT,system_id TEXT,relationship_status TEXT,net_power_kw REAL,usable_capacity_kwh REAL,exclusive_allocation INTEGER,row_json TEXT", [(r["solar_id"], r["storage_id"], r["location_id"], r["system_id"], r["relationship_status"], r["net_power_kw"], r["usable_capacity_kwh"], 0, json.dumps(r)) for r in registry.data["storage_relationships"]])
+                proposals = {a["proposal_id"]: a for entry in batch["rankings"]["units"].values() for a in entry["alternatives"]}
+                proposals.update({a["proposal_id"]: a for items in batch["rankings"]["groups"].values() for a in items})
+                attribute_table("mastr_association_proposals", "proposal_id TEXT PRIMARY KEY,solar_id TEXT,group_id TEXT,state TEXT,ranking_score REAL,stale INTEGER,evidence_json TEXT", [(a["proposal_id"], a["solar_id"], a["group_id"], a["state"], a["score"], int(a["group_id"] in bundle["stale_groups"]), json.dumps(a["evidence"])) for a in proposals.values()])
+                attribute_table("mastr_unit_outcomes", "solar_id TEXT PRIMARY KEY,state TEXT,details_json TEXT", [(u["solar_id"], u["state"], json.dumps(u)) for u in batch["rankings"]["units"].values()])
+                attribute_table("mastr_identity_reviews", "proposal_id TEXT PRIMARY KEY,solar_id TEXT,group_id TEXT,state TEXT,stale INTEGER,details_json TEXT", [(r["proposal_id"], r["solar_id"], r["group_id"], r["state"], int(r["group_id"] in bundle["stale_groups"]), json.dumps(r)) for r in bundle["reviews"]])
+                attribute_table("mastr_review_events", "id INTEGER PRIMARY KEY,batch_id TEXT,proposal_id TEXT,created_at TEXT,reviewer TEXT,payload TEXT", [(r["id"], r["batch_id"], r["proposal_id"], r["created_at"], r["reviewer"], r["payload"]) for r in bundle["events"]])
+                attribute_table("mastr_provenance", "id INTEGER PRIMARY KEY,registry_manifest_json TEXT,matching_manifest_json TEXT", [(1, json.dumps(registry.manifest), json.dumps(batch["manifest"]))])
         for name in datasets:
             frame = pyogrio.read_dataframe(temporary, layer=name)
             if frame.crs.to_epsg() != 3035 or len(frame) != len(datasets[name]):

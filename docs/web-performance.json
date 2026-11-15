@@ -1,0 +1,40 @@
+{
+  "run_id": "municipal-27320a7f3fb1",
+  "measurements": {
+    "legacy_full_snapshot": {
+      "wire_bytes": 5432111,
+      "json_bytes": 31156955,
+      "samples_ms": [
+        3725.64,
+        2892.87,
+        2863.54
+      ],
+      "median_ms": 2892.87
+    },
+    "overview": {
+      "wire_bytes": 578481,
+      "json_bytes": 3830975,
+      "samples_ms": [
+        812.06,
+        107.71,
+        106.32
+      ],
+      "median_ms": 107.71
+    },
+    "viewport": {
+      "wire_bytes": 13973,
+      "json_bytes": 45644,
+      "samples_ms": [
+        458.27,
+        9.57,
+        8.7
+      ],
+      "median_ms": 9.57
+    }
+  },
+  "previous_initial_geometry_bytes": 117272270,
+  "new_initial_geometry_bytes": 3830975,
+  "initial_geometry_reduction_percent": 96.73,
+  "conditions": "Local HTTP; 3 sequential samples per endpoint; gzip enabled; browser image transfer and rendering excluded; first request may include cache construction.",
+  "visual_browser_verification": false
+}

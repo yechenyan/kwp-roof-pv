@@ -1,0 +1,64 @@
+{
+  "/": {
+    "status": 200,
+    "wire_bytes": 462,
+    "decoded_bytes": 462,
+    "ms": 45.97
+  },
+  "/api/health": {
+    "status": 200,
+    "wire_bytes": 74,
+    "decoded_bytes": 74,
+    "ms": 2.85,
+    "scope": "pv_image_and_registry_review",
+    "database_schema": 4,
+    "health_status": "ok"
+  },
+  "/api/runs/municipal-27320a7f3fb1/workspace": {
+    "status": 200,
+    "wire_bytes": 578481,
+    "decoded_bytes": 3830975,
+    "ms": 1509.55
+  },
+  "/api/runs/municipal-27320a7f3fb1/matching": {
+    "status": 200,
+    "wire_bytes": 1219,
+    "decoded_bytes": 2225,
+    "ms": 507.71,
+    "batch_id": "matching-1077534f5c31f8b6",
+    "review_counts": {}
+  },
+  "/api/runs/municipal-27320a7f3fb1/matching/units?cohort=target": {
+    "status": 200,
+    "wire_bytes": 1691,
+    "decoded_bytes": 15865,
+    "ms": 356.9,
+    "total": 2320
+  },
+  "/api/runs/municipal-27320a7f3fb1/matching/units?cohort=coordinates": {
+    "status": 200,
+    "wire_bytes": 1655,
+    "decoded_bytes": 11469,
+    "ms": 5.85,
+    "total": 21
+  },
+  "/api/runs/municipal-27320a7f3fb1/matching/candidates/municipal-27320a7f3fb1%3Acandidate%3A3404": {
+    "status": 200,
+    "wire_bytes": 2333,
+    "decoded_bytes": 8520,
+    "ms": 18.12
+  },
+  "/api/exports/municipal-27320a7f3fb1-r0-925fad1b/report": {
+    "status": 200,
+    "wire_bytes": 8250,
+    "decoded_bytes": 21405,
+    "ms": 3.11
+  },
+  "/api/exports/municipal-27320a7f3fb1-r0-925fad1b.gpkg": {
+    "status": 200,
+    "bytes": 109494272,
+    "sha256": "f1d49c71ea84abe439779c77deb3d59cffefe5eb4fcba90ef816190e9aba17e6",
+    "sha256_matches_export": true,
+    "ms": 330.2
+  }
+}

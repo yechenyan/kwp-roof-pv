@@ -35,4 +35,16 @@
 
 All spatial layers use EPSG:3035. Preview geometry/API use longitude/latitude (RFC 7946); the underlying source and score rasters use EPSG:25833. The optional OSM tiles require internet; local image review does not.
 
-The municipal overview displays aggregated candidate counts. Zoom closer for outlines and building footprints. No cadastral overlap is evidence for inspection, not a ground-mounting classification. Authenticated multi-user review and MaStR matching are outside this local application.
+The municipal overview displays aggregated candidate counts. Zoom closer for outlines and building footprints. Lack of cadastral overlap is evidence for inspection, not a ground-mounting classification. Authenticated multi-user review is outside this local application.
+
+## MaStR identity review
+
+Use the left-hand **MaStR registrations** list. The default cohort contains active, anonymous building-PV records up to and including 30 kWp; coordinate-bearing and other context records have separate filters. Search by registry ID, municipality or postcode, or filter by association state. Selecting a record places its numbered image alternatives on the centre map. Clicking a point opens its proposed array group in the right-hand panel.
+
+The right-hand panel separates saved links, potential matches and other identity decisions. Changing the potential registry partner there preserves the left-hand search record and its map points. Use the image-review tab to check PV presence or edit geometry. The cyan dashed group outline preserves its constituent PV regions. A public registry coordinate, when present, is shown separately in magenta; numbered image candidates do not fill that coordinate field. Five scored examples can come from a much larger tied set. See [map review workspace](map-review-workspace.md) for layout and marker details.
+
+First review the image members, rooftop mounting and grouping. Edit, add, merge or split PV candidates as needed, then rebuild proposals. These image edits make the previous group stale. Afterwards record a separate identity decision and its source reference. Attribute compatibility supports an ambiguous or probable association; it does not establish a verified identity. Verified identity additionally requires independent location/identifier evidence, checked grouping, and all group members confirmed as rooftop PV.
+
+Identity reviews have independent optimistic versions and evidence events. They do not alter the PV-presence decision. Changing the source registry snapshot or affected image members prevents saving an obsolete association. Rebuilding does not automatically migrate earlier identity decisions. Review history remains in SQLite.
+
+When a batch exists, the usual export includes `array_groups`, current `verified_mastr_pv` / `verified_mastr_points`, full `mastr_solar` and other registry tables, `mastr_association_proposals`, `mastr_unit_outcomes`, `mastr_identity_reviews`, `mastr_review_events`, `mastr_provenance` and `mastr_storage_relationships`. Unmatched records remain attribute rows, without invented building coordinates. Count usable storage capacity once per storage-system ID; relationship rows can share a system.

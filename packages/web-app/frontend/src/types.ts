@@ -23,7 +23,8 @@ export interface CandidateProperties {
   version: number;
   geometry_modified: boolean;
   projected_area_m2: number;
-  original_geometry: ReviewGeometry;
+  original_geometry?: ReviewGeometry;
+  geometry_is_envelope?: boolean;
   active?: boolean;
   mounting?: "unknown" | "roof" | "ground" | "other";
   acquisition_dates?: string[];
@@ -58,6 +59,7 @@ export interface Manifest {
   limitations: string[];
 }
 export interface Snapshot {
+  geometry_mode?: string;
   run_id: string;
   revision: number;
   manifest: Manifest;
