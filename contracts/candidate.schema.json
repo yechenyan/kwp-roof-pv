@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Immutable PV review candidate v1 (RFC 7946)",
+  "type": "object",
+  "required": ["type", "id", "geometry", "properties"],
+  "properties": {
+    "type": { "const": "Feature" },
+    "id": { "type": "string", "minLength": 1 },
+    "geometry": { "type": "object", "required": ["type", "coordinates"], "properties": { "type": { "enum": ["Polygon", "MultiPolygon"] }, "coordinates": { "type": "array" } } },
+    "properties": { "type": "object", "required": ["id", "run_id", "category", "default_model", "observation_ids", "score_mean"], "properties": { "category": { "enum": ["both", "rgbi_only", "rgb_only", "geometry_conflict", "manual"] }, "observation_ids": { "type": "array", "items": { "type": "string" } }, "score_mean": { "type": ["number", "null"], "minimum": 0, "maximum": 1 } } }
+  }
+}

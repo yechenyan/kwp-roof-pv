@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "source_sha256": "d0514d8a188b74827a9f7417da1dbed40120818b7aa72931b41b2e1c6e784be8",
+  "window": [
+    272,
+    272,
+    256,
+    256
+  ],
+  "checks": [
+    {
+      "variant": "rgbi",
+      "checkpoint_sha256": "c750849b705c928918b599378b91ab9574ee6537e689ecec719f064549f92e34",
+      "cpu_batch": 1,
+      "mps_batch": 8,
+      "max_absolute_score_difference": 5.066394805908203e-07,
+      "threshold_pixel_differences": 0,
+      "compared_pixels": 524288
+    },
+    {
+      "variant": "rgb",
+      "checkpoint_sha256": "938e7a6460f4ea517ab427a0a080653eec95fc99a5b15d6c5a8ce65fa3a1821e",
+      "cpu_batch": 1,
+      "mps_batch": 8,
+      "max_absolute_score_difference": 3.5762786865234375e-07,
+      "threshold_pixel_differences": 0,
+      "compared_pixels": 524288
+    }
+  ],
+  "scope": "Numerical agreement on a real-image probe, not a detection accuracy evaluation."
+}

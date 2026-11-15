@@ -1,0 +1,57 @@
+{
+  "status": "passed_with_disclosed_limitations",
+  "reviewer": "a6_sam3",
+  "reviewed_file": "benchmark/evaluate.py",
+  "reviewed_source_sha256": "1a72fba8f900f3cef4b943f14fd270b27baa60e9e2f13040b39803e4880e39d7",
+  "actual_reference_masks_opened": false,
+  "tests": {
+    "file": "benchmark/qa/test_evaluator.py",
+    "command": "lab/.venv/bin/python -m unittest discover -s lab/benchmark/qa -p test_evaluator.py",
+    "total": 13,
+    "passed": 13,
+    "failed": 0
+  },
+  "issues": [
+    {
+      "severity": "high",
+      "topic": "GPT mask leaderboard eligibility",
+      "reproduced": true,
+      "test": "test_gpt_mask_path_cannot_enter_pixel_leaderboard",
+      "finding": "A box-only GPT entrant receives pixel IoU and Dice if an accidental mask_path is present.",
+      "recommendation": "Reject or explicitly ignore masks for a7_gpt_sol and a8_gpt_terra before scoring.",
+      "resolution": "Fixed: box-only GPT mask_path rejected before scoring; regression passes.",
+      "status": "resolved"
+    },
+    {
+      "severity": "medium",
+      "topic": "Public eligibility and unscored local failures",
+      "reproduced": false,
+      "finding": "Global manifest status completed is additionally required even when every public image is valid; a failure only in unscored local images can disqualify the public run.",
+      "recommendation": "Clarify this rule or gate ranking on public validity independently.",
+      "resolution": "Fixed: a partial entrant with all public samples valid remains eligible; dedicated regression passes.",
+      "status": "resolved"
+    },
+    {
+      "severity": "medium",
+      "topic": "RGBI source integrity",
+      "reproduced": false,
+      "finding": "The common input manifest binds the RGB PNG hash but not the separate RGBI raster content.",
+      "recommendation": "Record and validate rgbi_sha256 for enhanced-input runs.",
+      "status": "disclosed_limit",
+      "resolution": "Root will provide a post-run RGBI input audit and disclose that its file hash was not in the original frozen manifest. RGB main-board hashes are unaffected."
+    }
+  ],
+  "passed_checks": [
+    "Four-neighbour connectivity and exact25px minimum",
+    "Missing and failed predictions remain unranked instead of false-negative zeros",
+    "Actual RGB source checksum at main entry",
+    "Prediction/input hash consistency",
+    "Reference file checksum",
+    "Local references excluded from formal scores",
+    "Enhanced leaderboard separate and full-public eligibility enforced",
+    "Box-only normal GPT outputs receive no invented pixel or area score",
+    "Undefined denominators remain null",
+    "Duplicate prediction IDs fail closed",
+    "Local-only failure does not disqualify complete public scoring"
+  ]
+}

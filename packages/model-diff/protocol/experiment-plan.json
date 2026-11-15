@@ -1,0 +1,225 @@
+{
+  "version": "proposal_1",
+  "status": "proposed_not_run",
+  "prepared_on": "2026-11-15",
+  "objective": "Compare deployable rooftop-PV recognition pipelines with fixed inputs and independently sourced references; not an architecture-only claim",
+  "entrants": [
+    {
+      "id": "rgb_deeplab_ign",
+      "track": "rgb_main",
+      "model": "DeepLabV3-ResNet101",
+      "repository": "gabrielkasmi/bdappv-models",
+      "revision": "893c5f04766d83106e6e0ed4f7fb7a4de4e00e4e",
+      "checkpoint": "deeplab_ign_best.pth",
+      "input": [
+        "R",
+        "G",
+        "B"
+      ],
+      "output": "semantic_mask",
+      "training": "PV-specific pretrained"
+    },
+    {
+      "id": "rgb_segformer_ign",
+      "track": "rgb_main",
+      "model": "SegFormer-B0",
+      "repository": "gabrielkasmi/bdappv-models",
+      "revision": "893c5f04766d83106e6e0ed4f7fb7a4de4e00e4e",
+      "checkpoint": "segformer-b0/segformer_ign_best.pth",
+      "input": [
+        "R",
+        "G",
+        "B"
+      ],
+      "output": "semantic_mask",
+      "training": "PV-specific pretrained"
+    },
+    {
+      "id": "rgb_regnety",
+      "track": "rgb_main",
+      "model": "DeepLabV3Plus with RegNetY-080 encoder",
+      "repository": "Muemmel/solar-pv-segmentation-brandenburg",
+      "revision": "55651f570632bbe7a7ac3a19dfe8271208b62871",
+      "checkpoint": "regnety_rgb_s44/best_timm-regnety_080_ch3_ep090.pt",
+      "input": [
+        "R",
+        "G",
+        "B"
+      ],
+      "output": "semantic_mask",
+      "training": "PV-specific pretrained"
+    },
+    {
+      "id": "rgb_yolo_solar",
+      "track": "rgb_main",
+      "model": "YOLOv8s-seg",
+      "repository": "finloop/yolov8s-seg-solar-panels",
+      "revision": "c94c55ff22debf46cdcffb4bbc23a9c464ba83fd",
+      "checkpoint": "best.pt",
+      "input": [
+        "R",
+        "G",
+        "B"
+      ],
+      "output": "instance_mask",
+      "training": "PV-specific pretrained"
+    },
+    {
+      "id": "rgb_maskrcnn",
+      "track": "rgb_main",
+      "model": "Mask R-CNN ResNet50 FPN",
+      "repository": "giswqs/geoai",
+      "revision": "aa2b25d27b2c78f0e92c7b6a4813a571f9bc2288",
+      "checkpoint": "solar_panel_detection.pth",
+      "input": [
+        "R",
+        "G",
+        "B"
+      ],
+      "output": "instance_mask",
+      "training": "PV-specific pretrained"
+    },
+    {
+      "id": "rgb_sam3_text",
+      "track": "rgb_main_conditional",
+      "model": "SAM 3",
+      "repository": "facebook/sam3",
+      "revision": null,
+      "checkpoint": "sam3.pt",
+      "input": [
+        "R",
+        "G",
+        "B"
+      ],
+      "output": "prompted_masks",
+      "training": "General pretrained; no local fine-tuning",
+      "prompt": "solar panels",
+      "availability": "Official checkpoint is gated; resolve authorized access and immutable revision before enrollment"
+    },
+    {
+      "id": "rgb_gpt61_sol",
+      "track": "rgb_main",
+      "model": "gpt-6.1-sol",
+      "provider": "openai-codex",
+      "transport": "PI_SDK_subscription_OAuth",
+      "input": [
+        "R",
+        "G",
+        "B"
+      ],
+      "output": "boxes_and_uncertain_flags",
+      "training": "General pretrained; no local fine-tuning",
+      "thinking_level": "low",
+      "tools_enabled": false,
+      "independent_context_per_image": true,
+      "model_version_policy": "Record requested and SDK-reported alias and date; do not claim an immutable server build"
+    },
+    {
+      "id": "rgb_gpt61_terra",
+      "track": "rgb_main",
+      "model": "gpt-6.1-terra",
+      "provider": "openai-codex",
+      "transport": "PI_SDK_subscription_OAuth",
+      "input": [
+        "R",
+        "G",
+        "B"
+      ],
+      "output": "boxes_and_uncertain_flags",
+      "training": "General pretrained; no local fine-tuning",
+      "thinking_level": "low",
+      "tools_enabled": false,
+      "independent_context_per_image": true,
+      "model_version_policy": "Record requested and SDK-reported alias and date; do not claim an immutable server build"
+    },
+    {
+      "id": "enhanced_rgbi_regnety",
+      "track": "enhanced_inputs",
+      "model": "DeepLabV3Plus with RegNetY-080 encoder",
+      "repository": "Muemmel/solar-pv-segmentation-brandenburg",
+      "revision": "55651f570632bbe7a7ac3a19dfe8271208b62871",
+      "checkpoint": "regnety_rgbi_s42/best_timm-regnety_080_ch4_nir_ep070.pt",
+      "input": [
+        "R",
+        "G",
+        "B",
+        "NIR"
+      ],
+      "output": "semantic_mask",
+      "training": "PV-specific pretrained"
+    },
+    {
+      "id": "enhanced_landuse_regnety",
+      "track": "enhanced_inputs",
+      "model": "DeepLabV3Plus with RegNetY-080 encoder",
+      "repository": "Muemmel/solar-pv-segmentation-brandenburg",
+      "revision": "55651f570632bbe7a7ac3a19dfe8271208b62871",
+      "checkpoint": "regnety_rgb_lu/best_timm-regnety_080_ch4_ep086.pt",
+      "input": [
+        "R",
+        "G",
+        "B",
+        "ALKIS_land_use"
+      ],
+      "output": "semantic_mask",
+      "training": "PV-specific pretrained"
+    }
+  ],
+  "data_protocol": {
+    "public_dataset": "Muemmel/solar-pv-detection-brandenburg-dataset",
+    "dataset_revision": "726a8ec573aadee5398ed1a87e0862071f3d4452",
+    "development_split": "validation",
+    "final_split": "testing",
+    "sample_manifest": "Must be frozen before inference; include negatives, small arrays and edge cases",
+    "local_transfer_scenes": 8,
+    "local_reference_status": "The existing twelve positive-only assistant boxes are diagnostic, not independent ground truth",
+    "human_review": "Local complete annotations require reviewer confirmation; pending regions remain unscored"
+  },
+  "fairness": {
+    "same_source_images": true,
+    "same_ground_resolution": true,
+    "no_test_set_tuning": true,
+    "native_preprocessing_documented": true,
+    "report_native_input_size_and_overlap": true,
+    "no_reference_boxes_in_prompts": true,
+    "no_mastr_records_in_recognition_prompts": true,
+    "no_forced_pixel_metric_for_box_models": true,
+    "enhanced_inputs_ranked_separately": true,
+    "classification_uncertainty_is_not_a_probability": true
+  },
+  "scoring": {
+    "common": "Building or array presence and localization using fixed annotation and grouping rules",
+    "mask_only": [
+      "pixel_IoU",
+      "Dice",
+      "projected_area_error"
+    ],
+    "operations": [
+      "end_to_end_latency",
+      "local_hardware",
+      "PI_reported_tokens",
+      "review_workload"
+    ],
+    "no_composite_score_without_declared_weights": true,
+    "no_precision_recall_from_incomplete_reference": true
+  },
+  "html_views": [
+    "Entrant cards with model, checkpoint, revision and input bands",
+    "Separate detection and mask leaderboards",
+    "Synchronized side-by-side originals, predictions and references",
+    "Filters for small targets, shadows, confusing objects, edge seams and negatives",
+    "Per-image uncertainty and unscored reference states",
+    "Runtime, PI token usage and downloadable raw outputs",
+    "Explicit not-run, failed and access-pending states"
+  ],
+  "excluded": [
+    "CIR display passed to an RGB model is sensitivity analysis only",
+    "Duplicate mirrors are not separate entrants",
+    "EarthPV 10 m Sentinel-2 release is outside small-rooftop DOP20 scope",
+    "PV-to-MaStR matching is a separate task"
+  ],
+  "second_round": [
+    "Top detector plus SAM 3 for boundary refinement",
+    "Top local PV segmenter plus GPT review, with review coverage and added workload recorded"
+  ]
+}

@@ -1,0 +1,15 @@
+[project]
+name = "roof-pv-review"
+version = "0.1.0"
+requires-python = ">=3.12,<3.13"
+dependencies = ["fastapi>=0.115,<1", "uvicorn>=0.34,<1", "geopandas>=1,<2", "pyogrio>=0.10,<1", "shapely>=2,<3", "pyproj>=3.7,<4", "rasterio>=1.4,<2", "pillow>=11,<14"]
+
+[project.scripts]
+roof-pv-review = "roof_pv_review.app:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/roof_pv_review"]

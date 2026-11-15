@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PV review update v1",
+  "type": "object",
+  "required": ["expected_version", "status", "reviewer"],
+  "properties": {
+    "expected_version": { "type": "integer", "minimum": 0 },
+    "status": { "enum": ["pending", "confirmed", "rejected", "uncertain"] },
+    "reviewer": { "type": "string", "minLength": 1, "maxLength": 100 },
+    "reason": { "type": "string", "maxLength": 1000 },
+    "note": { "type": "string", "maxLength": 5000 },
+    "geometry": { "type": ["object", "null"] },
+    "reset_geometry": { "type": "boolean" }
+    ,"mounting": {"enum": ["unknown", "roof", "ground", "other", null]}
+  },
+  "allOf": [{ "if": { "properties": { "status": { "enum": ["rejected", "uncertain"] } } }, "then": { "required": ["reason"], "properties": { "reason": { "minLength": 1 } } } }]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "hn-center",
+  "municipality": "Hohen Neuendorf",
+  "source_tile": "33383-5837",
+  "bounds_epsg25833": [383487, 5837096, 383647, 5837256],
+  "size_m": [160, 160],
+  "acquisition_date": "2026-04-22",
+  "publication_date": "2026-10-09",
+  "product_url": "https://data.geobasis-bb.de/geobasis/daten/dop/rgbi_tif/dop_33383-5837.zip",
+  "sample_selection": "Existing local transfer scene retained for pipeline verification, not an independent acceptance sample."
+}

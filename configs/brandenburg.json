@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "source": "Muemmel/solar-pv-segmentation-brandenburg",
+  "revision": "55651f570632bbe7a7ac3a19dfe8271208b62871",
+  "architecture": "DeepLabV3Plus",
+  "encoder": "timm-regnety_080",
+  "models": {
+    "rgbi": {
+      "variant": "regnety_rgbi_s42",
+      "checkpoint": "best_timm-regnety_080_ch4_nir_ep070.pt",
+      "sha256": "c750849b705c928918b599378b91ab9574ee6537e689ecec719f064549f92e34",
+      "remote_path": "regnety_rgbi_s42/best_timm-regnety_080_ch4_nir_ep070.pt",
+      "channels": ["R", "G", "B", "NIR"]
+    },
+    "rgb": {
+      "variant": "regnety_rgb_s44",
+      "checkpoint": "best_timm-regnety_080_ch3_ep090.pt",
+      "sha256": "938e7a6460f4ea517ab427a0a080653eec95fc99a5b15d6c5a8ce65fa3a1821e",
+      "remote_path": "regnety_rgb_s44/best_timm-regnety_080_ch3_ep090.pt",
+      "channels": ["R", "G", "B"]
+    }
+  },
+  "window_px": 256,
+  "overlap_px": 24,
+  "scale": 255,
+  "mean": [0.485, 0.456, 0.406, 0.5],
+  "std": [0.229, 0.224, 0.225, 0.25],
+  "activation": "sigmoid_output_channel_1",
+  "fusion": "uniform_mean",
+  "pixel_threshold": 0.5,
+  "connectivity": 4,
+  "minimum_pixels": 25,
+  "comparison_iou": 0.5,
+  "comparison_note": "IoU classifies model agreement for review; it is not a validated accuracy threshold.",
+  "publisher_departure": "Uniform averaging instead of overwriting overlapping windows, matching the frozen experiment."
+}

@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "source_file": "evaluation.json",
+  "sha256": "603f045b8dbc10224dce823617eff0958be33971cdbb23a95501c6fe154b482c",
+  "dataset_sha256": "102a30b284c5f8500cc4d39fb2f16affd94ebda72aca58541b8744d3149dc7f8",
+  "scope": "Frozen historical experiment. GPT entrants are archived evidence only; production does not call LLMs."
+}

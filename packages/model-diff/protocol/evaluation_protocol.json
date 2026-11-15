@@ -1,0 +1,14 @@
+{
+  "version":1,
+  "frozen_before_prediction_inspection":true,
+  "primary_detection":"Object F1 at bounding-box IoU >=0.5 on the same completed public test images. Mask models are converted to boxes with common4-neighbor/min25px components. GPT positive boxes only; uncertain abstentions separate.",
+  "secondary_detection":"Object F1 at IoU0.25 and image-level presence metrics.",
+  "mask_ranking":"Micro pixel IoU across all public images after min25px filtering, with Dice and absolute area error. No pixel mask or IoU is invented for GPT boxes.",
+  "ties":"Primary detection ties retain co-winners; recall and precision are shown, not hidden behind an opaque score.",
+  "eligibility":"Only entrants with valid completed predictions on every public test image are ranked. Partial predictions and blocked access are visible but unranked. Enhanced inputs form a separate board.",
+  "local_images":"Incomplete provisional references support only hit diagnostics; no formal precision, recall or pixel accuracy.",
+  "sampling":"8 public crops,4positive-targeted/4reference-empty by predeclared alternating tile order; convenience sample, not municipal prevalence.",
+  "generalization":"Published corpus selected around >=30kWp plants, domain proxy for under30kW rooftop goal. Scores against supplied labels do not guarantee absence of omitted PV.",
+  "runtime":"Concurrent model runtimes and subscription/network latency are not isolated hardware speed benchmarks.",
+  "reference_mask_classes":{"0":"background","1":"PV"}
+}

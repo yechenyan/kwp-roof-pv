@@ -1,0 +1,36 @@
+{
+  "status": "passed",
+  "run_id": "hn-center-eb242d954721",
+  "input_sha256": "d0514d8a188b74827a9f7417da1dbed40120818b7aa72931b41b2e1c6e784be8",
+  "input_pixels": [
+    800,
+    800
+  ],
+  "acquisition_date": "2026-04-22",
+  "counts": {
+    "rgbi": 11,
+    "rgb": 13,
+    "candidates": 14
+  },
+  "categories": {
+    "geometry_conflict": 2,
+    "both": 8,
+    "rgbi_only": 1,
+    "rgb_only": 3
+  },
+  "checks": [
+    "completed run and candidate JSON schemas",
+    "all immutable artifact hashes",
+    "float32 scores reproduce original threshold masks",
+    "review persistence after service restart",
+    "stale writes return HTTP 409",
+    "manual candidate and checked area are independent",
+    "consistent review revision in export",
+    "valid confirmed polygons in EPSG:3035",
+    "GeoPackage integrity and HTTP download"
+  ],
+  "review_test_location": "temporary isolated database, deleted after verification",
+  "production_decisions_added": 0,
+  "browser_visual_verification": false,
+  "scope": "Functional pipeline verification, not PV accuracy measurement."
+}

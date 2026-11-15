@@ -1,0 +1,10 @@
+{
+  "run_id": "hn-center-eb242d954721",
+  "run_directory": "var/runs/hn-center-eb242d954721",
+  "export_file": "var/exports/hn-center-eb242d954721-r0-3d3f4777.gpkg",
+  "review_revision": 0,
+  "confirmed_count": 0,
+  "candidate_count": 14,
+  "export_sha256": "3b9e55423ea4b76479f72a140570fa38ab025fc9409207c9bca2b5356c47cfef",
+  "purpose": "Initial unreviewed sample delivery; confirmations are left to the human reviewer."
+}

@@ -1,0 +1,11 @@
+{
+  "name": "kwp-roof-pv",
+  "private": true,
+  "packageManager": "pnpm@9.0.2",
+  "scripts": {
+    "api:types": "uv run --no-sync --package roof-pv-review python scripts/export_openapi.py && pnpm --filter @roof-pv/web-app exec openapi-typescript ../../../var/openapi.json -o src/api/schema.ts",
+    "dev": "pnpm --filter @roof-pv/web-app dev",
+    "build": "pnpm --filter @roof-pv/web-app build",
+    "test": "pnpm --filter @roof-pv/web-app test"
+  }
+}

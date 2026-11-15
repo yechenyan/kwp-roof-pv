@@ -1,0 +1,17 @@
+[project]
+name = "kwp-roof-pv-workspace"
+version = "0.1.0"
+requires-python = ">=3.12,<3.13"
+dependencies = []
+
+[tool.uv]
+package = false
+
+[tool.uv.workspace]
+members = ["packages/model-Brandenburg", "packages/web-app/backend"]
+
+[dependency-groups]
+dev = ["pytest>=8,<10", "httpx>=0.28,<1", "jsonschema>=4.23,<5"]
+
+[tool.pytest.ini_options]
+testpaths = ["packages/model-Brandenburg/tests", "packages/web-app/backend/tests"]

@@ -1,0 +1,308 @@
+{
+  "status": "passed",
+  "synthetic_tests_passed": 14,
+  "evaluation_sha256": "075491bf78e6c22662c4ee8a3b80637b53f892c567af57649181ec1e7a457916",
+  "evaluator_sha256": "d1a052b6deafdfa899da3b456403bcec4c6b4c38882af76b9c5177a6402e35b7",
+  "source_rgb_hashes_verified": 16,
+  "public_reference_hashes_verified": 8,
+  "independently_recomputed_scored_entrants": 8,
+  "independently_recomputed_metrics": [
+    {
+      "entrant_id": "a1_deeplab",
+      "track": "rgb",
+      "tp": 6,
+      "fp": 10,
+      "fn": 4,
+      "precision": 0.375,
+      "recall": 0.6,
+      "f1": 0.46153846153846156,
+      "pixel_iou": 0.6866970691285246,
+      "area_mae_m2": 46.795,
+      "public_images": 8,
+      "local_diagnostic": {
+        "hits": 7,
+        "references": 12,
+        "formal_accuracy": false
+      }
+    },
+    {
+      "entrant_id": "a2_segformer",
+      "track": "rgb",
+      "tp": 7,
+      "fp": 21,
+      "fn": 3,
+      "precision": 0.25,
+      "recall": 0.7,
+      "f1": 0.3684210526315789,
+      "pixel_iou": 0.5428374714918887,
+      "area_mae_m2": 102.46000000000001,
+      "public_images": 8,
+      "local_diagnostic": {
+        "hits": 7,
+        "references": 12,
+        "formal_accuracy": false
+      }
+    },
+    {
+      "entrant_id": "a3_brandenburg",
+      "track": "rgb",
+      "tp": 10,
+      "fp": 7,
+      "fn": 0,
+      "precision": 0.5882352941176471,
+      "recall": 1.0,
+      "f1": 0.7407407407407407,
+      "pixel_iou": 0.8960713607895237,
+      "area_mae_m2": 10.89,
+      "public_images": 8,
+      "local_diagnostic": {
+        "hits": 6,
+        "references": 12,
+        "formal_accuracy": false
+      }
+    },
+    {
+      "entrant_id": "a4_yolo",
+      "track": "rgb",
+      "tp": 8,
+      "fp": 11,
+      "fn": 2,
+      "precision": 0.42105263157894735,
+      "recall": 0.8,
+      "f1": 0.5517241379310345,
+      "pixel_iou": 0.6422655758338578,
+      "area_mae_m2": 69.70500000000001,
+      "public_images": 8,
+      "local_diagnostic": {
+        "hits": 8,
+        "references": 12,
+        "formal_accuracy": false
+      }
+    },
+    {
+      "entrant_id": "a5_maskrcnn",
+      "track": "rgb",
+      "tp": 0,
+      "fp": 4,
+      "fn": 10,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "pixel_iou": 0.16394196047534634,
+      "area_mae_m2": 99.69999999999999,
+      "public_images": 8,
+      "local_diagnostic": {
+        "hits": 2,
+        "references": 12,
+        "formal_accuracy": false
+      }
+    },
+    {
+      "entrant_id": "a7_gpt_sol",
+      "track": "rgb",
+      "tp": 8,
+      "fp": 1,
+      "fn": 2,
+      "precision": 0.8888888888888888,
+      "recall": 0.8,
+      "f1": 0.8421052631578947,
+      "pixel_iou": null,
+      "area_mae_m2": null,
+      "public_images": 8,
+      "local_diagnostic": {
+        "hits": 8,
+        "references": 12,
+        "formal_accuracy": false
+      }
+    },
+    {
+      "entrant_id": "a8_gpt_terra",
+      "track": "rgb",
+      "tp": 5,
+      "fp": 1,
+      "fn": 5,
+      "precision": 0.8333333333333334,
+      "recall": 0.5,
+      "f1": 0.625,
+      "pixel_iou": null,
+      "area_mae_m2": null,
+      "public_images": 8,
+      "local_diagnostic": {
+        "hits": 7,
+        "references": 12,
+        "formal_accuracy": false
+      }
+    },
+    {
+      "entrant_id": "a3_brandenburg_rgbi",
+      "track": "enhanced",
+      "tp": 10,
+      "fp": 8,
+      "fn": 0,
+      "precision": 0.5555555555555556,
+      "recall": 1.0,
+      "f1": 0.7142857142857143,
+      "pixel_iou": 0.8741674773628676,
+      "area_mae_m2": 8.785,
+      "public_images": 8,
+      "local_diagnostic": {
+        "hits": 3,
+        "references": 3,
+        "formal_accuracy": false
+      }
+    }
+  ],
+  "recomputed_winners": {
+    "rgb_detection": [
+      "a7_gpt_sol"
+    ],
+    "rgb_masks": [
+      "a3_brandenburg"
+    ],
+    "enhanced_masks": [
+      "a3_brandenburg_rgbi"
+    ]
+  },
+  "public_reference_objects": 10,
+  "positive_crops": 4,
+  "negative_crops": 4,
+  "reference_positive_pixels_by_crop": {
+    "public_01": 22899,
+    "public_02": 0,
+    "public_03": 859,
+    "public_04": 0,
+    "public_05": 935,
+    "public_06": 0,
+    "public_07": 956,
+    "public_08": 0
+  },
+  "largest_crop_share_of_positive_pixels": 0.8927833443798978,
+  "rgbi_paired_public_images": 8,
+  "rgbi_post_run_audit": [
+    {
+      "id": "public_01",
+      "rgbi_path": "benchmark/dataset/rgbi/public_01.tif",
+      "rgbi_sha256": "3e9211f3cd9fd93315eccabe5b0432803a07eb6815973afdde5eb8f07d4ef9e5",
+      "rgb_bands_match_frozen_png": true
+    },
+    {
+      "id": "public_02",
+      "rgbi_path": "benchmark/dataset/rgbi/public_02.tif",
+      "rgbi_sha256": "0c4d66cd0dddd67b5b4720262968763c2ba58fe26fde19a0c76c18304837c34e",
+      "rgb_bands_match_frozen_png": true
+    },
+    {
+      "id": "public_03",
+      "rgbi_path": "benchmark/dataset/rgbi/public_03.tif",
+      "rgbi_sha256": "25fce6faf4b15d4d1f21c37d31cdf9ec45750086c78e4f97bd570de84c575d92",
+      "rgb_bands_match_frozen_png": true
+    },
+    {
+      "id": "public_04",
+      "rgbi_path": "benchmark/dataset/rgbi/public_04.tif",
+      "rgbi_sha256": "dc1f783b0ca16e30dba3fc180c7206794ca4cf2b7293c96a3d22a0b6304cbb23",
+      "rgb_bands_match_frozen_png": true
+    },
+    {
+      "id": "public_05",
+      "rgbi_path": "benchmark/dataset/rgbi/public_05.tif",
+      "rgbi_sha256": "9afc765ff4456ce70dd3f2ef15cb27d37b3d66048db1dfef49762fd384e28bdd",
+      "rgb_bands_match_frozen_png": true
+    },
+    {
+      "id": "public_06",
+      "rgbi_path": "benchmark/dataset/rgbi/public_06.tif",
+      "rgbi_sha256": "5011fdf704248a490e1794326438d14e06d2f568ad815a5e8ef7e30b84319a61",
+      "rgb_bands_match_frozen_png": true
+    },
+    {
+      "id": "public_07",
+      "rgbi_path": "benchmark/dataset/rgbi/public_07.tif",
+      "rgbi_sha256": "2292ba24226ef77e53448650b4122806fbf2a9de1a32528ee70d64681519528f",
+      "rgb_bands_match_frozen_png": true
+    },
+    {
+      "id": "public_08",
+      "rgbi_path": "benchmark/dataset/rgbi/public_08.tif",
+      "rgbi_sha256": "d387380ff0d148e2fd8dda851ce8e8b8a22353cf455cb446047afb8d7f3c9cee",
+      "rgb_bands_match_frozen_png": true
+    }
+  ],
+  "limitations": [
+    "Results use eight selected public crops and ten retained reference components, not a representative municipal sample.",
+    "Micro pixel IoU is dominated by the positive pixels in public_01; the dominant-crop share is explicitly recorded.",
+    "Only one enhanced-input entrant was run, so its enhanced-board win does not mean RGBI beat RGB.",
+    "Brandenburg RGBI pixel IoU is lower than its RGB counterpart on the same eight crops, while its area MAE is lower.",
+    "Local twelve-box references remain incomplete diagnostics, never formal accuracy.",
+    "Additional detections are false positives relative to supplied labels, not independently adjudicated physical false positives.",
+    "SAM 3 is unscored due to official access gating.",
+    "RGBI file hashes in this independent audit are post-run evidence, not hashes originally preregistered in the frozen input manifest."
+  ],
+  "non_ranked_sensitivity_diagnostic": {
+    "status": "Post-result sensitivity check; not used to alter frozen primary leaderboard",
+    "metric": "Unweighted mean IoU over the four crops with positive reference pixels; negative crops excluded",
+    "rows": [
+      {
+        "entrant_id": "a1_deeplab",
+        "positive_crop_ious": {
+          "public_01": 0.8591618301047712,
+          "public_03": 0.5115681233933161,
+          "public_05": 0.22763083849184018,
+          "public_07": 0.2724252491694352
+        },
+        "positive_crop_macro_iou": 0.4676965102898407
+      },
+      {
+        "entrant_id": "a2_segformer",
+        "positive_crop_ious": {
+          "public_01": 0.8393426988959396,
+          "public_03": 0.7783669141039237,
+          "public_05": 0.060753429629091964,
+          "public_07": 0.4868255959849435
+        },
+        "positive_crop_macro_iou": 0.5413221596534746
+      },
+      {
+        "entrant_id": "a3_brandenburg",
+        "positive_crop_ious": {
+          "public_01": 0.9229028889662374,
+          "public_03": 0.8347547974413646,
+          "public_05": 0.8114406779661016,
+          "public_07": 0.6991735537190082
+        },
+        "positive_crop_macro_iou": 0.817067979523178
+      },
+      {
+        "entrant_id": "a4_yolo",
+        "positive_crop_ious": {
+          "public_01": 0.8875905585417153,
+          "public_03": 0.8186226964112512,
+          "public_05": 0.13990413421210304,
+          "public_07": 0.3373665480427046
+        },
+        "positive_crop_macro_iou": 0.5458709843019436
+      },
+      {
+        "entrant_id": "a5_maskrcnn",
+        "positive_crop_ious": {
+          "public_01": 0.20212895130934552,
+          "public_03": 0.0,
+          "public_05": 0.0,
+          "public_07": 0.0
+        },
+        "positive_crop_macro_iou": 0.05053223782733638
+      },
+      {
+        "entrant_id": "a3_brandenburg_rgbi",
+        "positive_crop_ious": {
+          "public_01": 0.8865494598601991,
+          "public_03": 0.8697916666666666,
+          "public_05": 0.8069254984260231,
+          "public_07": 0.8229475766567754
+        },
+        "positive_crop_macro_iou": 0.8465535504024161
+      }
+    ],
+    "interpretation": "RGBI has higher positive-crop macro IoU (.846554 versus RGB .817068), while RGB leads the frozen micro IoU (.896071 versus RGBI .874167). Input advantage is sample-weighting-sensitive; do not claim either universally superior."
+  }
+}

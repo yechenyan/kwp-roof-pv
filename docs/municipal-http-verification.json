@@ -1,0 +1,46 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "path": "/",
+      "status": 200,
+      "bytes": 462
+    },
+    {
+      "path": "/api/health",
+      "status": 200,
+      "bytes": 61
+    },
+    {
+      "path": "/api/jobs",
+      "status": 200,
+      "bytes": 253
+    },
+    {
+      "path": "/api/runs",
+      "status": 200,
+      "bytes": 534992
+    },
+    {
+      "path": "/api/runs/municipal-27320a7f3fb1",
+      "status": 200,
+      "bytes": 31156955
+    },
+    {
+      "path": "/api/exports/municipal-27320a7f3fb1-r0-25e25d4a/report",
+      "status": 200,
+      "bytes": 19977
+    },
+    {
+      "path": "/comparison/",
+      "status": 200,
+      "bytes": 2928
+    },
+    {
+      "path": "/api/exports/municipal-27320a7f3fb1-r0-25e25d4a.gpkg",
+      "status": 200,
+      "sha256_verified": true
+    }
+  ],
+  "browser_visual_verification": false
+}

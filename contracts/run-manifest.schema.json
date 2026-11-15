@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Completed PV inference run v1",
+  "type": "object",
+  "required": ["schema_version", "run_id", "fingerprint", "status", "identity", "input", "artifacts", "preview_bounds", "counts"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "run_id": { "type": "string", "pattern": "^[a-z0-9_-]+$" },
+    "fingerprint": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "status": { "const": "completed" },
+    "identity": { "type": "object", "required": ["input_sha256", "config", "code_sha256", "versions"] },
+    "input": { "type": "object", "required": ["crs", "bounds", "width", "height", "bands", "acquisition_date", "valid_pixels", "missing_pixels"] },
+    "artifacts": { "type": "object", "required": ["preview.png", "preview_cir.png", "candidates.geojson", "rgbi.geojson", "rgb.geojson"], "anyOf": [{"required": ["image.tif", "rgbi_scores.tif", "rgb_scores.tif", "rgbi_mask.tif", "rgb_mask.tif"]}, {"required": ["image.vrt", "rgbi_scores.vrt", "rgb_scores.vrt", "rgbi_mask.vrt", "rgb_mask.vrt", "buildings.geojson", "pixel_coverage.geojson"]}], "additionalProperties": { "type": "string", "pattern": "^[a-f0-9]{64}$" } },
+    "preview_bounds": { "type": "array", "minItems": 2, "maxItems": 2 },
+    "counts": { "type": "object", "required": ["rgbi", "rgb", "candidates"] }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "path": "/",
+      "status": 200,
+      "bytes": 462
+    },
+    {
+      "path": "/api/health",
+      "status": 200,
+      "bytes": 61
+    },
+    {
+      "path": "/api/runs",
+      "status": 200,
+      "bytes": 5498
+    },
+    {
+      "path": "/api/runs/hn-center-eb242d954721",
+      "status": 200,
+      "bytes": 57922
+    },
+    {
+      "path": "/api/runs/hn-center-eb242d954721/assets/preview.png",
+      "status": 200,
+      "bytes": 1101023
+    },
+    {
+      "path": "/api/runs/hn-center-eb242d954721/assets/preview_cir.png",
+      "status": 200,
+      "bytes": 1080824
+    },
+    {
+      "path": "/comparison/",
+      "status": 200,
+      "bytes": 2928
+    },
+    {
+      "path": "/comparison/report/data.js",
+      "status": 200,
+      "bytes": 25982
+    },
+    {
+      "path": "/comparison/results/evaluation.json",
+      "status": 200,
+      "bytes": 198920
+    },
+    {
+      "path": "/api/exports/hn-center-eb242d954721-r0-3d3f4777.gpkg",
+      "status": 200,
+      "bytes": 262144
+    }
+  ],
+  "browser_visual_verification": false
+}

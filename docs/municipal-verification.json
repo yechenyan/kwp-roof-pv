@@ -1,0 +1,53 @@
+{
+  "status": "passed",
+  "run_id": "municipal-27320a7f3fb1",
+  "source_tiles": 99,
+  "area_km2": 66.64728085455957,
+  "acquisition_dates": [
+    "2026-04-22",
+    "2026-05-01"
+  ],
+  "verified_blocks": 471,
+  "valid_target_pixels": 1666182030,
+  "missing_target_pixels": 0,
+  "counts": {
+    "rgbi": 5180,
+    "rgb": 5296,
+    "candidates": 6355
+  },
+  "candidate_categories": {
+    "geometry_conflict": 1026,
+    "rgbi_only": 1292,
+    "both": 2862,
+    "rgb_only": 1175
+  },
+  "spatial_layers_epsg3035": [
+    "candidates",
+    "confirmed_pv",
+    "reviewed_areas",
+    "coverage",
+    "retired_candidates",
+    "confirmed_rooftop_pv",
+    "candidate_points",
+    "confirmed_rooftop_points",
+    "buildings",
+    "municipalities",
+    "pixel_coverage",
+    "rgbi_observations",
+    "rgb_observations"
+  ],
+  "checks": [
+    "all source and artifact hashes checked by the review consumer",
+    "all float32 scores reproduce raw masks",
+    "target coverage counts agree with block masks",
+    "candidate JSON schemas",
+    "real-data review persistence and stale writes",
+    "manual addition, merge, undo, inspection area",
+    "all exported spatial geometry valid in EPSG:3035",
+    "GPKG and HTML report downloads",
+    "original RGB and CIR XYZ tiles"
+  ],
+  "production_decisions_added": 0,
+  "browser_visual_verification": false,
+  "accuracy_assessment": "No independent local ground truth; this is functional and geospatial verification."
+}
