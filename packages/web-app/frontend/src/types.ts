@@ -38,6 +38,7 @@ export interface CandidateProperties {
 }
 export type Candidate = Feature<ReviewGeometry, CandidateProperties>;
 export interface Manifest {
+  delivery?: { imagery: "preview" | "original" };
   run_id: string;
   kind?: string;
   input: {

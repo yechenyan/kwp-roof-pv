@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "manifest_sha256": "4afc8d1e5be455ca937e42aa1481fa78026f23e99c43532dab990b08404959c3",
+  "imagery": "preview",
+  "artifacts": [
+    "buildings.geojson",
+    "candidates.geojson",
+    "image.vrt",
+    "municipalities.geojson",
+    "pixel_coverage.geojson",
+    "preview.png",
+    "preview_cir.png",
+    "rgb.geojson",
+    "rgbi.geojson"
+  ]
+}

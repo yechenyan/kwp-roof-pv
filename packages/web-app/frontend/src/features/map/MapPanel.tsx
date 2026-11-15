@@ -68,7 +68,9 @@ export function MapPanel(props: Props) {
     zoom: number;
   } | null>(null);
   const municipal = props.snapshot.manifest.kind === "municipal";
-  const useNativeTiles = municipal && Boolean(viewport && viewport.zoom >= 16);
+  const previewOnly = props.snapshot.manifest.delivery?.imagery === "preview";
+  const useNativeTiles =
+    municipal && !previewOnly && Boolean(viewport && viewport.zoom >= 16);
   const minimumPoints = props.mode === "split" ? 2 : 3;
 
   useEffect(() => {
@@ -582,7 +584,9 @@ export function MapPanel(props: Props) {
               : props.t("mapHint")}
           </p>
         </div>
-        <span className="live-dot">DOP20</span>
+        <span className="live-dot">
+          {previewOnly ? props.t("previewImagery") : "DOP20"}
+        </span>
         <button aria-pressed={expanded} onClick={() => setExpanded(!expanded)}>
           {props.t(expanded ? "restoreMapSize" : "expandMap")}
         </button>

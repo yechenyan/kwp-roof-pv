@@ -15,3 +15,15 @@ __pycache__/
 /var/models/best_timm-regnety_080_ch3_ep090.pt
 /var/models/best_timm-regnety_080_ch4_nir_ep070.pt
 /var/exports/municipal-27320a7f3fb1-r0-925fad1b.gpkg
+
+# Local-only inputs and intermediates omitted from the compact web delivery.
+/var/cache/
+/var/backups/
+/var/backend-env/
+/var/data/
+/var/runs/.superseded-*/
+/var/runs/*/blocks/
+/var/runs/municipal-*/*.vrt
+!/var/runs/municipal-*/image.vrt
+/var/state/*-shm
+/var/state/*-wal

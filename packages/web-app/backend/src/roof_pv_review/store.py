@@ -12,6 +12,7 @@ from shapely.ops import transform
 from shapely.ops import unary_union, split
 from functools import lru_cache
 from shapely.prepared import prep
+from .delivery import web_delivery
 
 
 def now():
@@ -78,16 +79,23 @@ class Store:
             if manifest.get("status") != "completed" or manifest.get("schema_version") != 1 or manifest.get("run_id") != folder.name:
                 continue
             sha = checksum(path)
+            delivery = web_delivery(folder, manifest)
+            if delivery:
+                for name in delivery["artifacts"]:
+                    if checksum(folder / name) != manifest["artifacts"][name]:
+                        raise ValueError("Web delivery artifact failed integrity verification.")
             with self.connection() as db:
                 existing = db.execute("SELECT manifest_sha FROM runs WHERE id=?", (folder.name,)).fetchone()
                 if existing:
                     if existing[0] != sha:
                         raise Conflict("An imported run manifest changed. Restore it or create a new run.")
                     continue
-                for name, expected in manifest["artifacts"].items():
+                artifacts = delivery["artifacts"] if delivery else manifest["artifacts"]
+                for name in artifacts:
+                    expected = manifest["artifacts"][name]
                     if Path(name).is_absolute() or ".." in Path(name).parts or not (folder / name).is_file() or checksum(folder / name) != expected:
                         raise ValueError("Run artifact failed integrity verification.")
-                for tile in manifest.get("source_tiles", []):
+                for tile in ([] if delivery and delivery["imagery"] == "preview" else manifest.get("source_tiles", [])):
                     reference = Path(tile["file"])
                     if reference.is_absolute() or ".." in reference.parts or checksum(self.root / reference) != tile["sha256"]:
                         raise ValueError("Referenced source imagery failed integrity verification.")
@@ -101,7 +109,11 @@ class Store:
         row = db.execute("SELECT manifest FROM runs WHERE id=?", (run_id,)).fetchone()
         if not row:
             raise KeyError("Unknown run.")
-        return json.loads(row[0])
+        manifest = json.loads(row[0])
+        delivery = web_delivery(self.root / "runs" / run_id, manifest)
+        if delivery:
+            manifest["delivery"] = {"imagery": delivery["imagery"]}
+        return manifest
 
     def footprint(self, manifest):
         key = manifest["run_id"]

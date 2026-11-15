@@ -44,14 +44,27 @@ The UI loads a compact overview first; original edit geometry is fetched only on
 Use Python 3.12, uv, Node.js 22 or later, and pnpm 9.0.2. Run commands from the repository root. Paths are relative; `--home`, `--config`, `--frontend`, and `ROOF_PV_HOME` allow explicit locations from another working directory. `.env.example` documents variables; no automatic dotenv loading is assumed.
 
 ```sh
-uv sync --all-packages --all-extras
-python3 scripts/large_files.py restore
+uv sync --package roof-pv-review
 pnpm install --frozen-lockfile
 pnpm build
 uv run --package roof-pv-review roof-pv-review --port 8780
 ```
 
 Open <http://127.0.0.1:8780>. The English experiment archive is at <http://127.0.0.1:8780/comparison/>. Initial candidates are all pending; test decisions are never inserted into production state.
+
+The checkout includes the two completed runs and a consistent review database. The municipal web delivery retains every candidate and contextual geometry at its original precision, plus checksum-verified RGB/CIR previews. It omits intermediate block scores/masks, superseded runs, caches and the 99 original imagery tiles. The map labels this compact delivery as preview imagery and continues to show the preview when zooming; it does not imply original 20 cm image detail. The smaller sample includes its original image and outputs. No model download or inference run is needed to view these existing detections. MaStR source snapshots and proposal batches are not included in this compact delivery.
+
+`var/runs/municipal-27320a7f3fb1/web-delivery.json` identifies the retained artifacts and pins the unchanged original manifest hash. The backend verifies each delivered geometry and preview against the original hashes, including when a review database already exists. The small, relative-path original mosaic is also retained so source imagery can be downloaded independently.
+
+To enable original 20 cm imagery, download the 99 frozen RGBI tiles directly from LGB on the viewing computer (about 6.2 GB of extracted files):
+
+```sh
+uv run --package roof-pv-review python scripts/download_web_imagery.py --workers 2
+```
+
+The command uses the original manifest's official URLs, verifies both archive and TIFF SHA-256 hashes, checks the four-band raster grid, and reuses previously verified downloads when rerun. If the official files have changed, it fails instead of silently changing the imagery behind existing detections. Downloaded tiles remain ignored by Git. Restart the web service and reload the page after downloading; native RGB/CIR tiles then activate without model installation or another inference run. Without the download, the complete detection results remain viewable over the included previews.
+
+For a fresh complete inference setup, use `uv sync --all-packages --all-extras` and restore the model/export artifacts with `python3 scripts/large_files.py restore`, then follow the acquisition and survey instructions below.
 
 For frontend development, start the API as above and run `pnpm dev` in a second terminal. The Vite development server proxies `/api` to port 8780. The service binds only to loopback and has no multi-user authentication. Reviewer names are attribution, not authenticated identities. SQLite is intended for local/small-scale review.
 
@@ -119,6 +132,7 @@ The API has no dependency on the model package or PyTorch. It consumes the run-f
 uv run --all-packages --all-extras pytest -q
 pnpm test
 pnpm build
+uv run --package roof-pv-review python scripts/verify_web_delivery.py
 uv run --no-sync python scripts/verify_sample.py
 uv run --no-sync python scripts/verify_municipal.py
 ```

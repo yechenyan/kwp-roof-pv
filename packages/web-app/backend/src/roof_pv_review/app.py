@@ -147,7 +147,7 @@ def create_app(root=None, frontend=None):
     def runs():
         store.import_runs()
         with store.connection() as db:
-            return [{"run_id": row["id"], "revision": row["revision"], "manifest": json.loads(row["manifest"])} for row in db.execute("SELECT * FROM runs ORDER BY id")]
+            return [{"run_id": row["id"], "revision": row["revision"], "manifest": store.manifest(db, row["id"])} for row in db.execute("SELECT * FROM runs ORDER BY id")]
 
     @app.get("/api/runs/{run_id}")
     def snapshot(run_id: str):
@@ -208,7 +208,9 @@ def create_app(root=None, frontend=None):
     @app.get("/api/runs/{run_id}/tiles/{display}/{z}/{x}/{y}.png")
     def tile(run_id: str, display: str, z: int, x: int, y: int):
         with store.connection() as db:
-            store.manifest(db, run_id)
+            manifest = store.manifest(db, run_id)
+        if manifest.get("delivery", {}).get("imagery") == "preview":
+            raise HTTPException(404, "Original imagery is not included; use the RGB/CIR preview assets.")
         return FileResponse(render_tile(root, run_id, display, z, x, y), media_type="image/png", headers={"Cache-Control": "private, max-age=31536000, immutable"})
 
     @app.post("/api/runs/{run_id}/transform", status_code=201)

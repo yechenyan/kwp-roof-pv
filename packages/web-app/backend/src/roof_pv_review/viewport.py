@@ -35,7 +35,7 @@ class ViewportService:
             features = snapshot["candidates"]["features"]
             geometries = [shape(f["geometry"]) for f in features]
             source = snapshot["manifest"]
-            manifest = {key: source[key] for key in ["run_id", "kind", "input", "preview_bounds", "counts", "limitations"] if key in source}
+            manifest = {key: source[key] for key in ["run_id", "kind", "input", "preview_bounds", "counts", "limitations", "delivery"] if key in source}
             identity = source.get("identity", {})
             manifest["identity"] = {"input_sha256": identity.get("input_sha256", ""), "config": {"models": identity.get("config", {}).get("models", {})}}
             summaries = [{"type": "Feature", "id": f["id"], "geometry": mapping(g.envelope),

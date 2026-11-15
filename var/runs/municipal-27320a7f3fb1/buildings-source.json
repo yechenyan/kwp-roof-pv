@@ -1,0 +1,150 @@
+{
+  "schema_version": 1,
+  "status": "completed",
+  "fetched_at": "2026-11-15T10:37:03.208597+00:00",
+  "features": 25813,
+  "source_features": 45829,
+  "pages": [
+    {
+      "file": "data/municipal/buildings/page-000000.gml",
+      "sha256": "9efb60357dd825872e51a51185e6430287459f5ec4a64deeb7f4500e395a8c76",
+      "url": "https://isk.geobasis-bb.de/ows/alkis_vereinf_wfs?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ave%3AGebaeudeBauwerk&SRSNAME=EPSG%3A25833&BBOX=378674.533%2C5832177.847%2C389648.94%2C5844915.076%2CEPSG%3A25833&COUNT=2000&STARTINDEX=0",
+      "returned": 2000
+    },
+    {
+      "file": "data/municipal/buildings/page-002000.gml",
+      "sha256": "c5c18d736bc9cb0c63ac0c81a694034e6d205bc33e121160a82024d6af04dd94",
+      "url": "https://isk.geobasis-bb.de/ows/alkis_vereinf_wfs?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ave%3AGebaeudeBauwerk&SRSNAME=EPSG%3A25833&BBOX=378674.533%2C5832177.847%2C389648.94%2C5844915.076%2CEPSG%3A25833&COUNT=2000&STARTINDEX=2000",
+      "returned": 2000
+    },
+    {
+      "file": "data/municipal/buildings/page-004000.gml",
+      "sha256": "c644c318edcc62d828b85f96dd2eedbe80b5ae86643739f9cc0019498575baa3",
+      "url": "https://isk.geobasis-bb.de/ows/alkis_vereinf_wfs?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ave%3AGebaeudeBauwerk&SRSNAME=EPSG%3A25833&BBOX=378674.533%2C5832177.847%2C389648.94%2C5844915.076%2CEPSG%3A25833&COUNT=2000&STARTINDEX=4000",
+      "returned": 2000
+    },
+    {
+      "file": "data/municipal/buildings/page-006000.gml",
+      "sha256": "45d05d6a83abe5a6fb6405398c9a7e9aaa33675386f0ad51b53d1125984cfb2f",
+      "url": "https://isk.geobasis-bb.de/ows/alkis_vereinf_wfs?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ave%3AGebaeudeBauwerk&SRSNAME=EPSG%3A25833&BBOX=378674.533%2C5832177.847%2C389648.94%2C5844915.076%2CEPSG%3A25833&COUNT=2000&STARTINDEX=6000",
+      "returned": 2000
+    },
+    {
+      "file": "data/municipal/buildings/page-008000.gml",
+      "sha256": "c83c14c3f6ff44a11d6c5adab74a1f85e7edb821395a1da225d3c12859ac4373",
+      "url": "https://isk.geobasis-bb.de/ows/alkis_vereinf_wfs?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ave%3AGebaeudeBauwerk&SRSNAME=EPSG%3A25833&BBOX=378674.533%2C5832177.847%2C389648.94%2C5844915.076%2CEPSG%3A25833&COUNT=2000&STARTINDEX=8000",
+      "returned": 2000
+    },
+    {
+      "file": "data/municipal/buildings/page-010000.gml",
+      "sha256": "9b907c09da36182fe0521fef9ac4c9c9dd56a085d44e0d42cc24135a81cc9838",
+      "url": "https://isk.geobasis-bb.de/ows/alkis_vereinf_wfs?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ave%3AGebaeudeBauwerk&SRSNAME=EPSG%3A25833&BBOX=378674.533%2C5832177.847%2C389648.94%2C5844915.076%2CEPSG%3A25833&COUNT=2000&STARTINDEX=10000",
+      "returned": 2000
+    },
+    {
+      "file": "data/municipal/buildings/page-012000.gml",
+      "sha256": "e052ec7776aaff9c06d8ff71d2d89a752123e9d34836230f855e6052efd17a9b",
+      "url": "https://isk.geobasis-bb.de/ows/alkis_vereinf_wfs?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ave%3AGebaeudeBauwerk&SRSNAME=EPSG%3A25833&BBOX=378674.533%2C5832177.847%2C389648.94%2C5844915.076%2CEPSG%3A25833&COUNT=2000&STARTINDEX=12000",
+      "returned": 2000
+    },
+    {
+      "file": "data/municipal/buildings/page-014000.gml",
+      "sha256": "1bb4e6f4f0a1ccffd92e3085ea14de84c40f0485219929c043257045076cfb58",
+      "url": "https://isk.geobasis-bb.de/ows/alkis_vereinf_wfs?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ave%3AGebaeudeBauwerk&SRSNAME=EPSG%3A25833&BBOX=378674.533%2C5832177.847%2C389648.94%2C5844915.076%2CEPSG%3A25833&COUNT=2000&STARTINDEX=14000",
+      "returned": 2000
+    },
+    {
+      "file": "data/municipal/buildings/page-016000.gml",
+      "sha256": "7cc0f21bf678ae7acb9356cf5bd6c30bbbdb0c3def56a5e3e47247648a0dc09f",
+      "url": "https://isk.geobasis-bb.de/ows/alkis_vereinf_wfs?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ave%3AGebaeudeBauwerk&SRSNAME=EPSG%3A25833&BBOX=378674.533%2C5832177.847%2C389648.94%2C5844915.076%2CEPSG%3A25833&COUNT=2000&STARTINDEX=16000",
+      "returned": 2000
+    },
+    {
+      "file": "data/municipal/buildings/page-018000.gml",
+      "sha256": "b0458a9f84261491ce19067e09ef3baac9d8c3696e02c7d00cfd90a081ec4c28",
+      "url": "https://isk.geobasis-bb.de/ows/alkis_vereinf_wfs?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ave%3AGebaeudeBauwerk&SRSNAME=EPSG%3A25833&BBOX=378674.533%2C5832177.847%2C389648.94%2C5844915.076%2CEPSG%3A25833&COUNT=2000&STARTINDEX=18000",
+      "returned": 2000
+    },
+    {
+      "file": "data/municipal/buildings/page-020000.gml",
+      "sha256": "96fd9d8631d3f25a560cd95acb3307ffd64356f7c4d5d624e49f4c9774663604",
+      "url": "https://isk.geobasis-bb.de/ows/alkis_vereinf_wfs?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ave%3AGebaeudeBauwerk&SRSNAME=EPSG%3A25833&BBOX=378674.533%2C5832177.847%2C389648.94%2C5844915.076%2CEPSG%3A25833&COUNT=2000&STARTINDEX=20000",
+      "returned": 2000
+    },
+    {
+      "file": "data/municipal/buildings/page-022000.gml",
+      "sha256": "f2bc8a83b6a2e82a176b788ec3edee223578460eb85bf57ed16e8e9b53aebc17",
+      "url": "https://isk.geobasis-bb.de/ows/alkis_vereinf_wfs?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ave%3AGebaeudeBauwerk&SRSNAME=EPSG%3A25833&BBOX=378674.533%2C5832177.847%2C389648.94%2C5844915.076%2CEPSG%3A25833&COUNT=2000&STARTINDEX=22000",
+      "returned": 2000
+    },
+    {
+      "file": "data/municipal/buildings/page-024000.gml",
+      "sha256": "7336df1913aa0344a019eee324169317d08710f5cea20c1100f7a30c257789d7",
+      "url": "https://isk.geobasis-bb.de/ows/alkis_vereinf_wfs?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ave%3AGebaeudeBauwerk&SRSNAME=EPSG%3A25833&BBOX=378674.533%2C5832177.847%2C389648.94%2C5844915.076%2CEPSG%3A25833&COUNT=2000&STARTINDEX=24000",
+      "returned": 2000
+    },
+    {
+      "file": "data/municipal/buildings/page-026000.gml",
+      "sha256": "0d02a69ed3b3f4bb25859e479ed0f6f33cbf2646ea835f708641eded87ff5455",
+      "url": "https://isk.geobasis-bb.de/ows/alkis_vereinf_wfs?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ave%3AGebaeudeBauwerk&SRSNAME=EPSG%3A25833&BBOX=378674.533%2C5832177.847%2C389648.94%2C5844915.076%2CEPSG%3A25833&COUNT=2000&STARTINDEX=26000",
+      "returned": 2000
+    },
+    {
+      "file": "data/municipal/buildings/page-028000.gml",
+      "sha256": "c082ddf1eb64d0112247f601b543ef52b8925f485f28d7d4a46245d3cf8365d1",
+      "url": "https://isk.geobasis-bb.de/ows/alkis_vereinf_wfs?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ave%3AGebaeudeBauwerk&SRSNAME=EPSG%3A25833&BBOX=378674.533%2C5832177.847%2C389648.94%2C5844915.076%2CEPSG%3A25833&COUNT=2000&STARTINDEX=28000",
+      "returned": 2000
+    },
+    {
+      "file": "data/municipal/buildings/page-030000.gml",
+      "sha256": "9bd947c8ee61cc1f7d893c4d90018951272f44058ab2a64790e3dfbaf66380ca",
+      "url": "https://isk.geobasis-bb.de/ows/alkis_vereinf_wfs?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ave%3AGebaeudeBauwerk&SRSNAME=EPSG%3A25833&BBOX=378674.533%2C5832177.847%2C389648.94%2C5844915.076%2CEPSG%3A25833&COUNT=2000&STARTINDEX=30000",
+      "returned": 2000
+    },
+    {
+      "file": "data/municipal/buildings/page-032000.gml",
+      "sha256": "44eef947a4cba62465e0168f40814eeb13f4b0ada512be6df1af96bd2577ea3c",
+      "url": "https://isk.geobasis-bb.de/ows/alkis_vereinf_wfs?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ave%3AGebaeudeBauwerk&SRSNAME=EPSG%3A25833&BBOX=378674.533%2C5832177.847%2C389648.94%2C5844915.076%2CEPSG%3A25833&COUNT=2000&STARTINDEX=32000",
+      "returned": 2000
+    },
+    {
+      "file": "data/municipal/buildings/page-034000.gml",
+      "sha256": "5b62be4ef835d890ccc3f3a05a20aac47bae0bcc48eb6a3b17055e0257c573c1",
+      "url": "https://isk.geobasis-bb.de/ows/alkis_vereinf_wfs?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ave%3AGebaeudeBauwerk&SRSNAME=EPSG%3A25833&BBOX=378674.533%2C5832177.847%2C389648.94%2C5844915.076%2CEPSG%3A25833&COUNT=2000&STARTINDEX=34000",
+      "returned": 2000
+    },
+    {
+      "file": "data/municipal/buildings/page-036000.gml",
+      "sha256": "d0b31b1d8060a87d99f3c4583aa23f69762cf7a78cd9247a6cdf3e0b7b724639",
+      "url": "https://isk.geobasis-bb.de/ows/alkis_vereinf_wfs?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ave%3AGebaeudeBauwerk&SRSNAME=EPSG%3A25833&BBOX=378674.533%2C5832177.847%2C389648.94%2C5844915.076%2CEPSG%3A25833&COUNT=2000&STARTINDEX=36000",
+      "returned": 2000
+    },
+    {
+      "file": "data/municipal/buildings/page-038000.gml",
+      "sha256": "b1d61a85c22b65caa03727823e6f9e565962cec63f1462957c9766899cb59c8a",
+      "url": "https://isk.geobasis-bb.de/ows/alkis_vereinf_wfs?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ave%3AGebaeudeBauwerk&SRSNAME=EPSG%3A25833&BBOX=378674.533%2C5832177.847%2C389648.94%2C5844915.076%2CEPSG%3A25833&COUNT=2000&STARTINDEX=38000",
+      "returned": 2000
+    },
+    {
+      "file": "data/municipal/buildings/page-040000.gml",
+      "sha256": "d4638531dbd9eb15dcc321acea9c23b2a2f3d2052519f147fd3b14229b8e171e",
+      "url": "https://isk.geobasis-bb.de/ows/alkis_vereinf_wfs?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ave%3AGebaeudeBauwerk&SRSNAME=EPSG%3A25833&BBOX=378674.533%2C5832177.847%2C389648.94%2C5844915.076%2CEPSG%3A25833&COUNT=2000&STARTINDEX=40000",
+      "returned": 2000
+    },
+    {
+      "file": "data/municipal/buildings/page-042000.gml",
+      "sha256": "3314fa8c8d8e5d732c045e9b8043a4c3162bab6dc4a48a8bb6a7cadf2db007fd",
+      "url": "https://isk.geobasis-bb.de/ows/alkis_vereinf_wfs?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ave%3AGebaeudeBauwerk&SRSNAME=EPSG%3A25833&BBOX=378674.533%2C5832177.847%2C389648.94%2C5844915.076%2CEPSG%3A25833&COUNT=2000&STARTINDEX=42000",
+      "returned": 2000
+    },
+    {
+      "file": "data/municipal/buildings/page-044000.gml",
+      "sha256": "be4bda051c9f97e91fdb6260fca46df303255c103e71086fba0d95b6d662f5da",
+      "url": "https://isk.geobasis-bb.de/ows/alkis_vereinf_wfs?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ave%3AGebaeudeBauwerk&SRSNAME=EPSG%3A25833&BBOX=378674.533%2C5832177.847%2C389648.94%2C5844915.076%2CEPSG%3A25833&COUNT=2000&STARTINDEX=44000",
+      "returned": 1829
+    }
+  ],
+  "sha256": "aa790c135531d857fa071e955a7eaebee7958a6fbe2c664b3dc69c4dcd6cdcdf",
+  "date_note": "Current cadastral footprints; not asserted contemporaneous with the aerial image.",
+  "attribution": "GeoBasis-DE/LGB, dl-de/by-2-0"
+}
