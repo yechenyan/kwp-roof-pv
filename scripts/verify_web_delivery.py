@@ -11,6 +11,8 @@ from roof_pv_review.app import create_app
 
 ROOT = Path(__file__).resolve().parents[1]
 RUN_IDS = ["hn-center-eb242d954721", "municipal-27320a7f3fb1"]
+REGISTRY_ID = "mastr-20261115-99075610"
+BATCH_ID = "matching-1077534f5c31f8b6"
 
 
 def delivery_paths():
@@ -24,7 +26,43 @@ def delivery_paths():
         else:
             names = list(manifest["artifacts"])
         paths.extend(folder / name for name in ["manifest.json", *names])
+    paths.extend(registry_delivery_paths())
     return paths
+
+
+def registry_delivery_paths():
+    folder = ROOT / "var/registry" / REGISTRY_ID
+    manifest = json.loads((folder / "manifest.json").read_text())
+    names = ["manifest.json", *manifest["input_artifacts"], *manifest["artifacts"]]
+    paths = [folder / name for name in names]
+    folder = ROOT / "var/matching" / RUN_IDS[1] / BATCH_ID
+    manifest = json.loads((folder / "manifest.json").read_text())
+    paths.extend(folder / name for name in ["manifest.json", *manifest["artifacts"]])
+    return paths
+
+
+def verify_registry(client, base, candidate_id):
+    response = client.get(base + "/matching")
+    assert response.status_code == 200, response.text
+    summary = response.json()
+    assert summary["available"] and summary["registry_ready"]
+    assert summary["registry"]["snapshot_id"] == REGISTRY_ID
+    assert summary["batch"]["batch_id"] == BATCH_ID
+    assert not summary["registry_snapshot_changed"] and summary["stale_groups"] == 0
+    assert summary["batch"]["summary"]["array_groups"] == 5038
+    response = client.get(base + "/matching/units", params={"cohort": "all", "limit": 30})
+    assert response.status_code == 200, response.text
+    units = response.json()
+    assert units["total"] == 3476 and len(units["items"]) == 30
+    response = client.get(base + "/matching/units", params={"cohort": "target", "limit": 1})
+    assert response.status_code == 200 and response.json()["total"] == 2320
+    unit_id = units["items"][0]["id"]
+    response = client.get(base + f"/matching/units/{unit_id}")
+    assert response.status_code == 200, response.text
+    assert response.json()["snapshot_id"] == REGISTRY_ID
+    response = client.get(base + f"/matching/candidates/{candidate_id}")
+    assert response.status_code == 200, response.text
+    print("Verified MaStR: 3476 solar records, 2320 target records, 5038 matching groups.", flush=True)
 
 
 def main():
@@ -70,6 +108,7 @@ def main():
                 if run_id.startswith("municipal"):
                     assert data["manifest"]["delivery"]["imagery"] == "preview"
                     assert client.get(base + "/tiles/rgb/18/140688/85750.png").status_code == 404
+                    verify_registry(client, base, candidate["id"])
                 print(f"Verified {run_id}: {len(data['candidates']['features'])} candidates; fresh database: {fresh}", flush=True)
     print(f"Verified compact delivery: {len(paths) + 1} data files, all below 100 MB.")
 

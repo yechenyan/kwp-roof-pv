@@ -1,0 +1,11 @@
+{
+  "kind": "registry_acquisition",
+  "name": "MaStR registry acquisition",
+  "snapshot_id": "mastr-20261115-99075610",
+  "status": "completed",
+  "completed": 198,
+  "total": 198,
+  "updated_at": "2026-11-15T14:11:48.108907+00:00",
+  "selection": "AGS for units; referenced IDs for locations/systems",
+  "source_sha256": "5e70b06c7ab6e6cd9271ebae8b8335be20aadc82c0ab7eaf76cd5c6253f2bf2d"
+}

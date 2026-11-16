@@ -52,7 +52,20 @@ uv run --package roof-pv-review roof-pv-review --port 8780
 
 Open <http://127.0.0.1:8780>. The English experiment archive is at <http://127.0.0.1:8780/comparison/>. Initial candidates are all pending; test decisions are never inserted into production state.
 
-The checkout includes the two completed runs and a consistent review database. The municipal web delivery retains every candidate and contextual geometry at its original precision, plus checksum-verified RGB/CIR previews. It omits intermediate block scores/masks, superseded runs, caches and the 99 original imagery tiles. The map labels this compact delivery as preview imagery and continues to show the preview when zooming; it does not imply original 20 cm image detail. The smaller sample includes its original image and outputs. No model download or inference run is needed to view these existing detections. MaStR source snapshots and proposal batches are not included in this compact delivery.
+The checkout includes the two completed runs and a consistent review database. The municipal web delivery retains every candidate and contextual geometry at its original precision, plus checksum-verified RGB/CIR previews. It omits intermediate block scores/masks, superseded runs, caches and the 99 original imagery tiles. The map labels this compact delivery as preview imagery and continues to show the preview when zooming; it does not imply original 20 cm image detail. The smaller sample includes its original image and outputs. No model download or inference run is needed to view these existing detections.
+
+The compact delivery also includes the frozen MaStR snapshot `mastr-20261115-99075610` (3,476 solar records, 1,971 storage units and their public source attributes) and the latest municipal matching batch `matching-1077534f5c31f8b6` (5,038 proposed array groups). The MaStR list, record details and matching alternatives are available immediately after starting the service. These are experimental proposals, not verified installation identities. The retained registry files total about 74 MB and the latest matching batch about 72 MB; every file is below 100 MB. Nationwide compressed source caches (about 2.1 GB), parsed acquisition shards and the superseded matching batch stay local and are ignored by Git. Original source metadata, attribution and runtime artifact checksums are retained.
+
+No MaStR download is required for the included list. To independently reacquire the dated public export and rebuild its local subset, use a separate home so the shipped snapshot and its matching provenance remain unchanged:
+
+```sh
+uv run --package roof-pv-registry roof-pv-registry acquire \
+  --home var/mastr-rebuild \
+  --url https://download.marktstammdatenregister.de/Gesamtdatenexport_20261115_26.2.zip \
+  --workers 3
+```
+
+This reads selected members of the official nationwide ZIP and can still download about 2.1 GB of compressed source data. Repeating acquisition in the default `var` home reuses the already completed snapshot; it does not fetch omitted caches. The independent rebuild may have different acquisition timestamps, so do not replace the shipped manifest behind an existing matching batch. Source attribution: Bundesnetzagentur / Marktstammdatenregister, dl-de/by-2-0.
 
 `var/runs/municipal-27320a7f3fb1/web-delivery.json` identifies the retained artifacts and pins the unchanged original manifest hash. The backend verifies each delivered geometry and preview against the original hashes, including when a review database already exists. The small, relative-path original mosaic is also retained so source imagery can be downloaded independently.
 

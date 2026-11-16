@@ -27,3 +27,12 @@ __pycache__/
 !/var/runs/municipal-*/image.vrt
 /var/state/*-shm
 /var/state/*-wal
+
+# Reacquirable nationwide MaStR caches and superseded proposal batches.
+/var/registry/*/compressed/
+/var/registry/*/members/
+/var/registry/*/.acquire.lock
+/var/registry/*/*-shm
+/var/registry/*/*-wal
+/var/matching/municipal-27320a7f3fb1/matching-da2ee939f02c2186/
+/var/mastr-rebuild/

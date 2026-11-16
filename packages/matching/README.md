@@ -2,6 +2,8 @@
 
 This package creates immutable proposal batches. It does not automatically verify registry identity or estimate installation power from imagery.
 
+The compact checkout includes the latest municipal batch `matching-1077534f5c31f8b6`, pinned to the delivered run and MaStR snapshot. Its manifest, groups and rankings total about 72 MB, with every file below 100 MB. Superseded batches and acquisition caches are omitted; no rebuild is needed to inspect the included proposals in the web app.
+
 From the repository root, after registry acquisition:
 
 ```sh

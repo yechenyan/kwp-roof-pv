@@ -1,0 +1,2743 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "mastr-20261115-99075610",
+  "status": "completed",
+  "source": {
+    "url": "https://download.marktstammdatenregister.de/Gesamtdatenexport_20261115_26.2.zip",
+    "archive_bytes": 3292305013,
+    "etag": "\"b5aff1d7aa74dd1:0\"",
+    "ags": [
+      "12065036",
+      "12065144"
+    ],
+    "members": [
+      {
+        "name": "AnlagenEegBiomasse.xml",
+        "crc32": 4127814836,
+        "bytes": 34452872,
+        "compressed_bytes": 1457490
+      },
+      {
+        "name": "AnlagenEegGeothermieGrubengasDruckentspannung.xml",
+        "crc32": 2463710657,
+        "bytes": 192190,
+        "compressed_bytes": 10378
+      },
+      {
+        "name": "AnlagenEegSolar_1.xml",
+        "crc32": 2455034201,
+        "bytes": 170284896,
+        "compressed_bytes": 7781870
+      },
+      {
+        "name": "AnlagenEegSolar_10.xml",
+        "crc32": 1783081947,
+        "bytes": 166888360,
+        "compressed_bytes": 7367463
+      },
+      {
+        "name": "AnlagenEegSolar_11.xml",
+        "crc32": 2399220587,
+        "bytes": 166130554,
+        "compressed_bytes": 7346702
+      },
+      {
+        "name": "AnlagenEegSolar_12.xml",
+        "crc32": 3143335840,
+        "bytes": 166905572,
+        "compressed_bytes": 7397740
+      },
+      {
+        "name": "AnlagenEegSolar_13.xml",
+        "crc32": 3678279168,
+        "bytes": 162282896,
+        "compressed_bytes": 7413214
+      },
+      {
+        "name": "AnlagenEegSolar_14.xml",
+        "crc32": 1895318270,
+        "bytes": 153624610,
+        "compressed_bytes": 7271131
+      },
+      {
+        "name": "AnlagenEegSolar_15.xml",
+        "crc32": 2463594930,
+        "bytes": 153576994,
+        "compressed_bytes": 7262320
+      },
+      {
+        "name": "AnlagenEegSolar_16.xml",
+        "crc32": 2925584691,
+        "bytes": 153628556,
+        "compressed_bytes": 7235365
+      },
+      {
+        "name": "AnlagenEegSolar_17.xml",
+        "crc32": 791811715,
+        "bytes": 153844272,
+        "compressed_bytes": 7289700
+      },
+      {
+        "name": "AnlagenEegSolar_18.xml",
+        "crc32": 66742406,
+        "bytes": 153788320,
+        "compressed_bytes": 7281814
+      },
+      {
+        "name": "AnlagenEegSolar_19.xml",
+        "crc32": 4276907051,
+        "bytes": 153644794,
+        "compressed_bytes": 7258144
+      },
+      {
+        "name": "AnlagenEegSolar_2.xml",
+        "crc32": 4178516952,
+        "bytes": 169167522,
+        "compressed_bytes": 7676895
+      },
+      {
+        "name": "AnlagenEegSolar_20.xml",
+        "crc32": 3576848975,
+        "bytes": 152845244,
+        "compressed_bytes": 7057924
+      },
+      {
+        "name": "AnlagenEegSolar_21.xml",
+        "crc32": 2298980263,
+        "bytes": 152798118,
+        "compressed_bytes": 6807225
+      },
+      {
+        "name": "AnlagenEegSolar_22.xml",
+        "crc32": 117985903,
+        "bytes": 152689204,
+        "compressed_bytes": 6989802
+      },
+      {
+        "name": "AnlagenEegSolar_23.xml",
+        "crc32": 4119340591,
+        "bytes": 153023840,
+        "compressed_bytes": 6879618
+      },
+      {
+        "name": "AnlagenEegSolar_24.xml",
+        "crc32": 3879598485,
+        "bytes": 152483192,
+        "compressed_bytes": 6679603
+      },
+      {
+        "name": "AnlagenEegSolar_25.xml",
+        "crc32": 3290260804,
+        "bytes": 152063514,
+        "compressed_bytes": 6591514
+      },
+      {
+        "name": "AnlagenEegSolar_26.xml",
+        "crc32": 4130225659,
+        "bytes": 151931104,
+        "compressed_bytes": 6591300
+      },
+      {
+        "name": "AnlagenEegSolar_27.xml",
+        "crc32": 666960264,
+        "bytes": 146631056,
+        "compressed_bytes": 6547342
+      },
+      {
+        "name": "AnlagenEegSolar_28.xml",
+        "crc32": 2839080681,
+        "bytes": 144441624,
+        "compressed_bytes": 6477163
+      },
+      {
+        "name": "AnlagenEegSolar_29.xml",
+        "crc32": 2034397720,
+        "bytes": 143672434,
+        "compressed_bytes": 6396527
+      },
+      {
+        "name": "AnlagenEegSolar_3.xml",
+        "crc32": 574845719,
+        "bytes": 168720358,
+        "compressed_bytes": 7617156
+      },
+      {
+        "name": "AnlagenEegSolar_30.xml",
+        "crc32": 4268259149,
+        "bytes": 143698388,
+        "compressed_bytes": 6340830
+      },
+      {
+        "name": "AnlagenEegSolar_31.xml",
+        "crc32": 2543213556,
+        "bytes": 143599888,
+        "compressed_bytes": 6327259
+      },
+      {
+        "name": "AnlagenEegSolar_32.xml",
+        "crc32": 2715144526,
+        "bytes": 143663036,
+        "compressed_bytes": 6345948
+      },
+      {
+        "name": "AnlagenEegSolar_33.xml",
+        "crc32": 426158678,
+        "bytes": 143659066,
+        "compressed_bytes": 6348350
+      },
+      {
+        "name": "AnlagenEegSolar_34.xml",
+        "crc32": 4096007627,
+        "bytes": 143593426,
+        "compressed_bytes": 6342226
+      },
+      {
+        "name": "AnlagenEegSolar_35.xml",
+        "crc32": 3131919180,
+        "bytes": 143727826,
+        "compressed_bytes": 6372672
+      },
+      {
+        "name": "AnlagenEegSolar_36.xml",
+        "crc32": 2407290708,
+        "bytes": 144321200,
+        "compressed_bytes": 6465929
+      },
+      {
+        "name": "AnlagenEegSolar_37.xml",
+        "crc32": 916124887,
+        "bytes": 144150976,
+        "compressed_bytes": 6448903
+      },
+      {
+        "name": "AnlagenEegSolar_38.xml",
+        "crc32": 3456689138,
+        "bytes": 144196854,
+        "compressed_bytes": 6476391
+      },
+      {
+        "name": "AnlagenEegSolar_39.xml",
+        "crc32": 256932246,
+        "bytes": 143341552,
+        "compressed_bytes": 6358916
+      },
+      {
+        "name": "AnlagenEegSolar_4.xml",
+        "crc32": 136635306,
+        "bytes": 168055084,
+        "compressed_bytes": 7565631
+      },
+      {
+        "name": "AnlagenEegSolar_40.xml",
+        "crc32": 3253539302,
+        "bytes": 141745380,
+        "compressed_bytes": 6067002
+      },
+      {
+        "name": "AnlagenEegSolar_41.xml",
+        "crc32": 2346341350,
+        "bytes": 141275618,
+        "compressed_bytes": 6109669
+      },
+      {
+        "name": "AnlagenEegSolar_42.xml",
+        "crc32": 66228202,
+        "bytes": 140907090,
+        "compressed_bytes": 6029932
+      },
+      {
+        "name": "AnlagenEegSolar_43.xml",
+        "crc32": 255812771,
+        "bytes": 141301380,
+        "compressed_bytes": 6081985
+      },
+      {
+        "name": "AnlagenEegSolar_44.xml",
+        "crc32": 1208105613,
+        "bytes": 141188902,
+        "compressed_bytes": 6055994
+      },
+      {
+        "name": "AnlagenEegSolar_45.xml",
+        "crc32": 1582889544,
+        "bytes": 140778744,
+        "compressed_bytes": 6013783
+      },
+      {
+        "name": "AnlagenEegSolar_46.xml",
+        "crc32": 1947325085,
+        "bytes": 141317882,
+        "compressed_bytes": 6085763
+      },
+      {
+        "name": "AnlagenEegSolar_47.xml",
+        "crc32": 2011367543,
+        "bytes": 141710060,
+        "compressed_bytes": 6150981
+      },
+      {
+        "name": "AnlagenEegSolar_48.xml",
+        "crc32": 3818120699,
+        "bytes": 142599070,
+        "compressed_bytes": 6290590
+      },
+      {
+        "name": "AnlagenEegSolar_49.xml",
+        "crc32": 784857555,
+        "bytes": 142109468,
+        "compressed_bytes": 6205511
+      },
+      {
+        "name": "AnlagenEegSolar_5.xml",
+        "crc32": 526835210,
+        "bytes": 167945442,
+        "compressed_bytes": 7590679
+      },
+      {
+        "name": "AnlagenEegSolar_50.xml",
+        "crc32": 3034858408,
+        "bytes": 141611108,
+        "compressed_bytes": 6134090
+      },
+      {
+        "name": "AnlagenEegSolar_51.xml",
+        "crc32": 1758568760,
+        "bytes": 140420928,
+        "compressed_bytes": 5926354
+      },
+      {
+        "name": "AnlagenEegSolar_52.xml",
+        "crc32": 2383651939,
+        "bytes": 140068238,
+        "compressed_bytes": 5864159
+      },
+      {
+        "name": "AnlagenEegSolar_53.xml",
+        "crc32": 3621334732,
+        "bytes": 140098314,
+        "compressed_bytes": 5863947
+      },
+      {
+        "name": "AnlagenEegSolar_54.xml",
+        "crc32": 262495981,
+        "bytes": 139788788,
+        "compressed_bytes": 5808072
+      },
+      {
+        "name": "AnlagenEegSolar_55.xml",
+        "crc32": 2445129706,
+        "bytes": 139632484,
+        "compressed_bytes": 5797854
+      },
+      {
+        "name": "AnlagenEegSolar_56.xml",
+        "crc32": 1425427935,
+        "bytes": 141720074,
+        "compressed_bytes": 5576001
+      },
+      {
+        "name": "AnlagenEegSolar_57.xml",
+        "crc32": 2501998136,
+        "bytes": 140224154,
+        "compressed_bytes": 5940342
+      },
+      {
+        "name": "AnlagenEegSolar_58.xml",
+        "crc32": 3990831947,
+        "bytes": 140582354,
+        "compressed_bytes": 5982065
+      },
+      {
+        "name": "AnlagenEegSolar_59.xml",
+        "crc32": 327804102,
+        "bytes": 140504368,
+        "compressed_bytes": 5951749
+      },
+      {
+        "name": "AnlagenEegSolar_6.xml",
+        "crc32": 363155507,
+        "bytes": 167584928,
+        "compressed_bytes": 7538746
+      },
+      {
+        "name": "AnlagenEegSolar_60.xml",
+        "crc32": 2978980156,
+        "bytes": 139194022,
+        "compressed_bytes": 5728872
+      },
+      {
+        "name": "AnlagenEegSolar_61.xml",
+        "crc32": 1689877618,
+        "bytes": 138732832,
+        "compressed_bytes": 5621982
+      },
+      {
+        "name": "AnlagenEegSolar_62.xml",
+        "crc32": 2996076012,
+        "bytes": 138494926,
+        "compressed_bytes": 5587614
+      },
+      {
+        "name": "AnlagenEegSolar_63.xml",
+        "crc32": 71297735,
+        "bytes": 138214444,
+        "compressed_bytes": 5577769
+      },
+      {
+        "name": "AnlagenEegSolar_64.xml",
+        "crc32": 4035959160,
+        "bytes": 137724794,
+        "compressed_bytes": 5495778
+      },
+      {
+        "name": "AnlagenEegSolar_65.xml",
+        "crc32": 2285440144,
+        "bytes": 136944118,
+        "compressed_bytes": 5430361
+      },
+      {
+        "name": "AnlagenEegSolar_66.xml",
+        "crc32": 30650326,
+        "bytes": 135612672,
+        "compressed_bytes": 5262201
+      },
+      {
+        "name": "AnlagenEegSolar_67.xml",
+        "crc32": 2340643836,
+        "bytes": 88803296,
+        "compressed_bytes": 3333202
+      },
+      {
+        "name": "AnlagenEegSolar_7.xml",
+        "crc32": 1708831769,
+        "bytes": 167401374,
+        "compressed_bytes": 7439676
+      },
+      {
+        "name": "AnlagenEegSolar_8.xml",
+        "crc32": 1017393817,
+        "bytes": 167047106,
+        "compressed_bytes": 7456026
+      },
+      {
+        "name": "AnlagenEegSolar_9.xml",
+        "crc32": 965687777,
+        "bytes": 167260672,
+        "compressed_bytes": 7443761
+      },
+      {
+        "name": "AnlagenEegSpeicher_1.xml",
+        "crc32": 2928042133,
+        "bytes": 86211920,
+        "compressed_bytes": 4465207
+      },
+      {
+        "name": "AnlagenEegSpeicher_10.xml",
+        "crc32": 1734850633,
+        "bytes": 96216168,
+        "compressed_bytes": 4953652
+      },
+      {
+        "name": "AnlagenEegSpeicher_11.xml",
+        "crc32": 1484503989,
+        "bytes": 96033790,
+        "compressed_bytes": 4985390
+      },
+      {
+        "name": "AnlagenEegSpeicher_12.xml",
+        "crc32": 1957364884,
+        "bytes": 94223290,
+        "compressed_bytes": 4963526
+      },
+      {
+        "name": "AnlagenEegSpeicher_13.xml",
+        "crc32": 441254552,
+        "bytes": 89992892,
+        "compressed_bytes": 4807677
+      },
+      {
+        "name": "AnlagenEegSpeicher_14.xml",
+        "crc32": 1890852772,
+        "bytes": 89046364,
+        "compressed_bytes": 4727420
+      },
+      {
+        "name": "AnlagenEegSpeicher_15.xml",
+        "crc32": 4012319384,
+        "bytes": 88852866,
+        "compressed_bytes": 4705540
+      },
+      {
+        "name": "AnlagenEegSpeicher_16.xml",
+        "crc32": 139550099,
+        "bytes": 89064150,
+        "compressed_bytes": 4738369
+      },
+      {
+        "name": "AnlagenEegSpeicher_17.xml",
+        "crc32": 2468539558,
+        "bytes": 88937556,
+        "compressed_bytes": 4715148
+      },
+      {
+        "name": "AnlagenEegSpeicher_18.xml",
+        "crc32": 1412847448,
+        "bytes": 88434312,
+        "compressed_bytes": 4650983
+      },
+      {
+        "name": "AnlagenEegSpeicher_19.xml",
+        "crc32": 3872624962,
+        "bytes": 88177460,
+        "compressed_bytes": 4587892
+      },
+      {
+        "name": "AnlagenEegSpeicher_2.xml",
+        "crc32": 2114197680,
+        "bytes": 86250654,
+        "compressed_bytes": 4512826
+      },
+      {
+        "name": "AnlagenEegSpeicher_20.xml",
+        "crc32": 1824758015,
+        "bytes": 87941252,
+        "compressed_bytes": 4530052
+      },
+      {
+        "name": "AnlagenEegSpeicher_21.xml",
+        "crc32": 2848545795,
+        "bytes": 87699274,
+        "compressed_bytes": 4492281
+      },
+      {
+        "name": "AnlagenEegSpeicher_22.xml",
+        "crc32": 1037814266,
+        "bytes": 87843006,
+        "compressed_bytes": 4537738
+      },
+      {
+        "name": "AnlagenEegSpeicher_23.xml",
+        "crc32": 180613263,
+        "bytes": 87915548,
+        "compressed_bytes": 4548893
+      },
+      {
+        "name": "AnlagenEegSpeicher_24.xml",
+        "crc32": 2609708757,
+        "bytes": 87052052,
+        "compressed_bytes": 4411822
+      },
+      {
+        "name": "AnlagenEegSpeicher_25.xml",
+        "crc32": 2680466234,
+        "bytes": 86642792,
+        "compressed_bytes": 4308393
+      },
+      {
+        "name": "AnlagenEegSpeicher_26.xml",
+        "crc32": 456399292,
+        "bytes": 86472666,
+        "compressed_bytes": 4275699
+      },
+      {
+        "name": "AnlagenEegSpeicher_27.xml",
+        "crc32": 2720811930,
+        "bytes": 85967790,
+        "compressed_bytes": 4188760
+      },
+      {
+        "name": "AnlagenEegSpeicher_28.xml",
+        "crc32": 1122806461,
+        "bytes": 85230608,
+        "compressed_bytes": 4085308
+      },
+      {
+        "name": "AnlagenEegSpeicher_29.xml",
+        "crc32": 193097319,
+        "bytes": 76927274,
+        "compressed_bytes": 3570945
+      },
+      {
+        "name": "AnlagenEegSpeicher_3.xml",
+        "crc32": 3400574362,
+        "bytes": 86477082,
+        "compressed_bytes": 4437986
+      },
+      {
+        "name": "AnlagenEegSpeicher_4.xml",
+        "crc32": 1310659433,
+        "bytes": 86687506,
+        "compressed_bytes": 4472507
+      },
+      {
+        "name": "AnlagenEegSpeicher_5.xml",
+        "crc32": 2494630439,
+        "bytes": 90014206,
+        "compressed_bytes": 4657424
+      },
+      {
+        "name": "AnlagenEegSpeicher_6.xml",
+        "crc32": 2017133104,
+        "bytes": 95673276,
+        "compressed_bytes": 4924326
+      },
+      {
+        "name": "AnlagenEegSpeicher_7.xml",
+        "crc32": 655000785,
+        "bytes": 95633858,
+        "compressed_bytes": 4874906
+      },
+      {
+        "name": "AnlagenEegSpeicher_8.xml",
+        "crc32": 2345599037,
+        "bytes": 95529786,
+        "compressed_bytes": 4858808
+      },
+      {
+        "name": "AnlagenEegSpeicher_9.xml",
+        "crc32": 1714990676,
+        "bytes": 96243870,
+        "compressed_bytes": 4923285
+      },
+      {
+        "name": "AnlagenEegWasser.xml",
+        "crc32": 1346730711,
+        "bytes": 9874822,
+        "compressed_bytes": 492192
+      },
+      {
+        "name": "AnlagenEegWind.xml",
+        "crc32": 3346498388,
+        "bytes": 98959208,
+        "compressed_bytes": 3340398
+      },
+      {
+        "name": "AnlagenGasSpeicher.xml",
+        "crc32": 3051232683,
+        "bytes": 43582,
+        "compressed_bytes": 3397
+      },
+      {
+        "name": "AnlagenKwk.xml",
+        "crc32": 1941592216,
+        "bytes": 100026976,
+        "compressed_bytes": 4849274
+      },
+      {
+        "name": "AnlagenStromSpeicher_1.xml",
+        "crc32": 3445141519,
+        "bytes": 82658776,
+        "compressed_bytes": 4162919
+      },
+      {
+        "name": "AnlagenStromSpeicher_10.xml",
+        "crc32": 1334700057,
+        "bytes": 82686840,
+        "compressed_bytes": 4046676
+      },
+      {
+        "name": "AnlagenStromSpeicher_11.xml",
+        "crc32": 3513125089,
+        "bytes": 82687414,
+        "compressed_bytes": 4037548
+      },
+      {
+        "name": "AnlagenStromSpeicher_12.xml",
+        "crc32": 3415499183,
+        "bytes": 82688212,
+        "compressed_bytes": 4008552
+      },
+      {
+        "name": "AnlagenStromSpeicher_13.xml",
+        "crc32": 3966828748,
+        "bytes": 82685836,
+        "compressed_bytes": 4010013
+      },
+      {
+        "name": "AnlagenStromSpeicher_14.xml",
+        "crc32": 3199059994,
+        "bytes": 82678578,
+        "compressed_bytes": 3988208
+      },
+      {
+        "name": "AnlagenStromSpeicher_15.xml",
+        "crc32": 487443124,
+        "bytes": 82679286,
+        "compressed_bytes": 3979644
+      },
+      {
+        "name": "AnlagenStromSpeicher_16.xml",
+        "crc32": 3233243117,
+        "bytes": 82680696,
+        "compressed_bytes": 3976849
+      },
+      {
+        "name": "AnlagenStromSpeicher_17.xml",
+        "crc32": 2385855152,
+        "bytes": 82688626,
+        "compressed_bytes": 3971049
+      },
+      {
+        "name": "AnlagenStromSpeicher_18.xml",
+        "crc32": 3593761727,
+        "bytes": 82685476,
+        "compressed_bytes": 3945991
+      },
+      {
+        "name": "AnlagenStromSpeicher_19.xml",
+        "crc32": 1670213339,
+        "bytes": 82674404,
+        "compressed_bytes": 3923504
+      },
+      {
+        "name": "AnlagenStromSpeicher_2.xml",
+        "crc32": 1743041223,
+        "bytes": 82669518,
+        "compressed_bytes": 4124342
+      },
+      {
+        "name": "AnlagenStromSpeicher_20.xml",
+        "crc32": 2687512916,
+        "bytes": 82672250,
+        "compressed_bytes": 3922628
+      },
+      {
+        "name": "AnlagenStromSpeicher_21.xml",
+        "crc32": 4272238186,
+        "bytes": 82671298,
+        "compressed_bytes": 3912308
+      },
+      {
+        "name": "AnlagenStromSpeicher_22.xml",
+        "crc32": 3651269916,
+        "bytes": 82676750,
+        "compressed_bytes": 3924887
+      },
+      {
+        "name": "AnlagenStromSpeicher_23.xml",
+        "crc32": 3020728155,
+        "bytes": 82685716,
+        "compressed_bytes": 3941310
+      },
+      {
+        "name": "AnlagenStromSpeicher_24.xml",
+        "crc32": 1547713316,
+        "bytes": 82685118,
+        "compressed_bytes": 3892060
+      },
+      {
+        "name": "AnlagenStromSpeicher_25.xml",
+        "crc32": 2989712358,
+        "bytes": 82665530,
+        "compressed_bytes": 3856926
+      },
+      {
+        "name": "AnlagenStromSpeicher_26.xml",
+        "crc32": 3357738309,
+        "bytes": 82669572,
+        "compressed_bytes": 3838466
+      },
+      {
+        "name": "AnlagenStromSpeicher_27.xml",
+        "crc32": 1510067135,
+        "bytes": 82672458,
+        "compressed_bytes": 3822460
+      },
+      {
+        "name": "AnlagenStromSpeicher_28.xml",
+        "crc32": 2288137072,
+        "bytes": 82676150,
+        "compressed_bytes": 3798077
+      },
+      {
+        "name": "AnlagenStromSpeicher_29.xml",
+        "crc32": 736787884,
+        "bytes": 82689390,
+        "compressed_bytes": 3769151
+      },
+      {
+        "name": "AnlagenStromSpeicher_3.xml",
+        "crc32": 2768813727,
+        "bytes": 82682678,
+        "compressed_bytes": 4097551
+      },
+      {
+        "name": "AnlagenStromSpeicher_30.xml",
+        "crc32": 2426295806,
+        "bytes": 40691674,
+        "compressed_bytes": 1818848
+      },
+      {
+        "name": "AnlagenStromSpeicher_4.xml",
+        "crc32": 707396447,
+        "bytes": 82689434,
+        "compressed_bytes": 4091245
+      },
+      {
+        "name": "AnlagenStromSpeicher_5.xml",
+        "crc32": 1678687212,
+        "bytes": 82693818,
+        "compressed_bytes": 4110431
+      },
+      {
+        "name": "AnlagenStromSpeicher_6.xml",
+        "crc32": 3390349098,
+        "bytes": 82694698,
+        "compressed_bytes": 4081963
+      },
+      {
+        "name": "AnlagenStromSpeicher_7.xml",
+        "crc32": 1377609870,
+        "bytes": 82691698,
+        "compressed_bytes": 4058997
+      },
+      {
+        "name": "AnlagenStromSpeicher_8.xml",
+        "crc32": 1925828050,
+        "bytes": 82689388,
+        "compressed_bytes": 4049954
+      },
+      {
+        "name": "AnlagenStromSpeicher_9.xml",
+        "crc32": 734887443,
+        "bytes": 82688762,
+        "compressed_bytes": 4049092
+      },
+      {
+        "name": "Bilanzierungsgebiete.xml",
+        "crc32": 315198644,
+        "bytes": 467256,
+        "compressed_bytes": 25130
+      },
+      {
+        "name": "EinheitenAenderungNetzbetreiberzuordnungen_1.xml",
+        "crc32": 2012051475,
+        "bytes": 139104936,
+        "compressed_bytes": 4145654
+      },
+      {
+        "name": "EinheitenAenderungNetzbetreiberzuordnungen_2.xml",
+        "crc32": 2961558329,
+        "bytes": 139469032,
+        "compressed_bytes": 4167680
+      },
+      {
+        "name": "EinheitenAenderungNetzbetreiberzuordnungen_3.xml",
+        "crc32": 3494871783,
+        "bytes": 48906276,
+        "compressed_bytes": 1441786
+      },
+      {
+        "name": "EinheitenBiomasse.xml",
+        "crc32": 3076192144,
+        "bytes": 88011998,
+        "compressed_bytes": 4630963
+      },
+      {
+        "name": "EinheitenGasErzeuger.xml",
+        "crc32": 3587906708,
+        "bytes": 1076132,
+        "compressed_bytes": 62821
+      },
+      {
+        "name": "EinheitenGasSpeicher.xml",
+        "crc32": 1009252507,
+        "bytes": 187124,
+        "compressed_bytes": 10518
+      },
+      {
+        "name": "EinheitenGasverbraucher.xml",
+        "crc32": 1918915654,
+        "bytes": 2678076,
+        "compressed_bytes": 130841
+      },
+      {
+        "name": "EinheitenGenehmigung.xml",
+        "crc32": 2259083712,
+        "bytes": 42384106,
+        "compressed_bytes": 2955498
+      },
+      {
+        "name": "EinheitenGeothermieGrubengasDruckentspannung.xml",
+        "crc32": 2786203,
+        "bytes": 1144920,
+        "compressed_bytes": 58435
+      },
+      {
+        "name": "EinheitenKernkraft.xml",
+        "crc32": 2557594812,
+        "bytes": 21220,
+        "compressed_bytes": 2079
+      },
+      {
+        "name": "EinheitenSolar_1.xml",
+        "crc32": 1853679862,
+        "bytes": 380263174,
+        "compressed_bytes": 18646881
+      },
+      {
+        "name": "EinheitenSolar_10.xml",
+        "crc32": 996020421,
+        "bytes": 375367180,
+        "compressed_bytes": 18380728
+      },
+      {
+        "name": "EinheitenSolar_11.xml",
+        "crc32": 1508970388,
+        "bytes": 374869466,
+        "compressed_bytes": 18328548
+      },
+      {
+        "name": "EinheitenSolar_12.xml",
+        "crc32": 3207685104,
+        "bytes": 375427390,
+        "compressed_bytes": 18345892
+      },
+      {
+        "name": "EinheitenSolar_13.xml",
+        "crc32": 1430899697,
+        "bytes": 375606880,
+        "compressed_bytes": 18395225
+      },
+      {
+        "name": "EinheitenSolar_14.xml",
+        "crc32": 498092352,
+        "bytes": 375380272,
+        "compressed_bytes": 18450056
+      },
+      {
+        "name": "EinheitenSolar_15.xml",
+        "crc32": 3561953337,
+        "bytes": 374983278,
+        "compressed_bytes": 18496826
+      },
+      {
+        "name": "EinheitenSolar_16.xml",
+        "crc32": 2666597900,
+        "bytes": 374816176,
+        "compressed_bytes": 18424565
+      },
+      {
+        "name": "EinheitenSolar_17.xml",
+        "crc32": 267073893,
+        "bytes": 373910494,
+        "compressed_bytes": 18318313
+      },
+      {
+        "name": "EinheitenSolar_18.xml",
+        "crc32": 3582596776,
+        "bytes": 375169810,
+        "compressed_bytes": 18572771
+      },
+      {
+        "name": "EinheitenSolar_19.xml",
+        "crc32": 2641171334,
+        "bytes": 375431494,
+        "compressed_bytes": 18716358
+      },
+      {
+        "name": "EinheitenSolar_2.xml",
+        "crc32": 71930180,
+        "bytes": 379097012,
+        "compressed_bytes": 18626921
+      },
+      {
+        "name": "EinheitenSolar_20.xml",
+        "crc32": 2190682043,
+        "bytes": 374352722,
+        "compressed_bytes": 18286419
+      },
+      {
+        "name": "EinheitenSolar_21.xml",
+        "crc32": 3941343252,
+        "bytes": 375011632,
+        "compressed_bytes": 17997005
+      },
+      {
+        "name": "EinheitenSolar_22.xml",
+        "crc32": 1009121308,
+        "bytes": 372980832,
+        "compressed_bytes": 17997076
+      },
+      {
+        "name": "EinheitenSolar_23.xml",
+        "crc32": 2312328209,
+        "bytes": 372823740,
+        "compressed_bytes": 17884059
+      },
+      {
+        "name": "EinheitenSolar_24.xml",
+        "crc32": 1655859848,
+        "bytes": 370559228,
+        "compressed_bytes": 17732201
+      },
+      {
+        "name": "EinheitenSolar_25.xml",
+        "crc32": 2626470214,
+        "bytes": 369708790,
+        "compressed_bytes": 17668704
+      },
+      {
+        "name": "EinheitenSolar_26.xml",
+        "crc32": 947988247,
+        "bytes": 368394826,
+        "compressed_bytes": 17630806
+      },
+      {
+        "name": "EinheitenSolar_27.xml",
+        "crc32": 371667806,
+        "bytes": 364323478,
+        "compressed_bytes": 17115009
+      },
+      {
+        "name": "EinheitenSolar_28.xml",
+        "crc32": 2727035558,
+        "bytes": 359262362,
+        "compressed_bytes": 16525311
+      },
+      {
+        "name": "EinheitenSolar_29.xml",
+        "crc32": 1821051017,
+        "bytes": 356795518,
+        "compressed_bytes": 16424904
+      },
+      {
+        "name": "EinheitenSolar_3.xml",
+        "crc32": 872405416,
+        "bytes": 377974618,
+        "compressed_bytes": 18726040
+      },
+      {
+        "name": "EinheitenSolar_30.xml",
+        "crc32": 1996422178,
+        "bytes": 356006102,
+        "compressed_bytes": 16405945
+      },
+      {
+        "name": "EinheitenSolar_31.xml",
+        "crc32": 95004178,
+        "bytes": 355012800,
+        "compressed_bytes": 16369254
+      },
+      {
+        "name": "EinheitenSolar_32.xml",
+        "crc32": 1441457109,
+        "bytes": 355775706,
+        "compressed_bytes": 16428439
+      },
+      {
+        "name": "EinheitenSolar_33.xml",
+        "crc32": 1890332780,
+        "bytes": 355337120,
+        "compressed_bytes": 16482758
+      },
+      {
+        "name": "EinheitenSolar_34.xml",
+        "crc32": 2647046167,
+        "bytes": 355609482,
+        "compressed_bytes": 16501916
+      },
+      {
+        "name": "EinheitenSolar_35.xml",
+        "crc32": 2057485,
+        "bytes": 356143410,
+        "compressed_bytes": 16578626
+      },
+      {
+        "name": "EinheitenSolar_36.xml",
+        "crc32": 1059858452,
+        "bytes": 357157224,
+        "compressed_bytes": 16731898
+      },
+      {
+        "name": "EinheitenSolar_37.xml",
+        "crc32": 6534703,
+        "bytes": 358518518,
+        "compressed_bytes": 16893185
+      },
+      {
+        "name": "EinheitenSolar_38.xml",
+        "crc32": 2580454993,
+        "bytes": 352897388,
+        "compressed_bytes": 17046585
+      },
+      {
+        "name": "EinheitenSolar_39.xml",
+        "crc32": 1026760396,
+        "bytes": 344192866,
+        "compressed_bytes": 16876424
+      },
+      {
+        "name": "EinheitenSolar_4.xml",
+        "crc32": 938358264,
+        "bytes": 376672596,
+        "compressed_bytes": 18470765
+      },
+      {
+        "name": "EinheitenSolar_40.xml",
+        "crc32": 1214244509,
+        "bytes": 335671392,
+        "compressed_bytes": 16642534
+      },
+      {
+        "name": "EinheitenSolar_41.xml",
+        "crc32": 4206506146,
+        "bytes": 331150210,
+        "compressed_bytes": 16422724
+      },
+      {
+        "name": "EinheitenSolar_42.xml",
+        "crc32": 2548726027,
+        "bytes": 328201598,
+        "compressed_bytes": 16222323
+      },
+      {
+        "name": "EinheitenSolar_43.xml",
+        "crc32": 2212727830,
+        "bytes": 327813622,
+        "compressed_bytes": 16157410
+      },
+      {
+        "name": "EinheitenSolar_44.xml",
+        "crc32": 3585504369,
+        "bytes": 330751856,
+        "compressed_bytes": 16401184
+      },
+      {
+        "name": "EinheitenSolar_45.xml",
+        "crc32": 4160035525,
+        "bytes": 329462534,
+        "compressed_bytes": 16299856
+      },
+      {
+        "name": "EinheitenSolar_46.xml",
+        "crc32": 1608092234,
+        "bytes": 330611634,
+        "compressed_bytes": 16378878
+      },
+      {
+        "name": "EinheitenSolar_47.xml",
+        "crc32": 3951236831,
+        "bytes": 334722844,
+        "compressed_bytes": 16601495
+      },
+      {
+        "name": "EinheitenSolar_48.xml",
+        "crc32": 1358484122,
+        "bytes": 340942380,
+        "compressed_bytes": 16995585
+      },
+      {
+        "name": "EinheitenSolar_49.xml",
+        "crc32": 1684285295,
+        "bytes": 341091872,
+        "compressed_bytes": 17082675
+      },
+      {
+        "name": "EinheitenSolar_5.xml",
+        "crc32": 153726245,
+        "bytes": 376117624,
+        "compressed_bytes": 18412083
+      },
+      {
+        "name": "EinheitenSolar_50.xml",
+        "crc32": 1919905620,
+        "bytes": 337868426,
+        "compressed_bytes": 16934434
+      },
+      {
+        "name": "EinheitenSolar_51.xml",
+        "crc32": 95945803,
+        "bytes": 328231608,
+        "compressed_bytes": 16199238
+      },
+      {
+        "name": "EinheitenSolar_52.xml",
+        "crc32": 2732426953,
+        "bytes": 325853492,
+        "compressed_bytes": 15987595
+      },
+      {
+        "name": "EinheitenSolar_53.xml",
+        "crc32": 781289198,
+        "bytes": 328299324,
+        "compressed_bytes": 16120162
+      },
+      {
+        "name": "EinheitenSolar_54.xml",
+        "crc32": 1646603432,
+        "bytes": 327255950,
+        "compressed_bytes": 16038673
+      },
+      {
+        "name": "EinheitenSolar_55.xml",
+        "crc32": 2941829206,
+        "bytes": 327460638,
+        "compressed_bytes": 16078764
+      },
+      {
+        "name": "EinheitenSolar_56.xml",
+        "crc32": 2619863762,
+        "bytes": 327903478,
+        "compressed_bytes": 16094264
+      },
+      {
+        "name": "EinheitenSolar_57.xml",
+        "crc32": 3384630117,
+        "bytes": 333339650,
+        "compressed_bytes": 16467880
+      },
+      {
+        "name": "EinheitenSolar_58.xml",
+        "crc32": 4092856590,
+        "bytes": 338717022,
+        "compressed_bytes": 16741097
+      },
+      {
+        "name": "EinheitenSolar_59.xml",
+        "crc32": 1061266395,
+        "bytes": 337941528,
+        "compressed_bytes": 16733692
+      },
+      {
+        "name": "EinheitenSolar_6.xml",
+        "crc32": 2806699629,
+        "bytes": 376158758,
+        "compressed_bytes": 18494483
+      },
+      {
+        "name": "EinheitenSolar_60.xml",
+        "crc32": 206519499,
+        "bytes": 327696062,
+        "compressed_bytes": 16017919
+      },
+      {
+        "name": "EinheitenSolar_61.xml",
+        "crc32": 144657919,
+        "bytes": 325722610,
+        "compressed_bytes": 15771099
+      },
+      {
+        "name": "EinheitenSolar_62.xml",
+        "crc32": 3586486072,
+        "bytes": 326839394,
+        "compressed_bytes": 15791813
+      },
+      {
+        "name": "EinheitenSolar_63.xml",
+        "crc32": 4171414973,
+        "bytes": 332007772,
+        "compressed_bytes": 16017528
+      },
+      {
+        "name": "EinheitenSolar_64.xml",
+        "crc32": 2545179025,
+        "bytes": 331484380,
+        "compressed_bytes": 15915852
+      },
+      {
+        "name": "EinheitenSolar_65.xml",
+        "crc32": 2882425970,
+        "bytes": 334607876,
+        "compressed_bytes": 16013114
+      },
+      {
+        "name": "EinheitenSolar_66.xml",
+        "crc32": 4282040577,
+        "bytes": 339299106,
+        "compressed_bytes": 16105413
+      },
+      {
+        "name": "EinheitenSolar_67.xml",
+        "crc32": 3526351224,
+        "bytes": 227789248,
+        "compressed_bytes": 10690095
+      },
+      {
+        "name": "EinheitenSolar_7.xml",
+        "crc32": 685535960,
+        "bytes": 376054658,
+        "compressed_bytes": 18370791
+      },
+      {
+        "name": "EinheitenSolar_8.xml",
+        "crc32": 634407186,
+        "bytes": 375736020,
+        "compressed_bytes": 18366943
+      },
+      {
+        "name": "EinheitenSolar_9.xml",
+        "crc32": 634997094,
+        "bytes": 375011248,
+        "compressed_bytes": 18333656
+      },
+      {
+        "name": "EinheitenStromSpeicher_1.xml",
+        "crc32": 1430555289,
+        "bytes": 319686168,
+        "compressed_bytes": 16417061
+      },
+      {
+        "name": "EinheitenStromSpeicher_10.xml",
+        "crc32": 863849627,
+        "bytes": 310175324,
+        "compressed_bytes": 15455269
+      },
+      {
+        "name": "EinheitenStromSpeicher_11.xml",
+        "crc32": 3211185625,
+        "bytes": 310191310,
+        "compressed_bytes": 15558414
+      },
+      {
+        "name": "EinheitenStromSpeicher_12.xml",
+        "crc32": 1402900529,
+        "bytes": 310109012,
+        "compressed_bytes": 15735183
+      },
+      {
+        "name": "EinheitenStromSpeicher_13.xml",
+        "crc32": 4244770594,
+        "bytes": 319093420,
+        "compressed_bytes": 16593074
+      },
+      {
+        "name": "EinheitenStromSpeicher_14.xml",
+        "crc32": 1698673766,
+        "bytes": 326032166,
+        "compressed_bytes": 16962535
+      },
+      {
+        "name": "EinheitenStromSpeicher_15.xml",
+        "crc32": 3975845147,
+        "bytes": 326308270,
+        "compressed_bytes": 16944504
+      },
+      {
+        "name": "EinheitenStromSpeicher_16.xml",
+        "crc32": 1022933833,
+        "bytes": 326026704,
+        "compressed_bytes": 16955034
+      },
+      {
+        "name": "EinheitenStromSpeicher_17.xml",
+        "crc32": 931694607,
+        "bytes": 326045522,
+        "compressed_bytes": 16951579
+      },
+      {
+        "name": "EinheitenStromSpeicher_18.xml",
+        "crc32": 4152881666,
+        "bytes": 325420376,
+        "compressed_bytes": 16880684
+      },
+      {
+        "name": "EinheitenStromSpeicher_19.xml",
+        "crc32": 2060028041,
+        "bytes": 325261752,
+        "compressed_bytes": 16708526
+      },
+      {
+        "name": "EinheitenStromSpeicher_2.xml",
+        "crc32": 2696007787,
+        "bytes": 319695896,
+        "compressed_bytes": 16442148
+      },
+      {
+        "name": "EinheitenStromSpeicher_20.xml",
+        "crc32": 1504995609,
+        "bytes": 325662364,
+        "compressed_bytes": 16658943
+      },
+      {
+        "name": "EinheitenStromSpeicher_21.xml",
+        "crc32": 3777743465,
+        "bytes": 325683978,
+        "compressed_bytes": 16605224
+      },
+      {
+        "name": "EinheitenStromSpeicher_22.xml",
+        "crc32": 43274510,
+        "bytes": 325419616,
+        "compressed_bytes": 16646407
+      },
+      {
+        "name": "EinheitenStromSpeicher_23.xml",
+        "crc32": 2863997730,
+        "bytes": 326053776,
+        "compressed_bytes": 16759246
+      },
+      {
+        "name": "EinheitenStromSpeicher_24.xml",
+        "crc32": 1800815703,
+        "bytes": 325035784,
+        "compressed_bytes": 16655458
+      },
+      {
+        "name": "EinheitenStromSpeicher_25.xml",
+        "crc32": 29394521,
+        "bytes": 324913396,
+        "compressed_bytes": 16315973
+      },
+      {
+        "name": "EinheitenStromSpeicher_26.xml",
+        "crc32": 2764987212,
+        "bytes": 325366774,
+        "compressed_bytes": 16310389
+      },
+      {
+        "name": "EinheitenStromSpeicher_27.xml",
+        "crc32": 2408193319,
+        "bytes": 327632872,
+        "compressed_bytes": 16373729
+      },
+      {
+        "name": "EinheitenStromSpeicher_28.xml",
+        "crc32": 2442922391,
+        "bytes": 327675228,
+        "compressed_bytes": 16347122
+      },
+      {
+        "name": "EinheitenStromSpeicher_29.xml",
+        "crc32": 1464239939,
+        "bytes": 328245640,
+        "compressed_bytes": 16386810
+      },
+      {
+        "name": "EinheitenStromSpeicher_3.xml",
+        "crc32": 2528433553,
+        "bytes": 319599546,
+        "compressed_bytes": 16207310
+      },
+      {
+        "name": "EinheitenStromSpeicher_30.xml",
+        "crc32": 678434664,
+        "bytes": 161783178,
+        "compressed_bytes": 8007703
+      },
+      {
+        "name": "EinheitenStromSpeicher_4.xml",
+        "crc32": 2789707316,
+        "bytes": 319244136,
+        "compressed_bytes": 16207933
+      },
+      {
+        "name": "EinheitenStromSpeicher_5.xml",
+        "crc32": 1588204931,
+        "bytes": 318669138,
+        "compressed_bytes": 16206685
+      },
+      {
+        "name": "EinheitenStromSpeicher_6.xml",
+        "crc32": 2049488479,
+        "bytes": 314524678,
+        "compressed_bytes": 15761645
+      },
+      {
+        "name": "EinheitenStromSpeicher_7.xml",
+        "crc32": 1866880464,
+        "bytes": 310588948,
+        "compressed_bytes": 15244440
+      },
+      {
+        "name": "EinheitenStromSpeicher_8.xml",
+        "crc32": 2403501042,
+        "bytes": 310257378,
+        "compressed_bytes": 15207805
+      },
+      {
+        "name": "EinheitenStromSpeicher_9.xml",
+        "crc32": 112922340,
+        "bytes": 310241740,
+        "compressed_bytes": 15325130
+      },
+      {
+        "name": "EinheitenStromVerbraucher.xml",
+        "crc32": 2601270422,
+        "bytes": 2936390,
+        "compressed_bytes": 162420
+      },
+      {
+        "name": "Einheitentypen.xml",
+        "crc32": 4178134969,
+        "bytes": 1892,
+        "compressed_bytes": 284
+      },
+      {
+        "name": "EinheitenVerbrennung.xml",
+        "crc32": 1545261979,
+        "bytes": 286180216,
+        "compressed_bytes": 15541422
+      },
+      {
+        "name": "EinheitenWasser.xml",
+        "crc32": 3345434499,
+        "bytes": 29437880,
+        "compressed_bytes": 1511840
+      },
+      {
+        "name": "EinheitenWind.xml",
+        "crc32": 1463240415,
+        "bytes": 208564672,
+        "compressed_bytes": 8265254
+      },
+      {
+        "name": "Ertuechtigungen.xml",
+        "crc32": 1729926488,
+        "bytes": 1055890,
+        "compressed_bytes": 51862
+      },
+      {
+        "name": "GeloeschteUndDeaktivierteEinheiten_1.xml",
+        "crc32": 2478448775,
+        "bytes": 78346536,
+        "compressed_bytes": 2703939
+      },
+      {
+        "name": "GeloeschteUndDeaktivierteEinheiten_2.xml",
+        "crc32": 3200405164,
+        "bytes": 78331156,
+        "compressed_bytes": 2625914
+      },
+      {
+        "name": "GeloeschteUndDeaktivierteEinheiten_3.xml",
+        "crc32": 1053514897,
+        "bytes": 46293804,
+        "compressed_bytes": 1828513
+      },
+      {
+        "name": "GeloeschteUndDeaktivierteMarktakteure_1.xml",
+        "crc32": 2155548105,
+        "bytes": 68544330,
+        "compressed_bytes": 2369036
+      },
+      {
+        "name": "GeloeschteUndDeaktivierteMarktakteure_2.xml",
+        "crc32": 580540490,
+        "bytes": 70550884,
+        "compressed_bytes": 2481657
+      },
+      {
+        "name": "GeloeschteUndDeaktivierteMarktakteure_3.xml",
+        "crc32": 2542609646,
+        "bytes": 70533726,
+        "compressed_bytes": 2436941
+      },
+      {
+        "name": "Katalogkategorien.xml",
+        "crc32": 2893791345,
+        "bytes": 20020,
+        "compressed_bytes": 1871
+      },
+      {
+        "name": "Katalogwerte.xml",
+        "crc32": 1468106374,
+        "bytes": 415092,
+        "compressed_bytes": 28408
+      },
+      {
+        "name": "Lokationen_1.xml",
+        "crc32": 3246714820,
+        "bytes": 75253818,
+        "compressed_bytes": 5395836
+      },
+      {
+        "name": "Lokationen_10.xml",
+        "crc32": 1999491536,
+        "bytes": 77783366,
+        "compressed_bytes": 5396816
+      },
+      {
+        "name": "Lokationen_11.xml",
+        "crc32": 2960918983,
+        "bytes": 77360448,
+        "compressed_bytes": 5404024
+      },
+      {
+        "name": "Lokationen_12.xml",
+        "crc32": 2566858145,
+        "bytes": 76556102,
+        "compressed_bytes": 5344443
+      },
+      {
+        "name": "Lokationen_13.xml",
+        "crc32": 600677515,
+        "bytes": 74922352,
+        "compressed_bytes": 5219327
+      },
+      {
+        "name": "Lokationen_14.xml",
+        "crc32": 1071866276,
+        "bytes": 75744030,
+        "compressed_bytes": 5246523
+      },
+      {
+        "name": "Lokationen_15.xml",
+        "crc32": 1757730192,
+        "bytes": 76281854,
+        "compressed_bytes": 5282966
+      },
+      {
+        "name": "Lokationen_16.xml",
+        "crc32": 3093396938,
+        "bytes": 76909278,
+        "compressed_bytes": 5329035
+      },
+      {
+        "name": "Lokationen_17.xml",
+        "crc32": 3193751629,
+        "bytes": 76521744,
+        "compressed_bytes": 5273226
+      },
+      {
+        "name": "Lokationen_18.xml",
+        "crc32": 901069245,
+        "bytes": 75801790,
+        "compressed_bytes": 5230382
+      },
+      {
+        "name": "Lokationen_19.xml",
+        "crc32": 2147672868,
+        "bytes": 75308758,
+        "compressed_bytes": 5208707
+      },
+      {
+        "name": "Lokationen_2.xml",
+        "crc32": 1697801222,
+        "bytes": 75545458,
+        "compressed_bytes": 5371703
+      },
+      {
+        "name": "Lokationen_20.xml",
+        "crc32": 1286046155,
+        "bytes": 76052076,
+        "compressed_bytes": 5296245
+      },
+      {
+        "name": "Lokationen_21.xml",
+        "crc32": 456784634,
+        "bytes": 75680256,
+        "compressed_bytes": 5337896
+      },
+      {
+        "name": "Lokationen_22.xml",
+        "crc32": 1808645628,
+        "bytes": 76054134,
+        "compressed_bytes": 5296280
+      },
+      {
+        "name": "Lokationen_23.xml",
+        "crc32": 807774701,
+        "bytes": 75858200,
+        "compressed_bytes": 5322372
+      },
+      {
+        "name": "Lokationen_24.xml",
+        "crc32": 2671676627,
+        "bytes": 75285426,
+        "compressed_bytes": 5328811
+      },
+      {
+        "name": "Lokationen_25.xml",
+        "crc32": 46549353,
+        "bytes": 74962310,
+        "compressed_bytes": 5320861
+      },
+      {
+        "name": "Lokationen_26.xml",
+        "crc32": 618063929,
+        "bytes": 74570796,
+        "compressed_bytes": 5310228
+      },
+      {
+        "name": "Lokationen_27.xml",
+        "crc32": 3156648633,
+        "bytes": 74225328,
+        "compressed_bytes": 5251971
+      },
+      {
+        "name": "Lokationen_28.xml",
+        "crc32": 1556599226,
+        "bytes": 74295316,
+        "compressed_bytes": 5268097
+      },
+      {
+        "name": "Lokationen_29.xml",
+        "crc32": 2445850562,
+        "bytes": 73873046,
+        "compressed_bytes": 5236299
+      },
+      {
+        "name": "Lokationen_3.xml",
+        "crc32": 1148301388,
+        "bytes": 75346952,
+        "compressed_bytes": 5352529
+      },
+      {
+        "name": "Lokationen_30.xml",
+        "crc32": 2474545237,
+        "bytes": 73482000,
+        "compressed_bytes": 5210152
+      },
+      {
+        "name": "Lokationen_31.xml",
+        "crc32": 1878761499,
+        "bytes": 73398660,
+        "compressed_bytes": 5215241
+      },
+      {
+        "name": "Lokationen_32.xml",
+        "crc32": 3998976061,
+        "bytes": 73242428,
+        "compressed_bytes": 5198090
+      },
+      {
+        "name": "Lokationen_33.xml",
+        "crc32": 1548301392,
+        "bytes": 73406864,
+        "compressed_bytes": 5215276
+      },
+      {
+        "name": "Lokationen_34.xml",
+        "crc32": 187100772,
+        "bytes": 73308674,
+        "compressed_bytes": 5212175
+      },
+      {
+        "name": "Lokationen_35.xml",
+        "crc32": 1237263412,
+        "bytes": 73098098,
+        "compressed_bytes": 5200122
+      },
+      {
+        "name": "Lokationen_36.xml",
+        "crc32": 2897336382,
+        "bytes": 73496842,
+        "compressed_bytes": 5225620
+      },
+      {
+        "name": "Lokationen_37.xml",
+        "crc32": 1210518203,
+        "bytes": 73379036,
+        "compressed_bytes": 5211852
+      },
+      {
+        "name": "Lokationen_38.xml",
+        "crc32": 1207718080,
+        "bytes": 73709576,
+        "compressed_bytes": 5220899
+      },
+      {
+        "name": "Lokationen_39.xml",
+        "crc32": 2888562413,
+        "bytes": 73624266,
+        "compressed_bytes": 5202518
+      },
+      {
+        "name": "Lokationen_4.xml",
+        "crc32": 1620507000,
+        "bytes": 75077420,
+        "compressed_bytes": 5310347
+      },
+      {
+        "name": "Lokationen_40.xml",
+        "crc32": 1917338414,
+        "bytes": 73697542,
+        "compressed_bytes": 5193043
+      },
+      {
+        "name": "Lokationen_41.xml",
+        "crc32": 1560939077,
+        "bytes": 73442212,
+        "compressed_bytes": 5184192
+      },
+      {
+        "name": "Lokationen_42.xml",
+        "crc32": 2048273443,
+        "bytes": 73058234,
+        "compressed_bytes": 5181841
+      },
+      {
+        "name": "Lokationen_43.xml",
+        "crc32": 2573805825,
+        "bytes": 73713544,
+        "compressed_bytes": 5336607
+      },
+      {
+        "name": "Lokationen_44.xml",
+        "crc32": 2610811049,
+        "bytes": 73596828,
+        "compressed_bytes": 5312242
+      },
+      {
+        "name": "Lokationen_45.xml",
+        "crc32": 1567528091,
+        "bytes": 73882112,
+        "compressed_bytes": 5347547
+      },
+      {
+        "name": "Lokationen_46.xml",
+        "crc32": 2297082848,
+        "bytes": 73851028,
+        "compressed_bytes": 5360872
+      },
+      {
+        "name": "Lokationen_47.xml",
+        "crc32": 1527409616,
+        "bytes": 73765682,
+        "compressed_bytes": 5358454
+      },
+      {
+        "name": "Lokationen_48.xml",
+        "crc32": 4018886383,
+        "bytes": 73576386,
+        "compressed_bytes": 5346365
+      },
+      {
+        "name": "Lokationen_49.xml",
+        "crc32": 1734958838,
+        "bytes": 73847068,
+        "compressed_bytes": 5394783
+      },
+      {
+        "name": "Lokationen_5.xml",
+        "crc32": 2696525563,
+        "bytes": 75148014,
+        "compressed_bytes": 5292394
+      },
+      {
+        "name": "Lokationen_50.xml",
+        "crc32": 518567460,
+        "bytes": 74233276,
+        "compressed_bytes": 5440287
+      },
+      {
+        "name": "Lokationen_51.xml",
+        "crc32": 1485356115,
+        "bytes": 74185910,
+        "compressed_bytes": 5429004
+      },
+      {
+        "name": "Lokationen_52.xml",
+        "crc32": 4144414245,
+        "bytes": 73843360,
+        "compressed_bytes": 5378783
+      },
+      {
+        "name": "Lokationen_53.xml",
+        "crc32": 48298850,
+        "bytes": 72864064,
+        "compressed_bytes": 5297137
+      },
+      {
+        "name": "Lokationen_54.xml",
+        "crc32": 3060572152,
+        "bytes": 72571390,
+        "compressed_bytes": 5260173
+      },
+      {
+        "name": "Lokationen_55.xml",
+        "crc32": 4178742544,
+        "bytes": 72884492,
+        "compressed_bytes": 5293726
+      },
+      {
+        "name": "Lokationen_56.xml",
+        "crc32": 852806807,
+        "bytes": 72847320,
+        "compressed_bytes": 5312435
+      },
+      {
+        "name": "Lokationen_57.xml",
+        "crc32": 586146422,
+        "bytes": 72748342,
+        "compressed_bytes": 5314072
+      },
+      {
+        "name": "Lokationen_58.xml",
+        "crc32": 4046234445,
+        "bytes": 72293578,
+        "compressed_bytes": 5283410
+      },
+      {
+        "name": "Lokationen_59.xml",
+        "crc32": 3285078830,
+        "bytes": 72207136,
+        "compressed_bytes": 5317499
+      },
+      {
+        "name": "Lokationen_6.xml",
+        "crc32": 2666287302,
+        "bytes": 75469042,
+        "compressed_bytes": 5296851
+      },
+      {
+        "name": "Lokationen_60.xml",
+        "crc32": 608399110,
+        "bytes": 72453342,
+        "compressed_bytes": 5369058
+      },
+      {
+        "name": "Lokationen_61.xml",
+        "crc32": 3263854014,
+        "bytes": 70932800,
+        "compressed_bytes": 5218963
+      },
+      {
+        "name": "Lokationen_62.xml",
+        "crc32": 2391550754,
+        "bytes": 69826508,
+        "compressed_bytes": 5106876
+      },
+      {
+        "name": "Lokationen_63.xml",
+        "crc32": 3522807054,
+        "bytes": 68890592,
+        "compressed_bytes": 5021628
+      },
+      {
+        "name": "Lokationen_64.xml",
+        "crc32": 4133013760,
+        "bytes": 68353632,
+        "compressed_bytes": 4963077
+      },
+      {
+        "name": "Lokationen_65.xml",
+        "crc32": 2539061307,
+        "bytes": 67974134,
+        "compressed_bytes": 4942486
+      },
+      {
+        "name": "Lokationen_66.xml",
+        "crc32": 1182645551,
+        "bytes": 67323362,
+        "compressed_bytes": 4897366
+      },
+      {
+        "name": "Lokationen_67.xml",
+        "crc32": 3358564631,
+        "bytes": 66012384,
+        "compressed_bytes": 4794891
+      },
+      {
+        "name": "Lokationen_68.xml",
+        "crc32": 3143314290,
+        "bytes": 64107808,
+        "compressed_bytes": 4622309
+      },
+      {
+        "name": "Lokationen_69.xml",
+        "crc32": 3337614428,
+        "bytes": 61552230,
+        "compressed_bytes": 4358149
+      },
+      {
+        "name": "Lokationen_7.xml",
+        "crc32": 2865786813,
+        "bytes": 73608328,
+        "compressed_bytes": 5087291
+      },
+      {
+        "name": "Lokationen_70.xml",
+        "crc32": 3174616048,
+        "bytes": 35582230,
+        "compressed_bytes": 2441479
+      },
+      {
+        "name": "Lokationen_8.xml",
+        "crc32": 1360037844,
+        "bytes": 74260682,
+        "compressed_bytes": 5140606
+      },
+      {
+        "name": "Lokationen_9.xml",
+        "crc32": 2195461561,
+        "bytes": 75342666,
+        "compressed_bytes": 5240702
+      },
+      {
+        "name": "Lokationstypen.xml",
+        "crc32": 1753632581,
+        "bytes": 742,
+        "compressed_bytes": 177
+      },
+      {
+        "name": "MarktakteureUndRollen.xml",
+        "crc32": 2820730445,
+        "bytes": 13279002,
+        "compressed_bytes": 551600
+      },
+      {
+        "name": "Marktakteure_1.xml",
+        "crc32": 3055995591,
+        "bytes": 107530040,
+        "compressed_bytes": 5089763
+      },
+      {
+        "name": "Marktakteure_10.xml",
+        "crc32": 1140771195,
+        "bytes": 81993250,
+        "compressed_bytes": 3381116
+      },
+      {
+        "name": "Marktakteure_11.xml",
+        "crc32": 3421546513,
+        "bytes": 84077524,
+        "compressed_bytes": 3548568
+      },
+      {
+        "name": "Marktakteure_12.xml",
+        "crc32": 2176252036,
+        "bytes": 83509814,
+        "compressed_bytes": 3518711
+      },
+      {
+        "name": "Marktakteure_13.xml",
+        "crc32": 4053205231,
+        "bytes": 84180812,
+        "compressed_bytes": 3619777
+      },
+      {
+        "name": "Marktakteure_14.xml",
+        "crc32": 2842817390,
+        "bytes": 84102450,
+        "compressed_bytes": 3592545
+      },
+      {
+        "name": "Marktakteure_15.xml",
+        "crc32": 780606464,
+        "bytes": 89531212,
+        "compressed_bytes": 3991852
+      },
+      {
+        "name": "Marktakteure_16.xml",
+        "crc32": 363513398,
+        "bytes": 87998792,
+        "compressed_bytes": 3953604
+      },
+      {
+        "name": "Marktakteure_17.xml",
+        "crc32": 1247534205,
+        "bytes": 76920314,
+        "compressed_bytes": 3327096
+      },
+      {
+        "name": "Marktakteure_18.xml",
+        "crc32": 3539148954,
+        "bytes": 71228260,
+        "compressed_bytes": 3142138
+      },
+      {
+        "name": "Marktakteure_19.xml",
+        "crc32": 2632617441,
+        "bytes": 69259832,
+        "compressed_bytes": 3014033
+      },
+      {
+        "name": "Marktakteure_2.xml",
+        "crc32": 251860997,
+        "bytes": 97545756,
+        "compressed_bytes": 4380758
+      },
+      {
+        "name": "Marktakteure_20.xml",
+        "crc32": 1890755533,
+        "bytes": 66400098,
+        "compressed_bytes": 2813170
+      },
+      {
+        "name": "Marktakteure_21.xml",
+        "crc32": 598149708,
+        "bytes": 64478342,
+        "compressed_bytes": 2663213
+      },
+      {
+        "name": "Marktakteure_22.xml",
+        "crc32": 3219576231,
+        "bytes": 64534744,
+        "compressed_bytes": 2649500
+      },
+      {
+        "name": "Marktakteure_23.xml",
+        "crc32": 2584860989,
+        "bytes": 64702286,
+        "compressed_bytes": 2644072
+      },
+      {
+        "name": "Marktakteure_24.xml",
+        "crc32": 4071834877,
+        "bytes": 63434226,
+        "compressed_bytes": 2495685
+      },
+      {
+        "name": "Marktakteure_25.xml",
+        "crc32": 3527393631,
+        "bytes": 62619468,
+        "compressed_bytes": 2360607
+      },
+      {
+        "name": "Marktakteure_26.xml",
+        "crc32": 2731311448,
+        "bytes": 62641004,
+        "compressed_bytes": 2331081
+      },
+      {
+        "name": "Marktakteure_27.xml",
+        "crc32": 2076995464,
+        "bytes": 62263136,
+        "compressed_bytes": 2278063
+      },
+      {
+        "name": "Marktakteure_28.xml",
+        "crc32": 3041091832,
+        "bytes": 62827218,
+        "compressed_bytes": 2333204
+      },
+      {
+        "name": "Marktakteure_29.xml",
+        "crc32": 4002921623,
+        "bytes": 62714228,
+        "compressed_bytes": 2341848
+      },
+      {
+        "name": "Marktakteure_3.xml",
+        "crc32": 1340915153,
+        "bytes": 95482462,
+        "compressed_bytes": 4262503
+      },
+      {
+        "name": "Marktakteure_30.xml",
+        "crc32": 3158022943,
+        "bytes": 63282920,
+        "compressed_bytes": 2371303
+      },
+      {
+        "name": "Marktakteure_31.xml",
+        "crc32": 3762450750,
+        "bytes": 63455536,
+        "compressed_bytes": 2409379
+      },
+      {
+        "name": "Marktakteure_32.xml",
+        "crc32": 1850364342,
+        "bytes": 64754156,
+        "compressed_bytes": 2509497
+      },
+      {
+        "name": "Marktakteure_33.xml",
+        "crc32": 252239423,
+        "bytes": 65791300,
+        "compressed_bytes": 2564541
+      },
+      {
+        "name": "Marktakteure_34.xml",
+        "crc32": 2349454340,
+        "bytes": 65487424,
+        "compressed_bytes": 2533340
+      },
+      {
+        "name": "Marktakteure_35.xml",
+        "crc32": 1432592825,
+        "bytes": 63124846,
+        "compressed_bytes": 2332851
+      },
+      {
+        "name": "Marktakteure_36.xml",
+        "crc32": 626689619,
+        "bytes": 62729492,
+        "compressed_bytes": 2264315
+      },
+      {
+        "name": "Marktakteure_37.xml",
+        "crc32": 598093350,
+        "bytes": 62084122,
+        "compressed_bytes": 2189065
+      },
+      {
+        "name": "Marktakteure_38.xml",
+        "crc32": 2411883174,
+        "bytes": 62590404,
+        "compressed_bytes": 2230034
+      },
+      {
+        "name": "Marktakteure_39.xml",
+        "crc32": 1287805491,
+        "bytes": 62705144,
+        "compressed_bytes": 2228434
+      },
+      {
+        "name": "Marktakteure_4.xml",
+        "crc32": 1280650599,
+        "bytes": 87840990,
+        "compressed_bytes": 3830369
+      },
+      {
+        "name": "Marktakteure_40.xml",
+        "crc32": 913272921,
+        "bytes": 62937110,
+        "compressed_bytes": 2246894
+      },
+      {
+        "name": "Marktakteure_41.xml",
+        "crc32": 862367786,
+        "bytes": 63855658,
+        "compressed_bytes": 2319662
+      },
+      {
+        "name": "Marktakteure_42.xml",
+        "crc32": 4050488299,
+        "bytes": 66214540,
+        "compressed_bytes": 2525174
+      },
+      {
+        "name": "Marktakteure_43.xml",
+        "crc32": 1773884941,
+        "bytes": 67044504,
+        "compressed_bytes": 2569635
+      },
+      {
+        "name": "Marktakteure_44.xml",
+        "crc32": 3911549642,
+        "bytes": 65113336,
+        "compressed_bytes": 2417265
+      },
+      {
+        "name": "Marktakteure_45.xml",
+        "crc32": 115195783,
+        "bytes": 63377844,
+        "compressed_bytes": 2247424
+      },
+      {
+        "name": "Marktakteure_46.xml",
+        "crc32": 3344620819,
+        "bytes": 62593616,
+        "compressed_bytes": 2194140
+      },
+      {
+        "name": "Marktakteure_47.xml",
+        "crc32": 4011194239,
+        "bytes": 63110576,
+        "compressed_bytes": 2233810
+      },
+      {
+        "name": "Marktakteure_48.xml",
+        "crc32": 4092433840,
+        "bytes": 63019806,
+        "compressed_bytes": 2227790
+      },
+      {
+        "name": "Marktakteure_49.xml",
+        "crc32": 3613535419,
+        "bytes": 63825318,
+        "compressed_bytes": 2297970
+      },
+      {
+        "name": "Marktakteure_5.xml",
+        "crc32": 1021987324,
+        "bytes": 83558890,
+        "compressed_bytes": 3607853
+      },
+      {
+        "name": "Marktakteure_50.xml",
+        "crc32": 944869025,
+        "bytes": 65194556,
+        "compressed_bytes": 2424495
+      },
+      {
+        "name": "Marktakteure_51.xml",
+        "crc32": 1472183903,
+        "bytes": 67229040,
+        "compressed_bytes": 2569905
+      },
+      {
+        "name": "Marktakteure_52.xml",
+        "crc32": 1404023895,
+        "bytes": 65209712,
+        "compressed_bytes": 2437276
+      },
+      {
+        "name": "Marktakteure_53.xml",
+        "crc32": 2743404444,
+        "bytes": 62996154,
+        "compressed_bytes": 2651546
+      },
+      {
+        "name": "Marktakteure_54.xml",
+        "crc32": 2908330633,
+        "bytes": 62367848,
+        "compressed_bytes": 3035311
+      },
+      {
+        "name": "Marktakteure_55.xml",
+        "crc32": 3251096566,
+        "bytes": 62290574,
+        "compressed_bytes": 3015581
+      },
+      {
+        "name": "Marktakteure_56.xml",
+        "crc32": 4070893971,
+        "bytes": 61947342,
+        "compressed_bytes": 2991200
+      },
+      {
+        "name": "Marktakteure_57.xml",
+        "crc32": 1136407645,
+        "bytes": 62952460,
+        "compressed_bytes": 3076864
+      },
+      {
+        "name": "Marktakteure_58.xml",
+        "crc32": 4012164775,
+        "bytes": 58264630,
+        "compressed_bytes": 2831527
+      },
+      {
+        "name": "Marktakteure_6.xml",
+        "crc32": 2521544664,
+        "bytes": 81200012,
+        "compressed_bytes": 3407213
+      },
+      {
+        "name": "Marktakteure_7.xml",
+        "crc32": 2106408747,
+        "bytes": 82578338,
+        "compressed_bytes": 3499976
+      },
+      {
+        "name": "Marktakteure_8.xml",
+        "crc32": 768914715,
+        "bytes": 83306322,
+        "compressed_bytes": 3492131
+      },
+      {
+        "name": "Marktakteure_9.xml",
+        "crc32": 3703911739,
+        "bytes": 82962926,
+        "compressed_bytes": 3450654
+      },
+      {
+        "name": "Marktfunktionen.xml",
+        "crc32": 2301387123,
+        "bytes": 1622,
+        "compressed_bytes": 309
+      },
+      {
+        "name": "Marktrollen.xml",
+        "crc32": 2842375093,
+        "bytes": 6162,
+        "compressed_bytes": 632
+      },
+      {
+        "name": "Netzanschlusspunkte_1.xml",
+        "crc32": 3564954841,
+        "bytes": 143288108,
+        "compressed_bytes": 6925715
+      },
+      {
+        "name": "Netzanschlusspunkte_10.xml",
+        "crc32": 1775435811,
+        "bytes": 147379508,
+        "compressed_bytes": 6490999
+      },
+      {
+        "name": "Netzanschlusspunkte_11.xml",
+        "crc32": 1951957452,
+        "bytes": 145945100,
+        "compressed_bytes": 6589773
+      },
+      {
+        "name": "Netzanschlusspunkte_12.xml",
+        "crc32": 3984340255,
+        "bytes": 147119110,
+        "compressed_bytes": 6391509
+      },
+      {
+        "name": "Netzanschlusspunkte_13.xml",
+        "crc32": 2708594939,
+        "bytes": 148134818,
+        "compressed_bytes": 6416541
+      },
+      {
+        "name": "Netzanschlusspunkte_14.xml",
+        "crc32": 85180506,
+        "bytes": 149043224,
+        "compressed_bytes": 6357227
+      },
+      {
+        "name": "Netzanschlusspunkte_15.xml",
+        "crc32": 4069039296,
+        "bytes": 147535868,
+        "compressed_bytes": 6315696
+      },
+      {
+        "name": "Netzanschlusspunkte_16.xml",
+        "crc32": 1428575250,
+        "bytes": 146888940,
+        "compressed_bytes": 6395138
+      },
+      {
+        "name": "Netzanschlusspunkte_17.xml",
+        "crc32": 2528794424,
+        "bytes": 147926838,
+        "compressed_bytes": 6455958
+      },
+      {
+        "name": "Netzanschlusspunkte_18.xml",
+        "crc32": 2390401341,
+        "bytes": 147295056,
+        "compressed_bytes": 6442650
+      },
+      {
+        "name": "Netzanschlusspunkte_19.xml",
+        "crc32": 3667180133,
+        "bytes": 145820498,
+        "compressed_bytes": 6268405
+      },
+      {
+        "name": "Netzanschlusspunkte_2.xml",
+        "crc32": 1536648873,
+        "bytes": 145564730,
+        "compressed_bytes": 6827150
+      },
+      {
+        "name": "Netzanschlusspunkte_20.xml",
+        "crc32": 1590924674,
+        "bytes": 145673054,
+        "compressed_bytes": 6534890
+      },
+      {
+        "name": "Netzanschlusspunkte_21.xml",
+        "crc32": 2819038840,
+        "bytes": 143886662,
+        "compressed_bytes": 6340119
+      },
+      {
+        "name": "Netzanschlusspunkte_22.xml",
+        "crc32": 1508989603,
+        "bytes": 146205820,
+        "compressed_bytes": 6559871
+      },
+      {
+        "name": "Netzanschlusspunkte_23.xml",
+        "crc32": 702478096,
+        "bytes": 145183820,
+        "compressed_bytes": 6509988
+      },
+      {
+        "name": "Netzanschlusspunkte_24.xml",
+        "crc32": 3985917410,
+        "bytes": 143803788,
+        "compressed_bytes": 6516784
+      },
+      {
+        "name": "Netzanschlusspunkte_25.xml",
+        "crc32": 3024481947,
+        "bytes": 144736152,
+        "compressed_bytes": 6580350
+      },
+      {
+        "name": "Netzanschlusspunkte_26.xml",
+        "crc32": 2707766935,
+        "bytes": 144402352,
+        "compressed_bytes": 6611018
+      },
+      {
+        "name": "Netzanschlusspunkte_27.xml",
+        "crc32": 109773165,
+        "bytes": 142969158,
+        "compressed_bytes": 6479529
+      },
+      {
+        "name": "Netzanschlusspunkte_28.xml",
+        "crc32": 2207248302,
+        "bytes": 143766840,
+        "compressed_bytes": 6450738
+      },
+      {
+        "name": "Netzanschlusspunkte_29.xml",
+        "crc32": 3022356502,
+        "bytes": 145117138,
+        "compressed_bytes": 6472266
+      },
+      {
+        "name": "Netzanschlusspunkte_3.xml",
+        "crc32": 3921871202,
+        "bytes": 147710668,
+        "compressed_bytes": 6714100
+      },
+      {
+        "name": "Netzanschlusspunkte_30.xml",
+        "crc32": 2663617323,
+        "bytes": 144112058,
+        "compressed_bytes": 6494025
+      },
+      {
+        "name": "Netzanschlusspunkte_31.xml",
+        "crc32": 3843968106,
+        "bytes": 143538632,
+        "compressed_bytes": 6445519
+      },
+      {
+        "name": "Netzanschlusspunkte_32.xml",
+        "crc32": 3336343348,
+        "bytes": 145271184,
+        "compressed_bytes": 6460294
+      },
+      {
+        "name": "Netzanschlusspunkte_33.xml",
+        "crc32": 4138213712,
+        "bytes": 145357544,
+        "compressed_bytes": 6383067
+      },
+      {
+        "name": "Netzanschlusspunkte_34.xml",
+        "crc32": 686574182,
+        "bytes": 145321614,
+        "compressed_bytes": 6519675
+      },
+      {
+        "name": "Netzanschlusspunkte_35.xml",
+        "crc32": 2745981939,
+        "bytes": 144674754,
+        "compressed_bytes": 6383742
+      },
+      {
+        "name": "Netzanschlusspunkte_36.xml",
+        "crc32": 3221960322,
+        "bytes": 143880380,
+        "compressed_bytes": 6165589
+      },
+      {
+        "name": "Netzanschlusspunkte_37.xml",
+        "crc32": 395589263,
+        "bytes": 142867654,
+        "compressed_bytes": 6160389
+      },
+      {
+        "name": "Netzanschlusspunkte_38.xml",
+        "crc32": 1523765066,
+        "bytes": 144942926,
+        "compressed_bytes": 6271071
+      },
+      {
+        "name": "Netzanschlusspunkte_39.xml",
+        "crc32": 999838964,
+        "bytes": 144792226,
+        "compressed_bytes": 6215799
+      },
+      {
+        "name": "Netzanschlusspunkte_4.xml",
+        "crc32": 1391243327,
+        "bytes": 146013852,
+        "compressed_bytes": 6612407
+      },
+      {
+        "name": "Netzanschlusspunkte_40.xml",
+        "crc32": 2747582850,
+        "bytes": 145234126,
+        "compressed_bytes": 6277505
+      },
+      {
+        "name": "Netzanschlusspunkte_41.xml",
+        "crc32": 70513895,
+        "bytes": 145766884,
+        "compressed_bytes": 6110962
+      },
+      {
+        "name": "Netzanschlusspunkte_42.xml",
+        "crc32": 221365007,
+        "bytes": 145279482,
+        "compressed_bytes": 6165463
+      },
+      {
+        "name": "Netzanschlusspunkte_43.xml",
+        "crc32": 1440544266,
+        "bytes": 146327450,
+        "compressed_bytes": 6315590
+      },
+      {
+        "name": "Netzanschlusspunkte_44.xml",
+        "crc32": 3086034708,
+        "bytes": 145101826,
+        "compressed_bytes": 6181083
+      },
+      {
+        "name": "Netzanschlusspunkte_45.xml",
+        "crc32": 1440540124,
+        "bytes": 145810834,
+        "compressed_bytes": 6280707
+      },
+      {
+        "name": "Netzanschlusspunkte_46.xml",
+        "crc32": 949675055,
+        "bytes": 145622050,
+        "compressed_bytes": 6067279
+      },
+      {
+        "name": "Netzanschlusspunkte_47.xml",
+        "crc32": 1637448196,
+        "bytes": 146122436,
+        "compressed_bytes": 6264563
+      },
+      {
+        "name": "Netzanschlusspunkte_48.xml",
+        "crc32": 2706168149,
+        "bytes": 146178648,
+        "compressed_bytes": 6120861
+      },
+      {
+        "name": "Netzanschlusspunkte_49.xml",
+        "crc32": 2407806324,
+        "bytes": 146167410,
+        "compressed_bytes": 6081508
+      },
+      {
+        "name": "Netzanschlusspunkte_5.xml",
+        "crc32": 700863725,
+        "bytes": 147620752,
+        "compressed_bytes": 6565403
+      },
+      {
+        "name": "Netzanschlusspunkte_50.xml",
+        "crc32": 3736134977,
+        "bytes": 144932286,
+        "compressed_bytes": 6193504
+      },
+      {
+        "name": "Netzanschlusspunkte_51.xml",
+        "crc32": 729141634,
+        "bytes": 144108640,
+        "compressed_bytes": 6271129
+      },
+      {
+        "name": "Netzanschlusspunkte_52.xml",
+        "crc32": 2618413095,
+        "bytes": 145515538,
+        "compressed_bytes": 6205572
+      },
+      {
+        "name": "Netzanschlusspunkte_53.xml",
+        "crc32": 4107582120,
+        "bytes": 145269504,
+        "compressed_bytes": 6192661
+      },
+      {
+        "name": "Netzanschlusspunkte_54.xml",
+        "crc32": 1352408466,
+        "bytes": 146604106,
+        "compressed_bytes": 6249215
+      },
+      {
+        "name": "Netzanschlusspunkte_55.xml",
+        "crc32": 341030262,
+        "bytes": 146884766,
+        "compressed_bytes": 6114523
+      },
+      {
+        "name": "Netzanschlusspunkte_56.xml",
+        "crc32": 1421819015,
+        "bytes": 144521836,
+        "compressed_bytes": 6220075
+      },
+      {
+        "name": "Netzanschlusspunkte_57.xml",
+        "crc32": 4226221938,
+        "bytes": 144964342,
+        "compressed_bytes": 6103238
+      },
+      {
+        "name": "Netzanschlusspunkte_58.xml",
+        "crc32": 1963111685,
+        "bytes": 145355620,
+        "compressed_bytes": 6207679
+      },
+      {
+        "name": "Netzanschlusspunkte_59.xml",
+        "crc32": 61494139,
+        "bytes": 145133656,
+        "compressed_bytes": 6183661
+      },
+      {
+        "name": "Netzanschlusspunkte_6.xml",
+        "crc32": 947688515,
+        "bytes": 147422778,
+        "compressed_bytes": 6133914
+      },
+      {
+        "name": "Netzanschlusspunkte_60.xml",
+        "crc32": 2237553826,
+        "bytes": 146471688,
+        "compressed_bytes": 6349000
+      },
+      {
+        "name": "Netzanschlusspunkte_61.xml",
+        "crc32": 139574882,
+        "bytes": 57636870,
+        "compressed_bytes": 2498186
+      },
+      {
+        "name": "Netzanschlusspunkte_7.xml",
+        "crc32": 527536027,
+        "bytes": 148219776,
+        "compressed_bytes": 6478566
+      },
+      {
+        "name": "Netzanschlusspunkte_8.xml",
+        "crc32": 1172743211,
+        "bytes": 147786364,
+        "compressed_bytes": 6571088
+      },
+      {
+        "name": "Netzanschlusspunkte_9.xml",
+        "crc32": 1827643325,
+        "bytes": 147170302,
+        "compressed_bytes": 6707966
+      },
+      {
+        "name": "Netze.xml",
+        "crc32": 232124882,
+        "bytes": 1208330,
+        "compressed_bytes": 81189
+      }
+    ]
+  },
+  "snapshot_date": "2026-11-15",
+  "summary": {
+    "solar": 3476,
+    "storage_units": 1971,
+    "storage_systems": 1971,
+    "locations": 3476,
+    "cohorts": {
+      "active_building_under30": 2318,
+      "context": 1135,
+      "coordinate_context": 21,
+      "active_building_exactly30": 2
+    },
+    "municipalities": {
+      "Birkenwerder": 901,
+      "Hohen Neuendorf": 2575
+    },
+    "supported_storage_pairs": 1795,
+    "unique_supported_storage_units": 1688,
+    "conflicting_storage_pairs": 0
+  },
+  "input_artifacts": {
+    "solar.json": "75f69b22e3b03c5ed2b6d858e87b180d765af33e26f26d369b575bdeb9f4be0b",
+    "storage.json": "4a7c4bc9fb5956c9056099e1cee3e3e8ffeb5e14a12a9c9c663c854cedd7c607",
+    "locations.json": "803b3625e0e0ab28850977a6389960e3aa7583a52909e534cbe9ef722becf73a",
+    "systems.json": "fffd386967b0c0d86923bb0fa2294ae2fe31946151d94682c77d53d9626368d8",
+    "catalog.json": "11a97d02453ca2588b65c1cf8f98c71cdf05c52ecd0112503d6eca2397cfb565",
+    "source.json": "5e70b06c7ab6e6cd9271ebae8b8335be20aadc82c0ab7eaf76cd5c6253f2bf2d",
+    "extraction.json": "bfc2742ffc1d5449adaec1e60e536d2f63344f28dd189407478806f5bce9ac12"
+  },
+  "artifacts": {
+    "normalized.json": "db74faa83cb1043b9479ad38e6b3c73387d080ddefd5a80d18a15d51a50941e6",
+    "registry.sqlite3": "bb72aefc233f3060dca63308d949d26cf9042b87f5b1eb89d9a61d3beb6d1b0d"
+  },
+  "attribution": "Bundesnetzagentur, Marktstammdatenregister, dl-de/by-2-0",
+  "limitations": [
+    "Public location suppression is preserved.",
+    "Storage associations are location relationships, not exclusive PV allocations.",
+    "Retained XML fragments are parsed serializations; compressed source members preserve byte-level provenance."
+  ]
+}

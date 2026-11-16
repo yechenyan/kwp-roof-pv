@@ -1,6 +1,6 @@
 # Frozen MaStR registry
 
-This Python/uv package imports public XML records without filling suppressed addresses or coordinates. It selects generating/storage units by official municipality code, then retrieves the technical locations and storage systems referenced by those units. Date-stamped official ZIPs are read through bounded HTTP ranges; compressed members, CRC results, retained XML fragments and source metadata remain under ignored `var/registry/`.
+This Python/uv package imports public XML records without filling suppressed addresses or coordinates. It selects generating/storage units by official municipality code, then retrieves the technical locations and storage systems referenced by those units. Date-stamped official ZIPs are read through bounded HTTP ranges. The compact checkout includes the normalized local snapshot, required input tables, source metadata and checksums under `var/registry/`. Nationwide compressed members and parsed acquisition shards remain ignored.
 
 ```sh
 uv run --package roof-pv-registry roof-pv-registry acquire \
@@ -16,4 +16,4 @@ Only location reverse lists that contain both the solar and storage unit, plus a
 
 Linked units outside the selected AGS scope are not automatically imported: a technical location can reference additional external units. The source graph is complete for retained records and referenced location/system records, not asserted complete for every external unit at those locations. Registry corrections and non-public address evidence remain separate sources.
 
-Completed snapshots are immutable and checksummed. Large source files and normalized databases are not committed to Git. Source attribution: Bundesnetzagentur / Marktstammdatenregister, dl-de/by-2-0.
+Completed snapshots are immutable and checksummed. The delivered runtime subset totals about 74 MB; no individual file exceeds 100 MB. Reacquisition in the default home reuses the completed snapshot. To independently download the original source members, add `--home var/mastr-rebuild` to the command above. This separate ignored home preserves the shipped snapshot and matching provenance. Source attribution: Bundesnetzagentur / Marktstammdatenregister, dl-de/by-2-0.
