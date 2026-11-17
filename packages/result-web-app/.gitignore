@@ -1,0 +1,5 @@
+__pycache__/
+state/
+*.log
+roof-pv-delivery.zip
+/result-web-app/

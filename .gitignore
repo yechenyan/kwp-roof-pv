@@ -6,6 +6,8 @@ __pycache__/
 .pytest_cache/
 .env
 .DS_Store
+/tmp/
+/var/*.log
 *.egg-info/
 *.tsbuildinfo
 

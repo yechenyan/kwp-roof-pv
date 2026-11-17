@@ -1,0 +1,4 @@
+*.pdf binary
+*.gpkg binary
+packages/result-web-app/vendor/* -text whitespace=cr-at-eol
+packages/result-web-app/delivery/web/vendor/* -text whitespace=cr-at-eol

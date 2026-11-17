@@ -2,6 +2,10 @@
 
 Production repository for Brandenburg PV image recognition and human review. The repository includes the real Hohen Neuendorf sample and the full image-survey pipeline for Hohen Neuendorf and Birkenwerder.
 
+## Result atlas and PDF delivery
+
+The separate [result atlas](packages/result-web-app/README.md) delivers highest-feasible-score technical MaStR associations, explicitly statistical allocations for later installations, an EPSG:3035 GeoPackage with storage relationships, and a nine-page English PDF report. The uncompressed `packages/result-web-app/delivery/` directory is included. Serve it with `python3 -m http.server 8791 --bind 127.0.0.1 --directory packages/result-web-app/delivery` and open <http://127.0.0.1:8791/web/>. The standalone website is read-only; rebuild the local runtime before starting the separate annotation server. Automatic results remain inferred and do not establish verified identities.
+
 ## Delivered scope
 
 - Python inference using pinned Brandenburg DeepLabV3+ / RegNetY-080 RGBI and RGB weights.
