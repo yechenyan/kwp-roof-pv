@@ -1,0 +1,86 @@
+{
+  "status": "passed",
+  "run_id": "municipal-27320a7f3fb1",
+  "registry_snapshot_id": "mastr-20261115-99075610",
+  "registry_manifest_sha256": "183ab6d500e5e1daad110b02c4d8d7779bef3496fb5645c4dd5ee41b9cc09e09",
+  "registry_summary": {
+    "solar": 3476,
+    "storage_units": 1971,
+    "storage_systems": 1971,
+    "locations": 3476,
+    "cohorts": {
+      "active_building_under30": 2318,
+      "context": 1135,
+      "coordinate_context": 21,
+      "active_building_exactly30": 2
+    },
+    "municipalities": {
+      "Birkenwerder": 901,
+      "Hohen Neuendorf": 2575
+    },
+    "supported_storage_pairs": 1795,
+    "unique_supported_storage_units": 1688,
+    "conflicting_storage_pairs": 0
+  },
+  "source_member_count": 198,
+  "retained_xml_and_compressed_source_checks": true,
+  "snapshot_delta": {
+    "solar": {
+      "previous_count": 3475,
+      "current_count": 3476,
+      "added_ids": [
+        "SEE949443767739"
+      ],
+      "removed_ids": [],
+      "changed_fields": {
+        "GeplantesInbetriebnahmedatum": 1,
+        "DatumLetzteAktualisierung": 1,
+        "VorlaeufigeRegelzonenDerEinheit": 1
+      }
+    },
+    "storage": {
+      "previous_count": 1970,
+      "current_count": 1971,
+      "added_ids": [
+        "SEE904238720542"
+      ],
+      "removed_ids": [],
+      "changed_fields": {}
+    }
+  },
+  "baseline_missing_location_cross_join_pairs_excluded": 2750,
+  "target_states_including_exactly30": {
+    "ambiguous": 2167,
+    "post_capture": 153
+  },
+  "target_units_with_tied_best_scores": 2320,
+  "pv_review_status": {
+    "pending": 6355
+  },
+  "identity_review_count": 0,
+  "identity_accuracy_measured": false,
+  "visual_browser_verification": false,
+  "export": {
+    "file": "var/exports/municipal-27320a7f3fb1-r0-925fad1b.gpkg",
+    "sha256": "f1d49c71ea84abe439779c77deb3d59cffefe5eb4fcba90ef816190e9aba17e6",
+    "bytes": 109494272,
+    "spatial_layers_epsg3035": [
+      "candidates",
+      "confirmed_pv",
+      "reviewed_areas",
+      "coverage",
+      "retired_candidates",
+      "confirmed_rooftop_pv",
+      "candidate_points",
+      "confirmed_rooftop_points",
+      "array_groups",
+      "verified_mastr_pv",
+      "verified_mastr_points",
+      "buildings",
+      "municipalities",
+      "pixel_coverage",
+      "rgbi_observations",
+      "rgb_observations"
+    ]
+  }
+}

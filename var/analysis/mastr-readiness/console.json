@@ -1,0 +1,182 @@
+{
+  "summary": "docs/mastr-readiness.json",
+  "details": "var/analysis/mastr-readiness",
+  "registry": {
+    "solar_total": 3475,
+    "active_total": 3342,
+    "types": {
+      "2961": 1076,
+      "852": 1,
+      "853": 2398
+    },
+    "statuses": {
+      "31": 45,
+      "35": 3342,
+      "37": 3,
+      "38": 85
+    },
+    "target_under30": 2318,
+    "target_at_most30": 2320,
+    "target_gross_power_kw": 19914.209,
+    "coordinate_pairs": 21,
+    "target_before_earliest_capture": 2164,
+    "target_on_earliest_capture": 1,
+    "target_between_capture_dates": 6,
+    "target_after_latest_capture": 147,
+    "target_missing_commission_date": 0,
+    "target_field_coverage": {
+      "Strasse": 0,
+      "Hausnummer": 0,
+      "Laengengrad": 0,
+      "Breitengrad": 0,
+      "Postleitzahl": 2318,
+      "Ort": 2318,
+      "AnzahlModule": 2301,
+      "Hauptausrichtung": 2241,
+      "HauptausrichtungNeigungswinkel": 2233,
+      "Nebenausrichtung": 762,
+      "LokationMaStRNummer": 2318
+    },
+    "target_module_count_distribution": {
+      "min": 1.0,
+      "p10": 12.0,
+      "median": 22.0,
+      "p90": 36.0,
+      "max": 240.0
+    },
+    "target_power_distribution_kw": {
+      "min": 0.25,
+      "p10": 4.0,
+      "median": 8.01,
+      "p90": 13.8,
+      "max": 29.97
+    },
+    "target_postcodes": {
+      "16515": 10,
+      "16540": 984,
+      "16547": 576,
+      "16556": 358,
+      "16562": 390
+    },
+    "target_commission_years": {
+      "1995": 1,
+      "2000": 3,
+      "2001": 3,
+      "2004": 2,
+      "2005": 2,
+      "2006": 9,
+      "2007": 9,
+      "2008": 23,
+      "2009": 39,
+      "2010": 47,
+      "2011": 63,
+      "2012": 37,
+      "2013": 56,
+      "2014": 29,
+      "2015": 26,
+      "2016": 28,
+      "2017": 43,
+      "2018": 49,
+      "2019": 61,
+      "2020": 92,
+      "2021": 104,
+      "2022": 201,
+      "2023": 500,
+      "2024": 400,
+      "2025": 275,
+      "2026": 216
+    },
+    "target_with_reciprocal_storage": 1482,
+    "target_sharing_location_with_other_solar": 197
+  },
+  "image": {
+    "active_candidates": 6355,
+    "status_counts": {
+      "pending": 6355
+    },
+    "mounting_counts": {
+      "unknown": 6355
+    },
+    "model_categories": {
+      "both": 2862,
+      "geometry_conflict": 1026,
+      "rgb_only": 1175,
+      "rgbi_only": 1292
+    },
+    "building_overlap_candidates": 5124,
+    "unique_buildings_intersected": 3450,
+    "buildings_intersecting_multiple_candidates": 1180,
+    "candidate_count_per_building": {
+      "1": 2270,
+      "2": 761,
+      "3": 268,
+      "4": 106,
+      "5": 24,
+      "6": 7,
+      "7": 4,
+      "8": 2,
+      "9": 2,
+      "11": 1,
+      "12": 1,
+      "14": 1,
+      "17": 1,
+      "38": 1,
+      "59": 1
+    },
+    "projected_area_m2": {
+      "min": 1.0,
+      "p10": 1.52,
+      "median": 6.04,
+      "p90": 30.08,
+      "max": 532.16
+    },
+    "candidate_area_below_5m2": 2814,
+    "candidate_area_below_10m2": 4014,
+    "available_building_fields": [
+      "id",
+      "building_id",
+      "source",
+      "geometry_repaired",
+      "geometry"
+    ],
+    "has_postcode_polygons": false,
+    "has_roof_plane_slope_or_azimuth": false
+  },
+  "coordinate_diagnostics": {
+    "present": 21,
+    "inside_study_area": 19,
+    "outside_declared_municipality": 2,
+    "inside_and_before_local_capture": 16,
+    "nearest_within_thresholds_m": {
+      "0": 3,
+      "10": 9,
+      "25": 13,
+      "50": 15
+    },
+    "multiple_candidates_within_25m_before_capture": 10,
+    "distance_m_for_inside_before_capture": {
+      "min": 0.0,
+      "p10": 0.0,
+      "median": 7.476,
+      "p90": 47.688,
+      "max": 55.075
+    },
+    "timing_counts": {
+      "after_local_capture": 3,
+      "before_local_capture": 16,
+      "unknown": 2
+    }
+  },
+  "storage": {
+    "units": 1970,
+    "systems": 1970,
+    "locations": 3475,
+    "same_location_pairs_before_reciprocity": 1794,
+    "reciprocal_location_and_system_pairs": 1794,
+    "nonreciprocal_pairs": 0,
+    "target_solar_units_with_reciprocal_storage": 1482,
+    "unique_storage_units_in_verified_pairs": 1687,
+    "storage_units_shared_by_multiple_solar_records": 100,
+    "exclusive_battery_allocation_performed": false
+  }
+}

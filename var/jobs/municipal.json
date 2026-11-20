@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "run_id": "municipal-27320a7f3fb1",
+  "status": "completed",
+  "started_at": "2026-11-15T10:51:26.174021+00:00",
+  "completed_blocks": 471,
+  "total_blocks": 471,
+  "updated_at": "2026-11-15T11:33:28.003322+00:00",
+  "completed_at": "2026-11-15T11:39:04.753693+00:00",
+  "counts": {
+    "rgbi": 5180,
+    "rgb": 5296,
+    "candidates": 6355
+  }
+}

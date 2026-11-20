@@ -1,0 +1,25 @@
+{
+  "x": 0,
+  "y": 2048,
+  "runtime": {
+    "rgbi": {
+      "windows": 15,
+      "valid_pixels": 454400,
+      "aoi_pixels": 454400
+    },
+    "rgb": {
+      "windows": 15,
+      "valid_pixels": 454400,
+      "aoi_pixels": 454400
+    }
+  },
+  "artifacts": {
+    "rgb_scores.tif": "d7a45d07ba1e178460bd3a004b1fe2ad2d61c1fb044a828076af309ad0e97477",
+    "rgbi_mask.tif": "b2cc36c8054d151992e94216e811d0cb85d77775b2a26be3b05d246d644188cd",
+    "rgbi_scores.tif": "220959a143feb99374e19abadc32b7f78cfa359ecb7fb44ddecd3d3a663f932c",
+    "rgbi_fragments.json": "5b1a245db9ec78fbb4f9d5b2742c50d24732aece34af57389695e7e19486f63f",
+    "rgb_mask.tif": "7b5710da0d644ec6055d574d7b973ea82e273b78891a40577a8bc53a8d02fb0e",
+    "rgb_fragments.json": "205da350aa58dd56bde7c6bec5accf29d833efd001c208cb664d186b9ed07760",
+    "coverage_fragments.json": "bead60f9490225cd920b2bd2c16fe663605010428f3dae1a8943edcb8b46a423"
+  }
+}

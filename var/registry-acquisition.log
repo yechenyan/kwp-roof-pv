@@ -1,0 +1,246 @@
+EinheitenSolar_1.xml: 22 retained; 1/198
+EinheitenSolar_10.xml: 49 retained; 2/198
+EinheitenSolar_11.xml: 68 retained; 3/198
+EinheitenSolar_12.xml: 40 retained; 4/198
+EinheitenSolar_13.xml: 27 retained; 5/198
+EinheitenSolar_14.xml: 44 retained; 6/198
+EinheitenSolar_15.xml: 31 retained; 7/198
+EinheitenSolar_16.xml: 19 retained; 8/198
+Traceback (most recent call last):
+  File "/Users/maxiao/Documents/code2/kwp2/kwp-roof-pv/var/backend-env/bin/roof-pv-registry", line 10, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/Users/maxiao/Documents/code2/kwp2/kwp-roof-pv/packages/registry-mastr/src/roof_pv_registry/cli.py", line 21, in main
+    folder = acquire(args.home, args.url, args.ags, args.workers)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maxiao/Documents/code2/kwp2/kwp-roof-pv/packages/registry-mastr/src/roof_pv_registry/source.py", line 203, in acquire
+    for name in phase:
+                       
+  File "/Users/maxiao/.local/share/uv/python/cpython-3.12.13-macos-aarch64-none/lib/python3.12/concurrent/futures/_base.py", line 619, in result_iterator
+    yield _result_or_cancel(fs.pop())
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/maxiao/.local/share/uv/python/cpython-3.12.13-macos-aarch64-none/lib/python3.12/concurrent/futures/_base.py", line 317, in _result_or_cancel
+    return fut.result(timeout)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/maxiao/.local/share/uv/python/cpython-3.12.13-macos-aarch64-none/lib/python3.12/concurrent/futures/_base.py", line 451, in result
+    self._condition.wait(timeout)
+  File "/Users/maxiao/.local/share/uv/python/cpython-3.12.13-macos-aarch64-none/lib/python3.12/threading.py", line 355, in wait
+    waiter.acquire()
+KeyboardInterrupt
+EinheitenSolar_1.xml: 22 retained; 1/198
+EinheitenSolar_10.xml: 49 retained; 2/198
+EinheitenSolar_11.xml: 68 retained; 3/198
+EinheitenSolar_12.xml: 40 retained; 4/198
+EinheitenSolar_13.xml: 27 retained; 5/198
+EinheitenSolar_14.xml: 44 retained; 6/198
+EinheitenSolar_15.xml: 31 retained; 7/198
+EinheitenSolar_16.xml: 19 retained; 8/198
+EinheitenSolar_17.xml: 18 retained; 9/198
+EinheitenSolar_18.xml: 25 retained; 10/198
+EinheitenSolar_19.xml: 26 retained; 11/198
+EinheitenSolar_2.xml: 33 retained; 12/198
+EinheitenSolar_20.xml: 57 retained; 13/198
+EinheitenSolar_21.xml: 47 retained; 14/198
+EinheitenSolar_22.xml: 61 retained; 15/198
+EinheitenSolar_23.xml: 57 retained; 16/198
+EinheitenSolar_24.xml: 68 retained; 17/198
+EinheitenSolar_25.xml: 51 retained; 18/198
+EinheitenSolar_26.xml: 69 retained; 19/198
+EinheitenSolar_27.xml: 53 retained; 20/198
+EinheitenSolar_28.xml: 62 retained; 21/198
+EinheitenSolar_29.xml: 69 retained; 22/198
+EinheitenSolar_3.xml: 22 retained; 23/198
+EinheitenSolar_30.xml: 57 retained; 24/198
+EinheitenSolar_31.xml: 66 retained; 25/198
+EinheitenSolar_32.xml: 65 retained; 26/198
+EinheitenSolar_33.xml: 75 retained; 27/198
+EinheitenSolar_34.xml: 73 retained; 28/198
+EinheitenSolar_35.xml: 72 retained; 29/198
+EinheitenSolar_36.xml: 72 retained; 30/198
+EinheitenSolar_37.xml: 54 retained; 31/198
+EinheitenSolar_38.xml: 46 retained; 32/198
+EinheitenSolar_39.xml: 61 retained; 33/198
+EinheitenSolar_4.xml: 22 retained; 34/198
+EinheitenSolar_40.xml: 66 retained; 35/198
+EinheitenSolar_41.xml: 67 retained; 36/198
+EinheitenSolar_42.xml: 74 retained; 37/198
+EinheitenSolar_43.xml: 72 retained; 38/198
+EinheitenSolar_44.xml: 52 retained; 39/198
+EinheitenSolar_45.xml: 70 retained; 40/198
+EinheitenSolar_46.xml: 68 retained; 41/198
+EinheitenSolar_47.xml: 66 retained; 42/198
+EinheitenSolar_48.xml: 48 retained; 43/198
+EinheitenSolar_49.xml: 53 retained; 44/198
+EinheitenSolar_5.xml: 28 retained; 45/198
+EinheitenSolar_50.xml: 64 retained; 46/198
+EinheitenSolar_51.xml: 68 retained; 47/198
+EinheitenSolar_52.xml: 58 retained; 48/198
+EinheitenSolar_53.xml: 61 retained; 49/198
+EinheitenSolar_54.xml: 67 retained; 50/198
+EinheitenSolar_55.xml: 54 retained; 51/198
+EinheitenSolar_56.xml: 49 retained; 52/198
+EinheitenSolar_57.xml: 64 retained; 53/198
+EinheitenSolar_58.xml: 59 retained; 54/198
+EinheitenSolar_59.xml: 60 retained; 55/198
+EinheitenSolar_6.xml: 45 retained; 56/198
+EinheitenSolar_60.xml: 62 retained; 57/198
+EinheitenSolar_61.xml: 60 retained; 58/198
+EinheitenSolar_62.xml: 53 retained; 59/198
+EinheitenSolar_63.xml: 49 retained; 60/198
+EinheitenSolar_64.xml: 59 retained; 61/198
+EinheitenSolar_65.xml: 58 retained; 62/198
+EinheitenSolar_66.xml: 52 retained; 63/198
+EinheitenSolar_67.xml: 39 retained; 64/198
+EinheitenSolar_7.xml: 15 retained; 65/198
+EinheitenSolar_8.xml: 14 retained; 66/198
+EinheitenSolar_9.xml: 21 retained; 67/198
+EinheitenStromSpeicher_1.xml: 78 retained; 68/198
+EinheitenStromSpeicher_10.xml: 86 retained; 69/198
+EinheitenStromSpeicher_11.xml: 66 retained; 70/198
+EinheitenStromSpeicher_12.xml: 70 retained; 71/198
+EinheitenStromSpeicher_13.xml: 66 retained; 72/198
+EinheitenStromSpeicher_14.xml: 67 retained; 73/198
+EinheitenStromSpeicher_15.xml: 86 retained; 74/198
+EinheitenStromSpeicher_16.xml: 69 retained; 75/198
+EinheitenStromSpeicher_17.xml: 51 retained; 76/198
+EinheitenStromSpeicher_18.xml: 70 retained; 77/198
+EinheitenStromSpeicher_19.xml: 62 retained; 78/198
+EinheitenStromSpeicher_2.xml: 65 retained; 79/198
+EinheitenStromSpeicher_20.xml: 71 retained; 80/198
+EinheitenStromSpeicher_21.xml: 71 retained; 81/198
+EinheitenStromSpeicher_22.xml: 62 retained; 82/198
+EinheitenStromSpeicher_23.xml: 68 retained; 83/198
+EinheitenStromSpeicher_24.xml: 59 retained; 84/198
+EinheitenStromSpeicher_25.xml: 60 retained; 85/198
+EinheitenStromSpeicher_26.xml: 58 retained; 86/198
+EinheitenStromSpeicher_27.xml: 50 retained; 87/198
+EinheitenStromSpeicher_28.xml: 61 retained; 88/198
+EinheitenStromSpeicher_29.xml: 55 retained; 89/198
+EinheitenStromSpeicher_3.xml: 58 retained; 90/198
+EinheitenStromSpeicher_30.xml: 32 retained; 91/198
+EinheitenStromSpeicher_4.xml: 72 retained; 92/198
+EinheitenStromSpeicher_5.xml: 67 retained; 93/198
+EinheitenStromSpeicher_6.xml: 69 retained; 94/198
+EinheitenStromSpeicher_7.xml: 65 retained; 95/198
+EinheitenStromSpeicher_8.xml: 76 retained; 96/198
+EinheitenStromSpeicher_9.xml: 81 retained; 97/198
+Lokationen_1.xml: 31 retained; 98/198
+Lokationen_10.xml: 52 retained; 99/198
+Lokationen_11.xml: 56 retained; 100/198
+Lokationen_12.xml: 55 retained; 101/198
+Lokationen_13.xml: 29 retained; 102/198
+Lokationen_14.xml: 46 retained; 103/198
+Lokationen_15.xml: 20 retained; 104/198
+Lokationen_16.xml: 15 retained; 105/198
+Lokationen_17.xml: 29 retained; 106/198
+Lokationen_18.xml: 20 retained; 107/198
+Lokationen_19.xml: 30 retained; 108/198
+Lokationen_2.xml: 34 retained; 109/198
+Lokationen_20.xml: 52 retained; 110/198
+Lokationen_21.xml: 51 retained; 111/198
+Lokationen_22.xml: 60 retained; 112/198
+Lokationen_23.xml: 49 retained; 113/198
+Lokationen_24.xml: 63 retained; 114/198
+Lokationen_25.xml: 47 retained; 115/198
+Lokationen_26.xml: 54 retained; 116/198
+Lokationen_27.xml: 41 retained; 117/198
+Lokationen_28.xml: 47 retained; 118/198
+Lokationen_29.xml: 43 retained; 119/198
+Lokationen_3.xml: 23 retained; 120/198
+Lokationen_30.xml: 68 retained; 121/198
+Lokationen_31.xml: 40 retained; 122/198
+Lokationen_32.xml: 55 retained; 123/198
+Lokationen_33.xml: 61 retained; 124/198
+Lokationen_34.xml: 62 retained; 125/198
+Lokationen_35.xml: 53 retained; 126/198
+Lokationen_36.xml: 74 retained; 127/198
+Lokationen_37.xml: 55 retained; 128/198
+Lokationen_38.xml: 58 retained; 129/198
+Lokationen_39.xml: 40 retained; 130/198
+Lokationen_4.xml: 26 retained; 131/198
+Lokationen_40.xml: 48 retained; 132/198
+Lokationen_41.xml: 54 retained; 133/198
+Lokationen_42.xml: 54 retained; 134/198
+Lokationen_43.xml: 68 retained; 135/198
+Lokationen_44.xml: 70 retained; 136/198
+Lokationen_45.xml: 69 retained; 137/198
+Lokationen_46.xml: 53 retained; 138/198
+Lokationen_47.xml: 75 retained; 139/198
+Lokationen_48.xml: 77 retained; 140/198
+Lokationen_49.xml: 59 retained; 141/198
+Lokationen_5.xml: 37 retained; 142/198
+Lokationen_50.xml: 57 retained; 143/198
+Lokationen_51.xml: 43 retained; 144/198
+Lokationen_52.xml: 52 retained; 145/198
+Lokationen_53.xml: 70 retained; 146/198
+Lokationen_54.xml: 66 retained; 147/198
+Lokationen_55.xml: 55 retained; 148/198
+Lokationen_56.xml: 62 retained; 149/198
+Lokationen_57.xml: 60 retained; 150/198
+Lokationen_58.xml: 53 retained; 151/198
+Lokationen_59.xml: 62 retained; 152/198
+Lokationen_6.xml: 35 retained; 153/198
+Lokationen_60.xml: 61 retained; 154/198
+Lokationen_61.xml: 39 retained; 155/198
+Lokationen_62.xml: 70 retained; 156/198
+Lokationen_63.xml: 62 retained; 157/198
+Lokationen_64.xml: 45 retained; 158/198
+Lokationen_65.xml: 61 retained; 159/198
+Lokationen_66.xml: 53 retained; 160/198
+Lokationen_67.xml: 55 retained; 161/198
+Lokationen_68.xml: 57 retained; 162/198
+Lokationen_69.xml: 52 retained; 163/198
+Lokationen_7.xml: 13 retained; 164/198
+Lokationen_70.xml: 40 retained; 165/198
+Lokationen_8.xml: 22 retained; 166/198
+Lokationen_9.xml: 28 retained; 167/198
+AnlagenStromSpeicher_1.xml: 78 retained; 168/198
+AnlagenStromSpeicher_10.xml: 83 retained; 169/198
+AnlagenStromSpeicher_11.xml: 66 retained; 170/198
+AnlagenStromSpeicher_12.xml: 70 retained; 171/198
+AnlagenStromSpeicher_13.xml: 66 retained; 172/198
+AnlagenStromSpeicher_14.xml: 67 retained; 173/198
+AnlagenStromSpeicher_15.xml: 86 retained; 174/198
+AnlagenStromSpeicher_16.xml: 69 retained; 175/198
+AnlagenStromSpeicher_17.xml: 52 retained; 176/198
+AnlagenStromSpeicher_18.xml: 69 retained; 177/198
+AnlagenStromSpeicher_19.xml: 62 retained; 178/198
+AnlagenStromSpeicher_2.xml: 65 retained; 179/198
+AnlagenStromSpeicher_20.xml: 71 retained; 180/198
+AnlagenStromSpeicher_21.xml: 71 retained; 181/198
+AnlagenStromSpeicher_22.xml: 62 retained; 182/198
+AnlagenStromSpeicher_23.xml: 68 retained; 183/198
+AnlagenStromSpeicher_24.xml: 59 retained; 184/198
+AnlagenStromSpeicher_25.xml: 60 retained; 185/198
+AnlagenStromSpeicher_26.xml: 58 retained; 186/198
+AnlagenStromSpeicher_27.xml: 50 retained; 187/198
+AnlagenStromSpeicher_28.xml: 61 retained; 188/198
+AnlagenStromSpeicher_29.xml: 55 retained; 189/198
+AnlagenStromSpeicher_3.xml: 58 retained; 190/198
+AnlagenStromSpeicher_30.xml: 32 retained; 191/198
+AnlagenStromSpeicher_4.xml: 71 retained; 192/198
+AnlagenStromSpeicher_5.xml: 68 retained; 193/198
+AnlagenStromSpeicher_6.xml: 69 retained; 194/198
+AnlagenStromSpeicher_7.xml: 65 retained; 195/198
+AnlagenStromSpeicher_8.xml: 76 retained; 196/198
+AnlagenStromSpeicher_9.xml: 84 retained; 197/198
+Katalogwerte.xml: 1741 retained; 198/198
+{
+  "solar": 3476,
+  "storage_units": 1971,
+  "storage_systems": 1971,
+  "locations": 3476,
+  "cohorts": {
+    "active_building_under30": 2318,
+    "context": 1135,
+    "coordinate_context": 21,
+    "active_building_exactly30": 2
+  },
+  "municipalities": {
+    "Birkenwerder": 901,
+    "Hohen Neuendorf": 2575
+  },
+  "supported_storage_pairs": 1795,
+  "unique_supported_storage_units": 1688,
+  "conflicting_storage_pairs": 0
+}

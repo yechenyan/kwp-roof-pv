@@ -1,0 +1,11 @@
+{
+  "reference": "cpu",
+  "device": "mps",
+  "max_absolute_score_difference": 1.341104507446289e-07,
+  "threshold_pixel_differences": 0,
+  "probe_shape": [
+    4,
+    256,
+    256
+  ]
+}

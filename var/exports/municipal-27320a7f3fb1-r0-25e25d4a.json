@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "export_id": "municipal-27320a7f3fb1-r0-25e25d4a",
+  "created_at": "2026-11-15T12:08:06.442739+00:00",
+  "run_id": "municipal-27320a7f3fb1",
+  "review_revision": 0,
+  "run_manifest_sha256": "4afc8d1e5be455ca937e42aa1481fa78026f23e99c43532dab990b08404959c3",
+  "crs": "EPSG:3035",
+  "scope": "PV image observations and human review only; no MaStR identity, power or storage assignment.",
+  "confirmed_count": 0,
+  "candidate_count": 6355,
+  "attribution": "GeoBasis-DE/LGB, dl-de/by-2-0",
+  "geometry_repair_counts": {
+    "candidates": 0,
+    "confirmed_pv": 0,
+    "reviewed_areas": 0,
+    "coverage": 0,
+    "retired_candidates": 0,
+    "confirmed_rooftop_pv": 0,
+    "candidate_points": 0,
+    "confirmed_rooftop_points": 0,
+    "buildings": 0,
+    "municipalities": 0,
+    "pixel_coverage": 1,
+    "rgbi_observations": 0,
+    "rgb_observations": 0
+  },
+  "sha256": "ad006b1c21cb40caf0d25dff70f208af21cf41d81ec17d8ad4ec46658bc0822d",
+  "report_sha256": "794f2818adeccf2a1be878f3e0d506e73658cc975c8a42ba9e12505e59f87842"
+}

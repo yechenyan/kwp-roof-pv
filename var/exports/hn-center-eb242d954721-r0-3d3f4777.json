@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "export_id": "hn-center-eb242d954721-r0-3d3f4777",
+  "created_at": "2026-11-15T09:58:11.223669+00:00",
+  "run_id": "hn-center-eb242d954721",
+  "review_revision": 0,
+  "run_manifest_sha256": "b3bb4e926eb68e987814a9af94d07e22e7cf8d2e4ddb93fb65413becfbd71dc8",
+  "crs": "EPSG:3035",
+  "scope": "PV image observations and human review only; no MaStR identity, power or storage assignment.",
+  "confirmed_count": 0,
+  "candidate_count": 14,
+  "attribution": "GeoBasis-DE/LGB, dl-de/by-2-0",
+  "sha256": "3b9e55423ea4b76479f72a140570fa38ab025fc9409207c9bca2b5356c47cfef"
+}

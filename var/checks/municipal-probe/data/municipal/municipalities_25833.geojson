@@ -1,0 +1,1 @@
+{"type": "FeatureCollection", "crs": {"type": "name", "properties": {"name": "EPSG:25833"}}, "features": [{"type": "Feature", "geometry": {"type": "Polygon", "coordinates": [[[383647.0, 5837096.0], [383647.0, 5837256.0], [383487.0, 5837256.0], [383487.0, 5837096.0], [383647.0, 5837096.0]]]}, "properties": {"name": "Integration subset"}}]}

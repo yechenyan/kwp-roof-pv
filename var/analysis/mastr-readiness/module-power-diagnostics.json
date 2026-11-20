@@ -1,0 +1,86 @@
+[
+  {
+    "EinheitMastrNummer": "SEE980446902857",
+    "Bruttoleistung": "9.010",
+    "AnzahlModule": "1",
+    "Inbetriebnahmedatum": "2014-10-30"
+  },
+  {
+    "EinheitMastrNummer": "SEE946961284465",
+    "Bruttoleistung": "9.555",
+    "AnzahlModule": "1",
+    "Inbetriebnahmedatum": "2014-11-28"
+  },
+  {
+    "EinheitMastrNummer": "SEE974142756388",
+    "Bruttoleistung": "9.750",
+    "AnzahlModule": "1",
+    "Inbetriebnahmedatum": "2018-07-13"
+  },
+  {
+    "EinheitMastrNummer": "SEE961477314154",
+    "Bruttoleistung": "1.520",
+    "AnzahlModule": "1",
+    "Inbetriebnahmedatum": "2010-05-06"
+  },
+  {
+    "EinheitMastrNummer": "SEE927445110661",
+    "Bruttoleistung": "2.262",
+    "AnzahlModule": "30",
+    "Inbetriebnahmedatum": "2011-07-07"
+  },
+  {
+    "EinheitMastrNummer": "SEE941790294005",
+    "Bruttoleistung": "3.590",
+    "AnzahlModule": "1",
+    "Inbetriebnahmedatum": "2008-12-22"
+  },
+  {
+    "EinheitMastrNummer": "SEE955516286960",
+    "Bruttoleistung": "1.000",
+    "AnzahlModule": "1",
+    "Inbetriebnahmedatum": "2000-09-20"
+  },
+  {
+    "EinheitMastrNummer": "SEE940578676996",
+    "Bruttoleistung": "9.620",
+    "AnzahlModule": "5",
+    "Inbetriebnahmedatum": "2015-09-22"
+  },
+  {
+    "EinheitMastrNummer": "SEE967255607333",
+    "Bruttoleistung": "8.075",
+    "AnzahlModule": "2",
+    "Inbetriebnahmedatum": "2023-06-07"
+  },
+  {
+    "EinheitMastrNummer": "SEE976669311569",
+    "Bruttoleistung": "2.700",
+    "AnzahlModule": "30",
+    "Inbetriebnahmedatum": "2019-05-13"
+  },
+  {
+    "EinheitMastrNummer": "SEE908522794660",
+    "Bruttoleistung": "9.480",
+    "AnzahlModule": "8",
+    "Inbetriebnahmedatum": "2023-05-12"
+  },
+  {
+    "EinheitMastrNummer": "SEE938876839120",
+    "Bruttoleistung": "2.000",
+    "AnzahlModule": "24",
+    "Inbetriebnahmedatum": "2001-09-06"
+  },
+  {
+    "EinheitMastrNummer": "SEE988440337392",
+    "Bruttoleistung": "3.240",
+    "AnzahlModule": "38",
+    "Inbetriebnahmedatum": "2007-12-13"
+  },
+  {
+    "EinheitMastrNummer": "SEE946102269283",
+    "Bruttoleistung": "15.680",
+    "AnzahlModule": "3",
+    "Inbetriebnahmedatum": "2011-12-15"
+  }
+]

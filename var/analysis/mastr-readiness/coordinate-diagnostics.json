@@ -1,0 +1,397 @@
+[
+  {
+    "solar_id": "SEE962414056526",
+    "declared_municipality": "Hohen Neuendorf",
+    "power_kw": 39.68,
+    "commissioned": "2020-06-05",
+    "inside_study_area": true,
+    "inside_declared_municipality": true,
+    "distance_to_declared_municipality_m": 0.0,
+    "local_capture_dates": [
+      "2026-04-22"
+    ],
+    "timing": "before_local_capture",
+    "nearest_candidate_id": "municipal-27320a7f3fb1:candidate:3404",
+    "distance_to_nearest_polygon_m": 1.22,
+    "candidate_count_within_25m": 1,
+    "candidate_count_within_50m": 4,
+    "building_count_at_coordinate": 1,
+    "identity_assigned": false
+  },
+  {
+    "solar_id": "SEE930227702671",
+    "declared_municipality": "Hohen Neuendorf",
+    "power_kw": 54.72,
+    "commissioned": "2010-12-21",
+    "inside_study_area": true,
+    "inside_declared_municipality": true,
+    "distance_to_declared_municipality_m": 0.0,
+    "local_capture_dates": [
+      "2026-04-22"
+    ],
+    "timing": "before_local_capture",
+    "nearest_candidate_id": "municipal-27320a7f3fb1:candidate:2777",
+    "distance_to_nearest_polygon_m": 4.842,
+    "candidate_count_within_25m": 1,
+    "candidate_count_within_50m": 3,
+    "building_count_at_coordinate": 1,
+    "identity_assigned": false
+  },
+  {
+    "solar_id": "SEE980705107849",
+    "declared_municipality": "Hohen Neuendorf",
+    "power_kw": 42.24,
+    "commissioned": "2009-09-29",
+    "inside_study_area": true,
+    "inside_declared_municipality": true,
+    "distance_to_declared_municipality_m": 0.0,
+    "local_capture_dates": [
+      "2026-04-22"
+    ],
+    "timing": "before_local_capture",
+    "nearest_candidate_id": "municipal-27320a7f3fb1:candidate:5018",
+    "distance_to_nearest_polygon_m": 15.67,
+    "candidate_count_within_25m": 6,
+    "candidate_count_within_50m": 21,
+    "building_count_at_coordinate": 1,
+    "identity_assigned": false
+  },
+  {
+    "solar_id": "SEE931110606359",
+    "declared_municipality": "Hohen Neuendorf",
+    "power_kw": 43.23,
+    "commissioned": "2020-08-27",
+    "inside_study_area": true,
+    "inside_declared_municipality": true,
+    "distance_to_declared_municipality_m": 0.0,
+    "local_capture_dates": [
+      "2026-04-22"
+    ],
+    "timing": "before_local_capture",
+    "nearest_candidate_id": "municipal-27320a7f3fb1:candidate:3447",
+    "distance_to_nearest_polygon_m": 55.075,
+    "candidate_count_within_25m": 0,
+    "candidate_count_within_50m": 0,
+    "building_count_at_coordinate": 0,
+    "identity_assigned": false
+  },
+  {
+    "solar_id": "SEE937225330547",
+    "declared_municipality": "Hohen Neuendorf",
+    "power_kw": 41.8,
+    "commissioned": "2010-06-29",
+    "inside_study_area": true,
+    "inside_declared_municipality": true,
+    "distance_to_declared_municipality_m": 0.0,
+    "local_capture_dates": [
+      "2026-04-22"
+    ],
+    "timing": "before_local_capture",
+    "nearest_candidate_id": "municipal-27320a7f3fb1:candidate:5008",
+    "distance_to_nearest_polygon_m": 0.0,
+    "candidate_count_within_25m": 14,
+    "candidate_count_within_50m": 23,
+    "building_count_at_coordinate": 1,
+    "identity_assigned": false
+  },
+  {
+    "solar_id": "SEE936631159490",
+    "declared_municipality": "Birkenwerder",
+    "power_kw": 31.35,
+    "commissioned": "2009-12-23",
+    "inside_study_area": true,
+    "inside_declared_municipality": true,
+    "distance_to_declared_municipality_m": 0.0,
+    "local_capture_dates": [
+      "2026-04-22"
+    ],
+    "timing": "before_local_capture",
+    "nearest_candidate_id": "municipal-27320a7f3fb1:candidate:1189",
+    "distance_to_nearest_polygon_m": 7.476,
+    "candidate_count_within_25m": 2,
+    "candidate_count_within_50m": 3,
+    "building_count_at_coordinate": 1,
+    "identity_assigned": false
+  },
+  {
+    "solar_id": "SEE962326081869",
+    "declared_municipality": "Hohen Neuendorf",
+    "power_kw": 99.0,
+    "commissioned": "2022-06-10",
+    "inside_study_area": true,
+    "inside_declared_municipality": true,
+    "distance_to_declared_municipality_m": 0.0,
+    "local_capture_dates": [
+      "2026-04-22"
+    ],
+    "timing": "before_local_capture",
+    "nearest_candidate_id": "municipal-27320a7f3fb1:candidate:4531",
+    "distance_to_nearest_polygon_m": 14.588,
+    "candidate_count_within_25m": 3,
+    "candidate_count_within_50m": 3,
+    "building_count_at_coordinate": 0,
+    "identity_assigned": false
+  },
+  {
+    "solar_id": "SEE910334628064",
+    "declared_municipality": "Hohen Neuendorf",
+    "power_kw": 41.35,
+    "commissioned": "2018-08-23",
+    "inside_study_area": false,
+    "inside_declared_municipality": false,
+    "distance_to_declared_municipality_m": 2254.72,
+    "local_capture_dates": [],
+    "timing": "unknown",
+    "nearest_candidate_id": "municipal-27320a7f3fb1:candidate:5181",
+    "distance_to_nearest_polygon_m": 2320.862,
+    "candidate_count_within_25m": 0,
+    "candidate_count_within_50m": 0,
+    "building_count_at_coordinate": 0,
+    "identity_assigned": false
+  },
+  {
+    "solar_id": "SEE919627258001",
+    "declared_municipality": "Hohen Neuendorf",
+    "power_kw": 99.18,
+    "commissioned": "2019-06-26",
+    "inside_study_area": true,
+    "inside_declared_municipality": true,
+    "distance_to_declared_municipality_m": 0.0,
+    "local_capture_dates": [
+      "2026-04-22"
+    ],
+    "timing": "before_local_capture",
+    "nearest_candidate_id": "municipal-27320a7f3fb1:candidate:3407",
+    "distance_to_nearest_polygon_m": 11.037,
+    "candidate_count_within_25m": 3,
+    "candidate_count_within_50m": 3,
+    "building_count_at_coordinate": 1,
+    "identity_assigned": false
+  },
+  {
+    "solar_id": "SEE934746131448",
+    "declared_municipality": "Hohen Neuendorf",
+    "power_kw": 178.76,
+    "commissioned": "2024-02-08",
+    "inside_study_area": true,
+    "inside_declared_municipality": true,
+    "distance_to_declared_municipality_m": 0.0,
+    "local_capture_dates": [
+      "2026-04-22"
+    ],
+    "timing": "before_local_capture",
+    "nearest_candidate_id": "municipal-27320a7f3fb1:candidate:601",
+    "distance_to_nearest_polygon_m": 1.572,
+    "candidate_count_within_25m": 15,
+    "candidate_count_within_50m": 30,
+    "building_count_at_coordinate": 0,
+    "identity_assigned": false
+  },
+  {
+    "solar_id": "SEE911082530579",
+    "declared_municipality": "Hohen Neuendorf",
+    "power_kw": 113.4,
+    "commissioned": "2023-10-21",
+    "inside_study_area": true,
+    "inside_declared_municipality": true,
+    "distance_to_declared_municipality_m": 0.0,
+    "local_capture_dates": [
+      "2026-04-22"
+    ],
+    "timing": "before_local_capture",
+    "nearest_candidate_id": "municipal-27320a7f3fb1:candidate:4518",
+    "distance_to_nearest_polygon_m": 0.0,
+    "candidate_count_within_25m": 6,
+    "candidate_count_within_50m": 10,
+    "building_count_at_coordinate": 1,
+    "identity_assigned": false
+  },
+  {
+    "solar_id": "SEE962829187303",
+    "declared_municipality": "Hohen Neuendorf",
+    "power_kw": 159.775,
+    "commissioned": "2024-02-26",
+    "inside_study_area": true,
+    "inside_declared_municipality": true,
+    "distance_to_declared_municipality_m": 0.0,
+    "local_capture_dates": [
+      "2026-04-22"
+    ],
+    "timing": "before_local_capture",
+    "nearest_candidate_id": "municipal-27320a7f3fb1:candidate:4144",
+    "distance_to_nearest_polygon_m": 0.0,
+    "candidate_count_within_25m": 2,
+    "candidate_count_within_50m": 2,
+    "building_count_at_coordinate": 1,
+    "identity_assigned": false
+  },
+  {
+    "solar_id": "SEE998172931232",
+    "declared_municipality": "Hohen Neuendorf",
+    "power_kw": 58.5,
+    "commissioned": "2025-01-22",
+    "inside_study_area": true,
+    "inside_declared_municipality": true,
+    "distance_to_declared_municipality_m": 0.0,
+    "local_capture_dates": [
+      "2026-04-22"
+    ],
+    "timing": "before_local_capture",
+    "nearest_candidate_id": "municipal-27320a7f3fb1:candidate:4156",
+    "distance_to_nearest_polygon_m": 14.854,
+    "candidate_count_within_25m": 1,
+    "candidate_count_within_50m": 1,
+    "building_count_at_coordinate": 0,
+    "identity_assigned": false
+  },
+  {
+    "solar_id": "SEE967308390861",
+    "declared_municipality": "Hohen Neuendorf",
+    "power_kw": 39.48,
+    "commissioned": "2024-02-02",
+    "inside_study_area": false,
+    "inside_declared_municipality": false,
+    "distance_to_declared_municipality_m": 71774.58,
+    "local_capture_dates": [],
+    "timing": "unknown",
+    "nearest_candidate_id": "municipal-27320a7f3fb1:candidate:5180",
+    "distance_to_nearest_polygon_m": 73163.014,
+    "candidate_count_within_25m": 0,
+    "candidate_count_within_50m": 0,
+    "building_count_at_coordinate": 0,
+    "identity_assigned": false
+  },
+  {
+    "solar_id": "SEE910147218827",
+    "declared_municipality": "Hohen Neuendorf",
+    "power_kw": 119.93,
+    "commissioned": "2025-07-29",
+    "inside_study_area": true,
+    "inside_declared_municipality": true,
+    "distance_to_declared_municipality_m": 0.0,
+    "local_capture_dates": [
+      "2026-04-22"
+    ],
+    "timing": "before_local_capture",
+    "nearest_candidate_id": "municipal-27320a7f3fb1:candidate:4460",
+    "distance_to_nearest_polygon_m": 0.089,
+    "candidate_count_within_25m": 5,
+    "candidate_count_within_50m": 6,
+    "building_count_at_coordinate": 1,
+    "identity_assigned": false
+  },
+  {
+    "solar_id": "SEE939961484072",
+    "declared_municipality": "Birkenwerder",
+    "power_kw": 126.72,
+    "commissioned": "2025-10-22",
+    "inside_study_area": true,
+    "inside_declared_municipality": true,
+    "distance_to_declared_municipality_m": 0.0,
+    "local_capture_dates": [
+      "2026-04-22"
+    ],
+    "timing": "before_local_capture",
+    "nearest_candidate_id": "municipal-27320a7f3fb1:candidate:1585",
+    "distance_to_nearest_polygon_m": 41.7,
+    "candidate_count_within_25m": 0,
+    "candidate_count_within_50m": 5,
+    "building_count_at_coordinate": 1,
+    "identity_assigned": false
+  },
+  {
+    "solar_id": "SEE930758910620",
+    "declared_municipality": "Hohen Neuendorf",
+    "power_kw": 159.5,
+    "commissioned": "2019-09-26",
+    "inside_study_area": true,
+    "inside_declared_municipality": true,
+    "distance_to_declared_municipality_m": 0.0,
+    "local_capture_dates": [
+      "2026-04-22"
+    ],
+    "timing": "before_local_capture",
+    "nearest_candidate_id": "municipal-27320a7f3fb1:candidate:4166",
+    "distance_to_nearest_polygon_m": 47.688,
+    "candidate_count_within_25m": 0,
+    "candidate_count_within_50m": 2,
+    "building_count_at_coordinate": 0,
+    "identity_assigned": false
+  },
+  {
+    "solar_id": "SEE943587775957",
+    "declared_municipality": "Birkenwerder",
+    "power_kw": 72.24,
+    "commissioned": "2025-12-18",
+    "inside_study_area": true,
+    "inside_declared_municipality": true,
+    "distance_to_declared_municipality_m": 0.0,
+    "local_capture_dates": [
+      "2026-04-22"
+    ],
+    "timing": "before_local_capture",
+    "nearest_candidate_id": "municipal-27320a7f3fb1:candidate:1229",
+    "distance_to_nearest_polygon_m": 5.445,
+    "candidate_count_within_25m": 4,
+    "candidate_count_within_50m": 5,
+    "building_count_at_coordinate": 0,
+    "identity_assigned": false
+  },
+  {
+    "solar_id": "SEE963056634660",
+    "declared_municipality": "Hohen Neuendorf",
+    "power_kw": 98.58,
+    "commissioned": "2026-04-30",
+    "inside_study_area": true,
+    "inside_declared_municipality": true,
+    "distance_to_declared_municipality_m": 0.0,
+    "local_capture_dates": [
+      "2026-04-22"
+    ],
+    "timing": "after_local_capture",
+    "nearest_candidate_id": "municipal-27320a7f3fb1:candidate:5018",
+    "distance_to_nearest_polygon_m": 15.67,
+    "candidate_count_within_25m": 6,
+    "candidate_count_within_50m": 21,
+    "building_count_at_coordinate": 1,
+    "identity_assigned": false
+  },
+  {
+    "solar_id": "SEE941838090132",
+    "declared_municipality": "Hohen Neuendorf",
+    "power_kw": 99.645,
+    "commissioned": "2026-05-18",
+    "inside_study_area": true,
+    "inside_declared_municipality": true,
+    "distance_to_declared_municipality_m": 0.0,
+    "local_capture_dates": [
+      "2026-04-22"
+    ],
+    "timing": "after_local_capture",
+    "nearest_candidate_id": "municipal-27320a7f3fb1:candidate:3383",
+    "distance_to_nearest_polygon_m": 3.872,
+    "candidate_count_within_25m": 4,
+    "candidate_count_within_50m": 7,
+    "building_count_at_coordinate": 1,
+    "identity_assigned": false
+  },
+  {
+    "solar_id": "SEE963573994339",
+    "declared_municipality": "Hohen Neuendorf",
+    "power_kw": 161.82,
+    "commissioned": "2026-10-27",
+    "inside_study_area": true,
+    "inside_declared_municipality": true,
+    "distance_to_declared_municipality_m": 0.0,
+    "local_capture_dates": [
+      "2026-04-22"
+    ],
+    "timing": "after_local_capture",
+    "nearest_candidate_id": "municipal-27320a7f3fb1:candidate:692",
+    "distance_to_nearest_polygon_m": 16.803,
+    "candidate_count_within_25m": 3,
+    "candidate_count_within_50m": 8,
+    "building_count_at_coordinate": 1,
+    "identity_assigned": false
+  }
+]
