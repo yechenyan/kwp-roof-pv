@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Rooftop PV Matching Results</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="vendor/leaflet.css">
+  <link rel="stylesheet" href="static/style.css">
+  <link rel="stylesheet" href="static/delivery.css">
+  <script defer src="vendor/leaflet.js"></script>
+  <script defer src="static/delivery.js"></script>
+</head>
+<body class="results-delivery">
+<header>
+  <a class="brand" href="./"><span class="brand-mark" aria-hidden="true">▦</span><span>ROOF PV <b>ATLAS</b><small>HOHEN NEUENDORF / BIRKENWERDER</small></span></a>
+  <nav aria-label="Downloads">
+    <a href="../roof-pv-report-zh.pdf" target="_blank" rel="noopener">Chinese report ↗</a>
+    <a href="../roof-pv-report.pdf" target="_blank" rel="noopener">English report ↗</a>
+    <a class="download" href="../geodata/roof-pv-results.gpkg" download>Download GeoPackage ↓</a>
+  </nav>
+</header>
+<section class="intro">
+  <div>
+    <h1>Rooftop PV matching results</h1>
+    <p class="subtitle">Published links between MaStR records and solar panels detected in the aerial survey.</p>
+  </div>
+  <div class="snapshot">
+    <dl>
+      <dt>Registry</dt><dd id="registry-date">Loading</dd>
+      <dt>Aerial survey</dt><dd id="capture-dates">Loading</dd>
+    </dl>
+  </div>
+</section>
+<section class="metrics" aria-label="Result counts">
+  <div class="metric"><span>Matched registry records</span><strong id="total-matches">—</strong></div>
+  <div class="metric"><span>Joint matches</span><strong id="joint-matches">—</strong></div>
+  <div class="metric"><span>Public-coordinate associations</span><strong id="coordinate-matches">—</strong></div>
+</section>
+<p class="notice"><span>Building identities remain unverified. The full postcode totals are in the report and GeoPackage.</span></p>
+<main class="workspace">
+  <aside class="directory" aria-label="Matched records">
+    <div class="panel-title"><h2>Matched records</h2><span id="count" aria-live="polite">0</span></div>
+    <label class="search">
+      <span class="sr-only">Search matched records</span>
+      <input id="search" type="search" placeholder="MaStR ID or postcode">
+    </label>
+    <label class="result-filter">Result type
+      <select id="result-type">
+        <option value="">All results</option>
+        <option value="joint">Joint matches</option>
+        <option value="coordinate">Public-coordinate associations</option>
+      </select>
+    </label>
+    <p id="list-status" role="status">Loading matched records.</p>
+    <ul id="results-list" class="results-list"></ul>
+  </aside>
+  <section class="map-panel" aria-label="Matching results map">
+    <div class="map-toolbar">
+      <div><strong>Matched locations</strong><small id="map-count">Loading</small></div>
+      <label><span class="sr-only">Map imagery</span>
+        <select id="basemap">
+          <option value="rgb">DOP20 RGB</option>
+          <option value="cir">DOP20 CIR</option>
+          <option value="osm">OpenStreetMap</option>
+        </select>
+      </label>
+      <button id="fit" type="button">Fit results</button>
+    </div>
+    <div id="map"></div>
+    <div class="legend">
+      <span class="result-key joint">Joint match</span>
+      <span class="result-key coordinate">Public-coordinate association</span>
+      <label><input id="show-postcodes" type="checkbox" checked> Postcode boundaries</label>
+    </div>
+    <p id="map-status" class="map-status" role="status">Live imagery may have a different flight date from the frozen survey.</p>
+  </section>
+  <aside class="details" id="details" aria-live="polite">
+    <h2>Match details</h2>
+    <p>Open a marker or a record to see the matched panels and the supporting evidence.</p>
+  </aside>
+</main>
+<footer>
+  <span>Imagery, ALKIS, LoD2 and postcode geometry © GeoBasis-DE/LGB · dl-de/by-2-0<br>Registry © Bundesnetzagentur / MaStR · dl-de/by-2-0 · Basemap © OpenStreetMap contributors</span>
+  <span id="delivery-version"></span>
+</footer>
+</body>
+</html>

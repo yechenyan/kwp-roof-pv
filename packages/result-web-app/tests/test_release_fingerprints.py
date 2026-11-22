@@ -4,10 +4,11 @@ from pathlib import Path
 import sys
 
 import pytest
+from shapely.geometry import box, mapping, shape
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from build import RANKING_INDEX, REPORT_INPUTS, VERIFIED_BUILD_FILES, digest, read, write
-from package_delivery import REPORTS, release_fingerprints
+from package_delivery import REPORTS, published_matches, release_fingerprints
 
 
 @pytest.fixture
@@ -55,3 +56,35 @@ def test_web_file_changed_after_verification_is_rejected(verified_build):
     (verified_build / "postcode-totals.json").write_text("Older postcode data")
     with pytest.raises(ValueError, match="Build file differs from verification: postcode-totals.json"):
         release_fingerprints(verified_build)
+
+
+def test_published_matches_include_only_assigned_records_and_their_selected_arrays():
+    inventory = [
+        {"geometry": mapping(box(i, 0, i + 1, 1)),
+         "properties": {"id": key, "capture_dates": ["2026-04-22"]}}
+        for i, key in enumerate(("selected", "alternative", "coordinate"))
+    ]
+    base = {"municipality": "Hohen Neuendorf", "postcode": "16540", "power_kw": 6,
+            "commissioned": None, "identity_verified": False}
+    records = [
+        {**base, "solar_id": "joint", "association_status": "building_candidates", "score": 55,
+         "alternatives": ["alternative"],
+         "joint_proposal": {"group_ids": ["selected"], "building_id": "roof",
+                            "score": 49, "points": [3400, 1000, 500]}},
+        {**base, "solar_id": "coordinate", "association_status": "inferred_image_association",
+         "score": 81, "point": [2.5, 0.5], "group_id": "coordinate"},
+        {**base, "solar_id": "unassigned", "association_status": "building_candidates", "score": 48},
+    ]
+    metadata = {"created_at": "example", "summary": {"joint_proposal_count": 1,
+                "states": {"inferred_image_association": 1}}}
+
+    matches = published_matches(records, inventory, metadata)
+
+    assert matches["snapshot"] == "example"
+    joint, coordinate = matches["features"]
+    assert joint["id"] == "joint" and shape(joint["geometry"]).equals(box(0, 0, 1, 1))
+    assert joint["properties"]["score"] == 49
+    assert joint["properties"]["evidence_points"] == [34, 10, 5]
+    assert "alternatives" not in joint["properties"]
+    assert coordinate["id"] == "coordinate" and coordinate["properties"]["point"] == [2.5, 0.5]
+    assert not any(item["properties"]["identity_verified"] for item in matches["features"])

@@ -1,19 +1,25 @@
 # Roof PV result atlas
 
-The building inventory uses the frozen Hohen Neuendorf and Birkenwerder survey and MaStR snapshot. The atlas opens on image-observed PV and registry postcode totals. The original image-review service keeps its own database and workflow.
+The building inventory uses the frozen Hohen Neuendorf and Birkenwerder survey and MaStR snapshot. The delivered atlas opens on published joint matches and public-coordinate associations. The original image-review service keeps its own database and workflow.
 
-## Build and open the delivery
+## Open the delivered atlas
 
 Run from the repository root:
 
 ```sh
-uv run --locked --package roof-pv-review --with reportlab python packages/result-web-app/deliver.py
-python3 -m http.server 8791 --bind 127.0.0.1 --directory packages/result-web-app/delivery-v4
+python3 -m http.server 8791 --bind 127.0.0.1 --directory packages/result-web-app/delivery
 ```
 
-Open <http://127.0.0.1:8791/web/>. The static atlas uses vendored Leaflet and local evidence. Live Brandenburg imagery and optional OpenStreetMap tiles require network access. For a build without live imagery checks, pass `--skip-wms` to `deliver.py`. Set `ROOF_PV_REPORT_FONT` to an embeddable Chinese TrueType font if automatic font discovery cannot find one.
+Open <http://127.0.0.1:8791/web/>. Search by MaStR ID or postcode and open a result to see its matched panels and evidence. The tracked `delivery/` contains the English and Chinese PDF reports, the standalone `web/` atlas, the EPSG:3035 GeoPackage in `geodata/`, and the verification and checksum manifests. Live Brandenburg imagery and optional OpenStreetMap tiles require network access.
 
-`delivery-v4/` contains the English and Chinese PDF reports, the versioned standalone `web/` atlas, the EPSG:3035 GeoPackage in `geodata/`, verification results and a checksum manifest. It is generated locally. The tracked `delivery/` folder remains the original comparison snapshot.
+## Rebuild the delivery
+
+```sh
+uv run --locked --package roof-pv-review --with reportlab python packages/result-web-app/deliver.py
+uv run --locked --package roof-pv-review python packages/result-web-app/package_delivery.py --tracked
+```
+
+The rebuild creates a candidate-review preview in `delivery-v4/`. The second command packages the verified matches into the tracked `delivery/` directory. For a build without live imagery checks, pass `--skip-wms` to `deliver.py`. If automatic font discovery fails, set `ROOF_PV_REPORT_FONT` to an embeddable Chinese TrueType font.
 
 ### Local annotations
 
@@ -29,7 +35,7 @@ Annotations are stored in `state/annotations.sqlite3` and bound to the generated
 
 - `observed_pv_buildings` contains one union of roof-supported detection geometry per ALKIS ID. Source group IDs, capture dates and projected area are retained.
 - `observed_pv_roof_faces` contains each usable LoD2 face intersection. The estimated surface area assumes panel alignment with the roof and uses a projected-area fallback when the roof geometry or mounting is uncertain. The building layer records the applicable area method. Tilt and azimuth describe the roof face.
-- `registry_by_postcode` maps registry totals by municipality and official LGB postcode. `registry_postcode_totals` retains totals even where a postcode has no mapped area. The atlas directory and PDFs default to the active anonymous building-PV cohort below 30 kW. The postcode detail and GeoPackage also give the full registry counts and power. Later records enter the postcode figures.
+- `registry_by_postcode` maps registry totals by municipality and official LGB postcode. `registry_postcode_totals` retains totals even where a postcode has no mapped area. The review atlas and PDFs default to the active anonymous building-PV cohort below 30 kW. The GeoPackage also gives the full registry counts and power. Later records enter the postcode figures.
 - The atlas scores observed buildings in the registered municipality and assigned LGB postcode. Signed area, direction and tilt points are computed for the same array group or connected group combination. A module count and power estimate support one area comparison. The frozen evidence lacks an independent installation window for the full inventory, so timing adds zero points. Projected comparisons account for the available registry tilt range.
 
 - Within the geographic pool, all roofs scoring at least 42 points appear as candidates. The total is the only selection criterion. Strong direction and tilt discrepancies reduce the score, including when one of two comparable faces disagrees. When no roof reaches the threshold, a collapsed review panel can show and map up to five highest-scoring roofs. An empty geographic pool stays unlocated. The GIS table `registry_building_candidates` keeps the first five ranks, and `registry_outcomes` carries eligible and qualified counts. Its `projected_score` column retains the prior engineering comparison for reference. Only coordinate-bearing records retain selected point proposals.

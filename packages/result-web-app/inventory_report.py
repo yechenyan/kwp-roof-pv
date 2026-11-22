@@ -116,7 +116,7 @@ def generate_inventory(directory, language, font):
         listed=candidates.get("ranked", 0) + candidates.get("low_compatibility", 0),
         ranked=candidates.get("ranked", 0), low=candidates.get("low_compatibility", 0),
         eligible=summary["strict_under30_targets"] - sum(r["post_capture_count"] for r in rows),
-        minimum=f'{summary["candidate_threshold"]:g}', fallback=summary["candidate_fallback_count"],
+        minimum=f'{summary["candidate_threshold"]:g}',
         verified=summary["verified_identities"],
     )
     story = [p(locale["title"], "title"), p(locale["area"], "heading"),
@@ -127,7 +127,9 @@ def generate_inventory(directory, language, font):
              PageBreak(), p(locale["registry_title"], "title"), p(registry_note),
              table(locale["postal_headers"], postal_rows, [.28, .15, .16, .19, .22]),
              p(locale["candidates"], "heading"), p(candidate_note),
-             p(locale["joint_proposals"].format(proposals=summary["joint_proposal_count"])), p(locale["postal_method"]),
+             p(locale["joint_proposals"].format(proposals=summary["joint_proposal_count"],
+                                                coordinates=summary["states"].get("inferred_image_association", 0))),
+             p(locale["postal_method"]),
              p(locale["gis_title"], "heading"), p(locale["gis"]), p(locale["sources"], "caption")]
     path = directory / ("roof-pv-report-zh.pdf" if language == "zh-CN" else "roof-pv-report.pdf")
     doc = SimpleDocTemplate(str(path), pagesize=A4, leftMargin=MARGIN, rightMargin=MARGIN,

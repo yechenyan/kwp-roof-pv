@@ -16,7 +16,7 @@
   "geometry": "Building and roof-face measurements",
   "grouping": "Building-supported image groups are merged by ALKIS building ID. The union counts overlapping detections once and retains source group IDs and capture dates.",
   "lod2": "Detected PV is intersected with each usable LoD2 roof face. Area correction assumes the modules sit parallel to that face. Flat roofs, insufficient face support and inconsistent geometry use projected area for scoring.",
-  "registry_title": "Registry totals and building candidates",
+  "registry_title": "Registry totals and matching results",
   "registry_scope": "The complete MaStR snapshot dated {snapshot} contains {records:,} records across {zones} municipal postcode rows. The table shows active anonymous rooftop PV records with capacity below 30 kW.",
   "postal_headers": [
     "Municipality",
@@ -27,12 +27,12 @@
   ],
   "missing_postcode": "Missing",
   "total": "Total",
-  "candidates": "Candidate review",
-  "candidate_coverage": "{listed:,} of {eligible:,} image-stage targets have geographic candidates. For {ranked:,} targets, at least one roof scores {minimum} points or more. The other {low:,} targets have no default candidates and may show up to {fallback} highest-scoring roofs in a collapsed review panel. Independent evidence confirms {verified} building identities.",
-  "postal_method": "Candidates share the registered municipality and an unambiguous LGB postcode. The atlas ranks roofs by signed area, direction and tilt points. Post-capture targets contribute to postcode totals.",
+  "candidates": "Matching coverage",
+  "candidate_coverage": "{listed:,} of {eligible:,} image-stage targets have geographic candidates. At least one roof scored {minimum} points or more for {ranked:,} targets. All candidate roofs scored below that threshold for {low:,} targets. Independent evidence confirms {verified} building identities.",
+  "postal_method": "The model considers roofs in the registered municipality and an unambiguous LGB postcode. It scores area, direction and tilt. Post-capture targets contribute to postcode totals.",
   "gis_title": "GIS layers",
   "gis": "The EPSG:3035 GeoPackage includes observed PV buildings, roof faces and registry postcode totals. The registry_building_candidates table retains a top-five score preview.",
   "sources": "Imagery, ALKIS, LoD2 and postcodes © GeoBasis-DE/LGB, dl-de/by-2-0. Registry © Bundesnetzagentur/MaStR, dl-de/by-2-0.",
   "running_header": "MUNICIPAL PV INVENTORY",
-  "joint_proposals": "The atlas marks {proposals:,} unverified joint proposals. The model prevents duplicated array claims and applies shared roof capacity. Other candidates retain their score order."
+  "joint_proposals": "The delivery map shows {proposals:,} joint matches and {coordinates:,} public-coordinate associations. The joint model prevents duplicated array claims and applies shared roof capacity. Building identities remain unverified."
 }

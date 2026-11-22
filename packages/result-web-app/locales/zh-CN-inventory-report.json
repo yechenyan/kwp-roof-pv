@@ -16,7 +16,7 @@
   "geometry": "建筑归并与分坡面积",
   "grouping": "按 ALKIS 建筑 ID 归并有屋面支持的光伏图斑。几何并集避免重复统计重叠面积，并保留来源组编号和影像日期。",
   "lod2": "将光伏图斑与各个可用 LoD2 屋面相交，按组件平行于屋面的假设修正面积。平屋顶、屋面覆盖不足或几何不一致时，评分使用水平投影面积。",
-  "registry_title": "登记汇总与楼栋候选",
+  "registry_title": "登记汇总与匹配结果",
   "registry_scope": "{snapshot} 的 MaStR 快照共有 {records:,} 条记录，汇总到 {zones} 个市镇和邮编组合。下表统计在运、无公开坐标且功率低于 30 kW 的屋顶光伏记录。",
   "postal_headers": [
     "市镇",
@@ -27,12 +27,12 @@
   ],
   "missing_postcode": "缺失",
   "total": "总计",
-  "candidates": "候选复核",
-  "candidate_coverage": "{eligible:,} 条影像阶段的目标中，{listed:,} 条有同市镇、同邮编候选。{ranked:,} 条至少一栋达到 {minimum} 分。其余 {low:,} 条默认没有候选，可展开复核分数最高的至多 {fallback} 栋。已有独立证据确认 {verified} 条楼栋归属。",
-  "postal_method": "候选与登记属于同一市镇和明确的 LGB 邮编区域。地图按面积、朝向和倾角的证据分排序。拍摄后投运的登记计入邮编汇总。",
+  "candidates": "匹配覆盖情况",
+  "candidate_coverage": "{eligible:,} 条影像阶段的目标中，{listed:,} 条有同市镇、同邮编候选。{ranked:,} 条至少有一栋达到 {minimum} 分，另有 {low:,} 条的候选均低于门槛。已有独立证据确认 {verified} 条楼栋归属。",
+  "postal_method": "模型在登记的市镇和明确的 LGB 邮编区域内，按面积、朝向和倾角打分。拍摄后投运的登记计入邮编汇总。",
   "gis_title": "GIS 交付",
   "gis": "EPSG:3035 GeoPackage 包含已观测光伏建筑、屋面和登记邮编汇总。候选表保留按分数排序的前五名供参考。",
   "sources": "影像、ALKIS、LoD2 与邮编 © GeoBasis-DE/LGB，dl-de/by-2-0。登记数据 © Bundesnetzagentur/MaStR，dl-de/by-2-0。",
   "running_header": "市镇屋顶光伏清单",
-  "joint_proposals": "图册另标出 {proposals:,} 条联合提案供核验。分配避免重复使用同一组组件，并受屋顶共享容量约束。其他候选仍按原证据分排列。"
+  "joint_proposals": "交付地图显示 {proposals:,} 条联合匹配和 {coordinates:,} 条公开坐标关联。联合分配避免重复使用同一组组件，并遵守屋顶共享容量限制。楼栋归属仍待独立核验。"
 }
