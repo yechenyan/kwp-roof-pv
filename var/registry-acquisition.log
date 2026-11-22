@@ -7,24 +7,24 @@ EinheitenSolar_14.xml: 44 retained; 6/198
 EinheitenSolar_15.xml: 31 retained; 7/198
 EinheitenSolar_16.xml: 19 retained; 8/198
 Traceback (most recent call last):
-  File "/Users/maxiao/Documents/code2/kwp2/kwp-roof-pv/var/backend-env/bin/roof-pv-registry", line 10, in <module>
+  File "var/backend-env/bin/roof-pv-registry", line 10, in <module>
     sys.exit(main())
              ^^^^^^
-  File "/Users/maxiao/Documents/code2/kwp2/kwp-roof-pv/packages/registry-mastr/src/roof_pv_registry/cli.py", line 21, in main
+  File "packages/registry-mastr/src/roof_pv_registry/cli.py", line 21, in main
     folder = acquire(args.home, args.url, args.ags, args.workers)
              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/maxiao/Documents/code2/kwp2/kwp-roof-pv/packages/registry-mastr/src/roof_pv_registry/source.py", line 203, in acquire
+  File "packages/registry-mastr/src/roof_pv_registry/source.py", line 203, in acquire
     for name in phase:
                        
-  File "/Users/maxiao/.local/share/uv/python/cpython-3.12.13-macos-aarch64-none/lib/python3.12/concurrent/futures/_base.py", line 619, in result_iterator
+  File "concurrent/futures/_base.py", line 619, in result_iterator
     yield _result_or_cancel(fs.pop())
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/maxiao/.local/share/uv/python/cpython-3.12.13-macos-aarch64-none/lib/python3.12/concurrent/futures/_base.py", line 317, in _result_or_cancel
+  File "concurrent/futures/_base.py", line 317, in _result_or_cancel
     return fut.result(timeout)
            ^^^^^^^^^^^^^^^^^^^
-  File "/Users/maxiao/.local/share/uv/python/cpython-3.12.13-macos-aarch64-none/lib/python3.12/concurrent/futures/_base.py", line 451, in result
+  File "concurrent/futures/_base.py", line 451, in result
     self._condition.wait(timeout)
-  File "/Users/maxiao/.local/share/uv/python/cpython-3.12.13-macos-aarch64-none/lib/python3.12/threading.py", line 355, in wait
+  File "threading.py", line 355, in wait
     waiter.acquire()
 KeyboardInterrupt
 EinheitenSolar_1.xml: 22 retained; 1/198

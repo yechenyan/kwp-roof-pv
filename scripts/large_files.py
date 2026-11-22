@@ -22,7 +22,7 @@ def split():
     if MANIFEST.exists():
         raise FileExistsError("Split manifest already exists; restore or review it first")
     paths = sorted(p for p in (ROOT / "var").rglob("*")
-                   if p.is_file() and p.stat().st_size > 100_000_000)
+                   if p.is_file() and p.suffix != ".pt" and p.stat().st_size > 100_000_000)
     records = []
     for path in paths:
         parts = []

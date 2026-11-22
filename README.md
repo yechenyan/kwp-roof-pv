@@ -81,9 +81,28 @@ uv run --package roof-pv-review python scripts/download_web_imagery.py --workers
 
 The command uses the original manifest's official URLs, verifies both archive and TIFF SHA-256 hashes, checks the four-band raster grid, and reuses previously verified downloads when rerun. If the official files have changed, it fails instead of silently changing the imagery behind existing detections. Downloaded tiles remain ignored by Git. Restart the web service and reload the page after downloading; native RGB/CIR tiles then activate without model installation or another inference run. Without the download, the complete detection results remain viewable over the included previews.
 
-For a fresh complete inference setup, use `uv sync --all-packages --all-extras` and restore the model/export artifacts with `python3 scripts/large_files.py restore`, then follow the acquisition and survey instructions below.
+For a fresh inference setup, follow [Set up the Brandenburg model](#set-up-the-brandenburg-model). To restore the archived GeoPackage export, run `python3 scripts/large_files.py restore`.
 
 For frontend development, start the API as above and run `pnpm dev` in a second terminal. The Vite development server proxies `/api` to port 8780. The service binds only to loopback and has no multi-user authentication. Reviewer names are attribution, not authenticated identities. SQLite is intended for local/small-scale review.
+
+## Set up the Brandenburg model
+
+Use `uv` with Python 3.12 and run these commands from the repository root:
+
+```sh
+uv sync --locked --package roof-pv-model --extra inference
+uv run --locked --package roof-pv-model --extra inference roof-pv weights
+```
+
+The first command installs the inference runtime, including PyTorch. The second downloads the RGB and RGBI checkpoints from the [pinned model revision](configs/brandenburg.json) into `var/models/`. The two downloads total about 324 MB. Each file is checked against the configured SHA-256 hash. A valid local copy is reused, and each successful check prints `Verified` followed by the filename.
+
+To use existing checkpoint files, place both original `.pt` files in a local folder and pass it to the same command with `--from-dir`. For example:
+
+```sh
+uv run --locked --package roof-pv-model --extra inference roof-pv weights --from-dir cached-weights
+```
+
+The same checksum checks apply to local copies. Git ignores the weight files. After setup, use the municipal or sample recipe below to run inference. The delivered results and map can be viewed without installing the model.
 
 ## Full municipal survey
 
@@ -106,7 +125,7 @@ Treat an acquired source namespace as immutable. For a future imagery epoch, use
 
 The sample is 800 × 800 pixels, 160 × 160 m, from tile `33383-5837`. The imagery was captured on 2026-04-22 and published on 2026-10-09. See `configs/hn-center.json` and the prepared image's provenance sidecar.
 
-The current workspace has local weights and input files in `var/`. Five large artifacts are stored as `.partNNN` files of at most 95,000,000 bytes, with original paths, sizes and SHA-256 hashes in `var/large-files.json`. Run `python3 scripts/large_files.py restore` after cloning to reconstruct them before use. Restoration verifies every part and the complete output, and refuses to overwrite differing existing files. The five reconstructed originals are individually ignored by Git; other `var/` files and the parts remain eligible for tracking. Splitting preserves the exact model weights and GeoPackage bytes without reducing total storage. To set up sample imagery in another checkout, download and extract the official [LGB RGBI product](https://data.geobasis-bb.de/geobasis/daten/dop/rgbi_tif/dop_33383-5837.zip) into `var/data/source/`, then:
+The `weights` command downloads the pinned checkpoints to the ignored `var/models/` directory and verifies their SHA-256 hashes. Existing verified downloads are reused. The large archived GeoPackage is stored as `.partNNN` files with checksums in `var/large-files.json`. The restore command checks each part and the complete export before publishing it. To set up sample imagery in another checkout, download and extract the official [LGB RGBI product](https://data.geobasis-bb.de/geobasis/daten/dop/rgbi_tif/dop_33383-5837.zip) into `var/data/source/`, then:
 
 ```sh
 uv run --package roof-pv-model roof-pv weights

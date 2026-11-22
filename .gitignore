@@ -11,11 +11,13 @@ __pycache__/
 *.egg-info/
 *.tsbuildinfo
 
-# Reconstructed artifacts; commit their .partNNN files and var/large-files.json.
-/var/checks/municipal-probe/models/best_timm-regnety_080_ch3_ep090.pt
-/var/checks/municipal-probe/models/best_timm-regnety_080_ch4_nir_ep070.pt
-/var/models/best_timm-regnety_080_ch3_ep090.pt
-/var/models/best_timm-regnety_080_ch4_nir_ep070.pt
+# Upstream model checkpoints and legacy local shards.
+/var/checks/municipal-probe/models/*.pt
+/var/checks/municipal-probe/models/*.pt.part[0-9][0-9][0-9]
+/var/models/*.pt
+/var/models/*.pt.part[0-9][0-9][0-9]
+
+# Reconstructed export; commit its .partNNN files and var/large-files.json.
 /var/exports/municipal-27320a7f3fb1-r0-925fad1b.gpkg
 
 # Local-only inputs and intermediates omitted from the compact web delivery.
