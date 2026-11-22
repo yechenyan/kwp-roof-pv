@@ -44,6 +44,9 @@ def generate(directory):
     resource = read(APP / "locales" / "zh-CN-report.json")
     metadata = read(directory / "summary.json")
     summary = metadata["summary"]
+    if "observed_buildings" in summary:
+        from inventory_report import generate_inventory
+        return generate_inventory(directory, "zh-CN", register_font())
     records = read(directory / "records.json")
     context = read(directory / "context.json")
     models = read(directory / "model-comparison.json")

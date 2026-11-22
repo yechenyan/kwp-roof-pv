@@ -5,6 +5,7 @@ import hashlib
 import json
 import math
 from pathlib import Path
+import re
 import shutil
 import sqlite3
 from datetime import datetime, timezone
@@ -13,17 +14,30 @@ import geopandas as gpd
 import numpy as np
 from pyproj import Transformer
 from shapely.geometry import Point, shape, mapping
-from shapely.ops import transform, unary_union
+from shapely.ops import transform
 from shapely.strtree import STRtree
 from roof_pv_registry.snapshot import RegistrySnapshot
 from roof_pv_matching.engine import load_batch
-from scoring import VERSION, LOCATION_DIAMETER_M, LocationConstraints, rank_unit, score_arrays, allocate_building, flag_competition
+from building_evidence import (AREA_MODES, BuildingShortlists, assemble_buildings, load_roofs, observation_features,
+                               postal_summary, postcode_fabric)
+from candidate_allocation import joint_proposals
+from candidate_scoring import FALLBACK_COUNT, MINIMUM_CANDIDATE_POINTS, POINT_SCALE
+from scoring import LOCATION_DIAMETER_M, LocationConstraints, rank_unit, score_arrays, flag_competition
 
 ROOT = Path(__file__).resolve().parents[2]
 APP = Path(__file__).resolve().parent
 RUN = "municipal-27320a7f3fb1"
 SNAPSHOT = "mastr-20261115-99075610"
 BATCH = "matching-1077534f5c31f8b6"
+VERSION = "building-postcode-lod2-evidence-v9"
+RANKING_INDEX = "candidate-rankings/index.json"
+RANKING_SHARD_SIZE = 40
+WEB_DATA = ("records.json", "summary.json", "buildings.geojson", "municipalities.geojson",
+            "observed-pv.geojson", "roof-faces.geojson", "postcodes.geojson", "postcode-totals.json", RANKING_INDEX)
+GIS_DATA = ("roof-pv-results.gpkg", "results.geojson")
+REPORT_INPUTS = ("summary.json", "context.json")
+VERIFIED_BUILD_FILES = (*WEB_DATA, *GIS_DATA, "context.json", "index.html",
+                        "static/index.html", "static/app.js", "static/style.css")
 TECHNICAL_FIELDS = {
     "EinheitMastrNummer", "DatumLetzteAktualisierung", "LokationMaStRNummer", "Gemeinde", "Gemeindeschluessel",
     "Postleitzahl", "Registrierungsdatum", "Inbetriebnahmedatum", "EinheitSystemstatus", "EinheitBetriebsstatus",
@@ -46,6 +60,33 @@ def write(path, data):
 def digest(path):
     with Path(path).open("rb") as stream:
         return hashlib.file_digest(stream, "sha256").hexdigest()
+
+
+def ranking_files(directory):
+    names = read(directory / RANKING_INDEX)["shards"]
+    if len(set(names)) != len(names) or any(not re.fullmatch(r"[0-9]{4}\.json", name) for name in names):
+        raise ValueError("Invalid candidate ranking shard names.")
+    return tuple(f"candidate-rankings/{name}" for name in names)
+
+
+def write_rankings(output, rankings, shortlists, snapshot):
+    folder = output / "candidate-rankings"
+    folder.mkdir(exist_ok=True)
+    shards = []
+    for offset in range(0, len(rankings), RANKING_SHARD_SIZE):
+        name = f"{offset // RANKING_SHARD_SIZE:04d}.json"
+        rows = rankings[offset:offset + RANKING_SHARD_SIZE]
+        write(folder / name, {"snapshot": snapshot, "records": {row["solar_id"]: scores for row, scores in rows}})
+        for row, _ in rows:
+            row["ranking_shard"] = name
+        shards.append(name)
+    write(output / RANKING_INDEX, {"snapshot": snapshot, "building_ids": shortlists.building_ids, "score_scale": POINT_SCALE,
+                                  "threshold": MINIMUM_CANDIDATE_POINTS, "fallback_count": FALLBACK_COUNT,
+                                  "area_modes": AREA_MODES,
+                                  "array_options": [[{"groups": option.groups, "projected_m2": round(option.projected, 2),
+                                                       "parallel_m2": round(option.parallel, 2) if option.parallel else None}
+                                                     for option in options] for options in shortlists.options],
+                                  "shards": shards})
 
 
 def clean(row):
@@ -83,6 +124,9 @@ def export_gpkg(output, records, context):
                 "statistical_building_allocations": fallback_rows, "scored_array_groups": context["groups"],
                 "unselected_image_groups": [g for g in context["groups"] if g["properties"]["selected_by_count"] == 0],
                 "municipalities": context["municipalities"]}
+    for name in ("observed_pv_buildings", "observed_pv_roof_faces", "registry_by_postcode"):
+        if name in context:
+            datasets[name] = context[name]
     for name, features in datasets.items():
         if features:
             frame = gpd.GeoDataFrame.from_features(features, crs=4326)
@@ -109,6 +153,17 @@ def export_gpkg(output, records, context):
               [(r["solar_id"],r["storage_id"],r["system_id"],r["location_id"],r["net_power_kw"],r["usable_capacity_kwh"],r["relationship_status"],0) for r in context["storage_relationships"]])
         table("storage_units", "storage_id TEXT PRIMARY KEY,attributes_json TEXT", [(r["EinheitMastrNummer"],json.dumps(clean(r))) for r in context["storage_units"]])
         table("storage_systems", "system_id TEXT PRIMARY KEY,attributes_json TEXT", [(r["MaStRNummer"],json.dumps(clean(r))) for r in context["storage_systems"]])
+        if "registry_postcode_totals" in context:
+            table("registry_postcode_totals", "municipality TEXT,postcode TEXT,has_geometry INTEGER,registry_count INTEGER,registry_power_kw REAL,target_count INTEGER,target_power_kw REAL,post_capture_count INTEGER,PRIMARY KEY(municipality,postcode)",
+                  [tuple(r[k] for k in ("municipality", "postcode", "has_geometry", "registry_count", "registry_power_kw",
+                                        "target_count", "target_power_kw", "post_capture_count")) for r in context["registry_postcode_totals"]])
+            table("registry_building_candidates", "solar_id TEXT,rank INTEGER,building_id TEXT,score REAL,projected_score REAL,area_method TEXT,orientation_compared INTEGER,PRIMARY KEY(solar_id,rank)",
+                  [(r["solar_id"], rank, a["building_id"], a["score"], a["projected_score"], a["area_method"], a["orientation_compared"])
+                   for r in records if r["association_status"] == "building_candidates"
+                   for rank, a in enumerate(r["alternatives"], 1)])
+            table("registry_joint_proposals", "solar_id TEXT PRIMARY KEY,building_id TEXT,candidate_rank INTEGER,score REAL,group_ids_json TEXT",
+                  [(r["solar_id"], proposal["building_id"], proposal["rank"], proposal["score"], json.dumps(proposal["group_ids"]))
+                   for r in records if (proposal := r.get("joint_proposal")) is not None])
         table("provenance", "id INTEGER PRIMARY KEY,metadata_json TEXT", [(1,json.dumps(context["metadata"]))])
     with sqlite3.connect(temporary) as db:
         if db.execute("PRAGMA integrity_check").fetchone()[0] != "ok":
@@ -118,7 +173,7 @@ def export_gpkg(output, records, context):
     temporary.replace(output)
 
 
-def build(home, output):
+def build(home, output, evidence_dir=APP / "evidence"):
     output.mkdir(parents=True, exist_ok=True)
     registry = RegistrySnapshot(home / "registry" / SNAPSHOT)
     batch_folder = home / "matching" / RUN / BATCH
@@ -157,44 +212,38 @@ def build(home, output):
     by_group = {g["id"]: g for g in groups}
     group_tree = STRtree([g["_geometry"] for g in groups])
     buildings = []
-    detected_buildings = {part.split(":part:")[0] for g in groups for part in g["building_parts"]}
+    cadastral = {}
     for f in read(run_folder / "buildings.geojson")["features"]:
         geometry = transform(project,shape(f["geometry"]))
+        bid = str(f["properties"].get("building_id",f.get("id")))
+        cadastral[bid] = geometry
         point = geometry.representative_point()
         names = [name for name,boundary in boundaries.items() if boundary.covers(point)]
         if not names:
             continue
-        bid = str(f["properties"].get("building_id",f.get("id")))
-        buildings.append({"id": bid, "municipality":names[0],"area_m2":geometry.area,
-                          "compactness":min(1,4*math.pi*geometry.area/geometry.length**2),
-                          "_geometry":geometry,"_geojson":mapping(transform(restore,geometry))})
-    by_building = {b["id"]:b for b in buildings}
+        buildings.append({"id": bid,"_geometry":geometry})
     def location_point(item):
         point = shape(item["_geojson"]).representative_point()
         return project(point.x, point.y)
-    for item in groups + buildings:
+    for item in groups:
         item["_location_point"] = location_point(item)
-    observed_geometries = defaultdict(list)
-    for group in groups:
-        for building_id in {p.split(":part:")[0] for p in group["building_parts"]}:
-            if building_id in by_building:
-                observed_geometries[building_id].append(group["_geometry"])
-    observed_area = {bid: unary_union(geometries).intersection(by_building[bid]["_geometry"]).area
-                     for bid, geometries in observed_geometries.items()}
+    postcode_path = evidence_dir / "lgb-postcodes.geojson"
+    lod2_path = evidence_dir / "lod2-roof-faces.json.gz"
+    postcodes, postcode_provenance = postcode_fabric(postcode_path, project)
+    postal_scopes = {(municipality, code) for municipality, boundary in boundaries.items()
+                     for code, polygon in postcodes.items() if boundary.intersection(polygon).area > 0}
+    lod2 = load_roofs(lod2_path, manifest["artifacts"]["buildings.geojson"], digest(batch_folder / "groups.geojson"))
+    observed = assemble_buildings(groups, cadastral, postcodes, lod2["buildings"])
+    inventory, roof_faces = observation_features(observed, restore)
+    shortlists = BuildingShortlists(observed, by_group)
     storage_by_solar = defaultdict(list)
     for link in registry.data["storage_relationships"]:
         if link["relationship_status"] == "supported":
             storage_by_solar[link["solar_id"]].append(link)
-    records, later = [], []
-    roof_pool = defaultdict(list)
-    for g in groups:
-        if g["roof_supported"]:
-            for name in g["municipalities"]:
-                roof_pool[name].append(g)
+    records, rankings = [], []
     latest_capture = max(t["acquisition_date"] for t in manifest["source_tiles"])
     reservations = {}
     locations = LocationConstraints()
-    location_buildings = defaultdict(set)
     raw_group_best = {}
     ordered_units = sorted(registry.data["solar_units"], key=lambda u: (u["longitude"] is None, -(u["power_kw"] or 0), u["id"]))
     for unit in ordered_units:
@@ -224,10 +273,22 @@ def build(home, output):
             unit = {**unit,"_point":point}
             pool = [groups[int(i)] for i in group_tree.query(point.buffer(100),predicate="intersects") if groups[int(i)]["roof_supported"] and unit["municipality"] in groups[int(i)]["municipalities"]]
         else:
-            pool = roof_pool[unit["municipality"]]
             if unit.get("commissioned") and unit["commissioned"] > latest_capture:
-                later.append((unit,row))
-                continue
+                row.update(association_status="post_capture_unlocated", post_capture=True, candidate_status="post_capture",
+                           reason="Commissioned after the survey. Included in its registry postcode totals.")
+            elif unit["cohort"] == "active_building_under30":
+                postcode = unit["postcode"]
+                if postcode and postcode not in postcodes:
+                    row.update(shortlists.unlocated("outside_lgb_extract", "The registered postcode is outside the LGB extract."))
+                elif postcode and (unit["municipality"], postcode) not in postal_scopes:
+                    row.update(shortlists.unlocated("municipality_postcode_conflict", "The LGB postcode has no area in the registry municipality."))
+                else:
+                    evidence = shortlists.rank(unit, full=True)
+                    ranking = evidence.pop("_ranking", None)
+                    row.update(evidence)
+                    if ranking is not None:
+                        rankings.append((row, ranking))
+            continue
         original_ranked, original_alternatives = rank_unit(unit,pool)
         if pool:
             scores, _, _, _, _ = score_arrays(unit,pool)
@@ -253,7 +314,6 @@ def build(home, output):
             reservation = reservations.setdefault(row["group_id"],{"location":location_key,"power":0})
             reservation["power"] += unit["power_kw"] or 0
             locations.reserve(location_key, by_group[row["group_id"]]["_location_point"])
-            location_buildings[location_key].update(p.split(":part:")[0] for p in by_group[row["group_id"]]["building_parts"])
             row.update(unconstrained_top_group_id=original_ranked["group_id"],unconstrained_top_score=original_ranked["score"],
                        original_pool_size=len(pool),allocation_order="Public coordinates first, descending power, then solar ID")
             row["reason"] += (" Selected the highest-scoring available group after a conservative allocation policy: one registry location per group, "
@@ -273,26 +333,7 @@ def build(home, output):
             if locations.points.get(location_key):
                 row["reason"] += " The shared registry-location cluster is retained; no local candidate satisfies the remaining constraints."
                 row["registry_flags"] = [*row["registry_flags"], "location_constraint_unresolved"]
-    occupied=set(detected_buildings)
-    used_roof_area = {}
-    for unit,row in sorted(later,key=lambda pair:(-(pair[0]["power_kw"] or 0),pair[0]["id"])):
-        location_key = unit["location_id"] or unit["id"]
-        local_buildings = [b for b in buildings if locations.allows(location_key, b["_location_point"])]
-        allocation, alternatives = allocate_building(unit,local_buildings,occupied,
-            reusable_ids=location_buildings[location_key], used_area=used_roof_area, observed_area=observed_area)
-        if allocation:
-            row.update(allocation,alternatives=alternatives)
-            b=by_building[row["building_id"]]
-            locations.reserve(location_key, b["_location_point"])
-            location_buildings[location_key].add(b["id"])
-            row["reason"] += f" All selected points at this registry location obey a pairwise {LOCATION_DIAMETER_M:.0f} m cluster limit; no chain of successive nearby allocations can drift away."
-            row.update(point=list(shape(b["_geojson"]).representative_point().coords)[0],geometry=b["_geojson"],
-                       building_area_m2=round(b["area_m2"],3),capture_dates=[])
-        else:
-            row.update(association_status="post_capture_unlocated",post_capture=True,
-                       reason="Commissioned after all source images; no eligible building remains under shared-location and remaining-roof-capacity constraints. No distant fallback is assigned.")
-            if locations.points.get(location_key):
-                row["registry_flags"] = [*row["registry_flags"], "location_constraint_unresolved"]
+    allocation = joint_proposals(rankings, {u["id"]: u for u in ordered_units}, shortlists, observed, by_group, records)
     shared_location_diameters = {}
     for location_key, points in locations.points.items():
         if len(points) > 1:
@@ -306,10 +347,7 @@ def build(home, output):
         row["location_cluster_limit_m"] = LOCATION_DIAMETER_M
     confidence=flag_competition(records,by_group)
     selected=Counter(r.get("group_id") for r in records if r.get("group_id"))
-    best_scores=defaultdict(list)
-    for r in records:
-        if r.get("group_id"):
-            best_scores[r["group_id"]].append(r["score"])
+    postal_features, postal_totals = postal_summary(records, postcodes, boundaries, restore)
     group_features=[{"type":"Feature","geometry":g["_geojson"],"properties":{
         **public(g),"selected_by_count":selected[g["id"]],"best_registry_score":raw_group_best.get(g["id"],(None,None))[0],
         "best_registry_id":raw_group_best.get(g["id"],(None,None))[1]}} for g in groups]
@@ -328,18 +366,33 @@ def build(home, output):
                    maximum_shared_location_diameter_m=round(max(shared_location_diameters.values(), default=0), 4),
                    shared_locations_over_limit=0,
                    location_constraint_unresolved=sum("location_constraint_unresolved" in r["registry_flags"] for r in records))
+    summary.update(observed_buildings=len(inventory), observed_roof_faces=len(roof_faces),
+                   roof_area_estimates=sum(b["roof_parallel_area_m2"] is not None for b in observed),
+                   projected_pv_area_m2=round(sum(b["projected_area_m2"] for b in observed), 2),
+                   postcode_rows=len(postal_totals), mapped_postcode_rows=len(postal_features),
+                   candidate_statuses=dict(Counter(r["candidate_status"] for r in records if "candidate_status" in r)),
+                   candidate_threshold=MINIMUM_CANDIDATE_POINTS, candidate_fallback_count=FALLBACK_COUNT,
+                   joint_proposal_count=allocation["proposals"])
     metadata={"algorithm":VERSION,"created_at":datetime.now(timezone.utc).isoformat(),"run_id":RUN,"registry_snapshot":SNAPSHOT,
               "registry_snapshot_date":registry.manifest["snapshot_date"],"source_batch":BATCH,"review_revision":revision,
               "capture_dates":sorted({t["acquisition_date"] for t in manifest["source_tiles"]}),"summary":summary,
               "source_hashes":{"run_manifest":digest(run_folder/"manifest.json"),"registry_manifest":digest(registry.folder/"manifest.json"),
-                               "source_batch_manifest":digest(batch_folder/"manifest.json"),"scoring_code":digest(APP/"scoring.py"),"build_code":digest(Path(__file__))},
-              "score_meaning":"Engineering compatibility score, 0-100; not an identity probability.",
-              "identity_policy":"Automatic selections remain inferred; statistical allocations are separate from observed PV.",
-              "allocation_policy":"Greedy public-coordinate-first, descending-power allocation; one registry location per image group; all selected points at one registry location form a pairwise cluster of at most 100 m across both image associations and statistical allocations; 0.5 kW/m2 power screen; minimum technical score 30/100. Shared-location fallback may reuse an anchored building with remaining roof capacity. Not a global optimum or verified identity.",
+                               "source_batch_manifest":digest(batch_folder/"manifest.json"),"scoring_code":digest(APP/"scoring.py"),"build_code":digest(Path(__file__)),
+                               "postcode_subset":digest(postcode_path),"lod2_roofs":digest(lod2_path),"building_evidence_code":digest(APP / "building_evidence.py"),
+                               "candidate_scoring_code":digest(APP / "candidate_scoring.py"),
+                               "candidate_allocation_code":digest(APP / "candidate_allocation.py")},
+              "geometry_sources":{"postcode":postcode_provenance,"lod2_attribution":lod2["attribution"],"lod2_tiles":lod2["sources"]},
+              "score_meaning":"Anonymous candidates use signed evidence points. Public-coordinate proposals use 0–100 technical compatibility. Neither is an identity probability.",
+              "identity_policy":"Anonymous candidates and joint proposals are unverified. Post-capture units are included in postcode statistics. Public-coordinate associations remain provisional.",
+              "allocation_policy":"Anonymous candidates share their municipality and LGB postcode. Joint proposals use the candidate threshold, group exclusivity, roof capacity and a shared-location distance limit. Public-coordinate proposals retain their original workflow.",
+              "joint_allocation":allocation,
               "storage_policy":"Per-row totals deduplicate IDs within the row; cross-row totals must deduplicate storage/system IDs.",
               "personal_data_policy":"Technical allowlist only; no operator IDs, names, addresses, original XML or reviewer personal details."}
     context={"groups":group_features,"municipalities":municipalities,"storage_relationships":registry.data["storage_relationships"],
-             "storage_units":[clean(r) for r in registry.data["storage_units"]],"storage_systems":[clean(r) for r in registry.data["storage_systems"]],"metadata":metadata}
+             "storage_units":[clean(r) for r in registry.data["storage_units"]],"storage_systems":[clean(r) for r in registry.data["storage_systems"]],"metadata":metadata,
+             "observed_pv_buildings":inventory,"observed_pv_roof_faces":roof_faces,"registry_by_postcode":postal_features,
+             "registry_postcode_totals":postal_totals}
+    write_rankings(output, rankings, shortlists, metadata["created_at"])
     write(output/"records.json",records)
     write(output/"context.json",context)
     write(output/"summary.json",metadata)
@@ -349,6 +402,10 @@ def build(home, output):
           {"id":g["id"],"selected_by_count":selected[g["id"]],"roof_supported":g["roof_supported"]}) for g in groups]))
     write(output/"buildings.geojson",collection([feature(transform(restore,b["_geometry"].simplify(.5,preserve_topology=True)),{"id":b["id"]}) for b in buildings]))
     write(output/"municipalities.geojson",collection(municipalities))
+    write(output/"observed-pv.geojson",collection(inventory))
+    write(output/"roof-faces.geojson",collection(roof_faces))
+    write(output/"postcodes.geojson",collection(postal_features))
+    write(output/"postcode-totals.json",postal_totals)
     for source in [APP/"static",APP/"vendor"]:
         if source.exists():
             shutil.copytree(source,output/source.name,dirs_exist_ok=True)
@@ -372,5 +429,6 @@ if __name__ == "__main__":
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--home",type=Path,default=ROOT/"var")
     parser.add_argument("--output",type=Path,default=APP/"dist")
+    parser.add_argument("--evidence",type=Path,default=APP/"evidence")
     args=parser.parse_args()
-    build(args.home.resolve(),args.output.resolve())
+    build(args.home.resolve(),args.output.resolve(),args.evidence.resolve())

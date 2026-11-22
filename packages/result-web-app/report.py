@@ -58,6 +58,9 @@ class SurveyMap(Flowable):
 
 def generate(directory):
     metadata=read(directory/"summary.json");s=metadata["summary"]
+    if "observed_buildings" in s:
+        from inventory_report import generate_inventory
+        return generate_inventory(directory, "en", "Helvetica")
     records=read(directory/"records.json");context=read(directory/"context.json")
     comparison=read(directory/"model-comparison.json")
     verification=read(directory/"verification.json")

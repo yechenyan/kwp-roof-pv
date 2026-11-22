@@ -4,7 +4,7 @@ Production repository for Brandenburg PV image recognition and human review. The
 
 ## Result atlas and PDF delivery
 
-The separate [result atlas](packages/result-web-app/README.md) delivers highest-feasible-score technical MaStR associations, explicitly statistical allocations for later installations, an EPSG:3035 GeoPackage with storage relationships, and a nine-page English PDF report. The uncompressed `packages/result-web-app/delivery/` directory is included. Serve it with `python3 -m http.server 8791 --bind 127.0.0.1 --directory packages/result-web-app/delivery` and open <http://127.0.0.1:8791/web/>. The standalone website is read-only; rebuild the local runtime before starting the separate annotation server. Automatic results remain inferred and do not establish verified identities.
+The separate [result atlas](packages/result-web-app/README.md) opens on observed building PV and MaStR postcode totals. The build produces LoD2 roof-face estimates, anonymous building shortlists for review, an EPSG:3035 GeoPackage, and English and Chinese PDF reports. Build and serve `packages/result-web-app/delivery-v4/` using the instructions in the atlas README. The tracked `packages/result-web-app/delivery/` is the original comparison snapshot.
 
 ## Delivered scope
 

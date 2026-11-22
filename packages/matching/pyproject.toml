@@ -2,7 +2,7 @@
 name = "roof-pv-matching"
 version = "0.1.0"
 requires-python = ">=3.12,<3.13"
-dependencies = ["roof-pv-registry", "shapely>=2,<3", "pyproj>=3.7,<4"]
+dependencies = ["roof-pv-registry", "shapely>=2,<3", "pyproj>=3.7,<4", "ortools==9.15.6755"]
 
 [tool.uv.sources]
 roof-pv-registry = { workspace = true }
