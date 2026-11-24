@@ -8,7 +8,7 @@ from shapely.geometry import box
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from building_evidence import BuildingShortlists, assemble_buildings, measure_faces
-from candidate_scoring import CandidateEvidence, RoofOption, pose_points, registered_poses, roof_options
+from candidate_scoring import CandidateEvidence, RoofOption, pose_points, registered_poses
 
 
 def group(identifier, geometry):
@@ -87,11 +87,24 @@ def test_east_west_face_assignment_uses_both_directions_and_tilt_ranges():
     assert pose_points(((270, 30),), poses) == (0, 0)
 
 
-def test_connected_groups_are_compared_without_merging_distant_arrays():
-    groups = [group("a", box(0, 0, 2, 2)), group("b", box(3, 0, 5, 2)), group("c", box(15, 0, 17, 2))]
-    building, = assemble_buildings(groups, {"roof": box(0, 0, 20, 5)}, {"10101": box(0, 0, 20, 5)}, {})
-    options = roof_options(building, {row["id"]: row for row in groups})
-    assert {option.groups for option in options} == {("a",), ("b",), ("c",), ("a", "b")}
+def test_ranking_scores_the_full_building_union_once():
+    footprint = box(0, 0, 20, 5)
+    groups = [group("a", box(0, 0, 2, 2)), group("b", box(1, 0, 3, 2)), group("c", box(15, 0, 17, 2))]
+    lod2 = {"roof": [footprint.wkb_hex, [[footprint.wkb_hex, 30, 180]]]}
+    building, = assemble_buildings(groups, {"roof": footprint}, {"10101": footprint}, lod2)
+    shortlists = BuildingShortlists([building])
+    measurement, = shortlists.measurements
+    assert measurement.groups == ("a", "b", "c")
+    assert measurement.projected == 10
+    assert measurement.parallel == pytest.approx(11.5470054)
+
+    unit = {"postcode": "10101", "municipality": "Town", "commissioned": "2022-01-01",
+            "module_count": 6, "power_kw": 2.4, "flags": [],
+            "raw": {"Hauptausrichtung": "699", "HauptausrichtungNeigungswinkel": "809"}}
+    ranking, = shortlists.rank(unit, full=True)["_ranking"]
+    assert ranking[0] == ranking[4] == 0
+    assert ranking[1] > 3700
+    assert ranking[2:4] == [1200, 600]
 
 
 def test_strong_geometry_conflicts_reduce_the_total_below_the_candidate_threshold():

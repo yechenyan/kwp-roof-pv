@@ -154,10 +154,11 @@ def verify_rankings(directory, records, context, shards):
     pools = defaultdict(set)
     for i, feature in enumerate(context["observed_pv_buildings"]):
         row = feature["properties"]
-        options = index["array_options"][i]
-        groups = [option["groups"] for option in options]
-        assert groups and all(group and set(group) <= set(row["group_ids"]) for group in groups)
-        assert {group[0] for group in groups if len(group) == 1} == set(row["group_ids"])
+        option, = index["array_options"][i]
+        assert option["groups"] == row["group_ids"]
+        assert option["projected_m2"] == round(row["projected_area_m2"], 2)
+        parallel = row["roof_parallel_area_m2"]
+        assert option["parallel_m2"] == (round(parallel, 2) if parallel is not None else None)
         for municipality in row["municipalities"]:
             pools[municipality, row["postcode"]].add(i)
     expected = {r["solar_id"]: r for r in records if r["association_status"] == "building_candidates"}
@@ -175,7 +176,7 @@ def verify_rankings(directory, records, context, shards):
             assert all(-40 * POINT_SCALE <= points <= 40 * POINT_SCALE for points in areas)
             assert all(-24 * POINT_SCALE <= points <= 12 * POINT_SCALE for points in directions)
             assert all(-20 * POINT_SCALE <= points <= 6 * POINT_SCALE for points in tilts)
-            assert all(0 <= option < len(index["array_options"][i]) for i, option in zip(indices, options))
+            assert all(option == 0 for option in options)
             assert all(0 <= mode < len(AREA_MODES) for mode in modes)
             order = [(-total, -area, i) for total, area, i in zip(totals, areas, indices)]
             assert all(a <= b for a, b in zip(order, order[1:]))
@@ -186,9 +187,11 @@ def verify_rankings(directory, records, context, shards):
                 assert 0 <= rank < row["candidate_qualified_count"]
                 b = indices[rank]
                 assert proposal["building_id"] == index["building_ids"][b]
-                assert proposal["group_ids"] == index["array_options"][b][proposal["array_option"]]["groups"]
-                assert len(proposal["points"]) == 3 and proposal["area_method"] in AREA_MODES
-                assert MINIMUM_CANDIDATE_POINTS <= proposal["score"] == sum(proposal["points"]) / POINT_SCALE <= totals[rank] / POINT_SCALE
+                assert proposal["group_ids"] == index["array_options"][b][0]["groups"]
+                assert proposal["array_option"] == options[rank]
+                assert proposal["points"] == [areas[rank], directions[rank], tilts[rank]]
+                assert proposal["area_method"] == AREA_MODES[modes[rank]]
+                assert MINIMUM_CANDIDATE_POINTS <= proposal["score"] == totals[rank] / POINT_SCALE
             for i, alternative in enumerate(row["alternatives"]):
                 assert index["building_ids"][indices[i]] == alternative["building_id"]
                 assert totals[i] / POINT_SCALE == alternative["score"]
@@ -203,7 +206,8 @@ def verify_joint_proposals(records, context):
     owners = {gid: b for b, f in roofs.items() for gid in f["properties"]["group_ids"]}
     project = Transformer.from_crs(4326, 25833, always_xy=True).transform
     groups = {f["properties"]["id"]: f for f in context["groups"]}
-    book_watts, book_area, use_watts, use_area, claims = (Counter() for _ in range(5))
+    book_watts, book_area, use_watts, use_area = (Counter() for _ in range(4))
+    claims = {}
     booked_groups, active_sites, anchors = set(), defaultdict(list), defaultdict(list)
     selected = []
     for record in records:
@@ -223,8 +227,10 @@ def verify_joint_proposals(records, context):
         assert record["association_status"] == "building_candidates" and record["point"] is None
         assert not record["identity_verified"]
         b = proposal["building_id"]
-        claims.update(proposal["group_ids"])
-        assert all(owners[gid] == b for gid in proposal["group_ids"])
+        assert proposal["group_ids"] == roofs[b]["properties"]["group_ids"]
+        for gid in proposal["group_ids"]:
+            assert gid not in claims
+            claims[gid] = record["solar_id"]
         use_watts[b] += round(record["power_kw"] * 1000)
         use_area[b] += projected_demand({"raw": record["mastr_attributes"], "flags": record["registry_flags"],
                                           **{k: record[k] for k in ("power_kw", "module_count", "commissioned")}})
@@ -235,10 +241,10 @@ def verify_joint_proposals(records, context):
     assert allocation["surplus"] == score <= allocation["bound"]
     if allocation["optimal_components"] == allocation["components"]:
         assert allocation["surplus"] == allocation["bound"]
-    assert not booked_groups.intersection(claims) and all(count == 1 for count in claims.values())
+    assert not booked_groups.intersection(claims)
     for a, b in overlapping_groups({gid: transform(project, shape(groups[gid]["geometry"]))
                                      for gid in claims.keys() | booked_groups}):
-        assert a in booked_groups and b in booked_groups
+        assert (a in booked_groups and b in booked_groups) or (a in claims and claims[a] == claims.get(b))
     for b, power in use_watts.items():
         budget = roof_budget(roofs[b]["properties"]["projected_area_m2"], (0, 0), book_watts[b], book_area[b])
         assert power <= budget.watts and use_area[b] <= budget.area

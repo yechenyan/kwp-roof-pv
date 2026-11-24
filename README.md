@@ -4,7 +4,7 @@ Production repository for Brandenburg PV image recognition and human review. The
 
 ## Result atlas and PDF delivery
 
-The separate [result atlas](packages/result-web-app/README.md) opens on published rooftop PV matches. The tracked [delivery](packages/result-web-app/delivery/README.md) includes match locations, an EPSG:3035 GeoPackage with LoD2 roof-face estimates and postcode totals, and English and Chinese PDF reports.
+The separate [result atlas](packages/result-web-app/README.md) opens on published rooftop PV matches. The tracked [delivery](packages/result-web-app/delivery/README.md) includes match locations, an EPSG:3035 GeoPackage with LoD2 roof-face estimates and postcode totals, and a German PDF guide to the matching method.
 
 ## Delivered scope
 

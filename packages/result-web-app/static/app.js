@@ -330,7 +330,6 @@ function renderCandidatePool(list, { visible: ranking, total, threshold, fallbac
     dot.setZIndexOffset(state.map.getSize().y + (index === proposalIndex ? 501 : 0));
     if (move) state.map.fitBounds(outline.getBounds().pad(2), { maxZoom: 20, animate: false });
     else if (!fly) layoutCandidateLabels();
-    const roof = roofs[index].properties;
     const evidence = candidate.proposal ?? candidate;
     const method = { roof_parallel: "LoD2 roof-parallel area", projected: "Projected area and registry tilt range" }[evidence.areaMode];
     const expected = { roof_parallel: record.candidate_registered_area_m2, projected: record.candidate_projected_area_m2 }[evidence.areaMode];
@@ -341,8 +340,8 @@ function renderCandidatePool(list, { visible: ranking, total, threshold, fallbac
       `${field("Area points", pointsLabel(evidence.area))}${field("Direction points", pointsLabel(evidence.direction))}` +
       `${field("Tilt points", pointsLabel(evidence.tilt))}${field("Timing points", "0 · no independent installation dates")}` +
       `${field("Registration area source", { modules: "Module count", power: "Power estimate" }[record.candidate_area_source])}` +
-      `${field("Comparison method", method)}${field("Registry area estimate", area(expected))}${field("Observed array area", area(measured))}` +
-      `${field("Array groups compared", `${evidence.array.groups.length} of ${roof.group_ids.length}`)}</dl>`;
+      `${field("Comparison method", method)}${field("Registry area estimate", area(expected))}${field("Building PV area", area(measured))}` +
+      `${field("Source groups merged", evidence.array.groups.length)}</dl>`;
   }
 
   rows.addEventListener("click", (event) => {

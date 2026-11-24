@@ -9,7 +9,7 @@ from ortools.sat.python import cp_model
 from shapely.strtree import STRtree
 
 from building_evidence import AREA_MODES
-from candidate_scoring import CandidateEvidence, MINIMUM_CANDIDATE_POINTS, POINT_SCALE
+from candidate_scoring import MINIMUM_CANDIDATE_POINTS, POINT_SCALE
 from scoring import LOCATION_DIAMETER_M, expected_area
 
 
@@ -189,28 +189,22 @@ def joint_proposals(rankings, units, shortlists, buildings, groups, records):
     requests = []
     for row, ranking in sorted(rankings, key=lambda item: item[0]["solar_id"]):
         unit = units[row["solar_id"]]
-        evidence = CandidateEvidence(unit)
         demand = projected_demand(unit)
         watts = round(unit["power_kw"] * 1000)
         site = row["location_id"] or row["solar_id"]
         choices = []
-        for roof, area, direction, tilt, preferred, mode in ranking:
+        for roof, area, direction, tilt, option, mode in ranking:
             if area + direction + tilt < MINIMUM_POINTS:
                 break
+            group_ids = shortlists.measurements[roof].groups
+            if blocked.intersection(group_ids):
+                continue
             budget = budgets[roof]
             if watts > budget.watts or not 0 < demand <= budget.area:
                 continue
             if any(math.dist(budget.center, point) > LOCATION_DIAMETER_M for point in booked_sites.get(site, ())):
                 continue
-            for i, option in enumerate(shortlists.options[roof]):
-                if blocked.intersection(option.groups):
-                    continue
-                if i == preferred:
-                    points, method = (area, direction, tilt), AREA_MODES[mode]
-                else:
-                    points, method, _ = evidence.compare((option,))
-                if sum(points) >= MINIMUM_POINTS:
-                    choices.append(Choice(roof, i, points, method, option.groups))
+            choices.append(Choice(roof, option, (area, direction, tilt), AREA_MODES[mode], group_ids))
         if choices:
             requests.append(Request(row["solar_id"], site, watts, demand, tuple(choices)))
 

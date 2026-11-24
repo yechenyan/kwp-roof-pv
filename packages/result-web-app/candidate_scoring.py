@@ -3,8 +3,6 @@ from dataclasses import dataclass
 import math
 from bisect import bisect_right
 
-from shapely.ops import unary_union
-
 from scoring import SLOPES, expected_area
 
 POINT_SCALE = 100
@@ -35,59 +33,30 @@ class RoofOption:
     poses: tuple[tuple[float, float], ...]
 
 
-def measure_option(roof, ids, geometry=None):
-    projected = roof["projected_area_m2"] if geometry is None else geometry.area
+def measure_building(roof):
+    projected = roof["projected_area_m2"]
     parallel = roof["roof_parallel_area_m2"]
-    faces = []
-    if parallel is not None:
-        for face in roof["_faces"]:
-            overlap = (face["projected_area_m2"] if geometry is None
-                       else geometry.intersection(face["_geometry"]).area)
-            if overlap > .02:
-                faces.append((overlap, face["slope_deg"], face["azimuth_deg"]))
-        covered = sum(overlap for overlap, _, _ in faces)
-        if geometry is not None:
-            if covered < .95 * projected:
-                parallel = None
-            else:
-                parallel = max(0, projected - covered) + sum(
-                    overlap / math.cos(math.radians(slope)) for overlap, slope, _ in faces)
-    faces.sort(reverse=True, key=lambda face: face[0])
     poses = ()
-    if parallel is not None and faces:
-        first = faces[0][0]
-        if first >= .80 * projected:
+    if parallel is not None:
+        faces = sorted(
+            ((face["projected_area_m2"], face["slope_deg"], face["azimuth_deg"])
+             for face in roof["_faces"] if face["projected_area_m2"] > .02),
+            key=lambda face: face[0], reverse=True,
+        )
+        if faces and faces[0][0] >= .80 * projected:
             measured = faces[:1]
-        elif len(faces) >= 2 and first + faces[1][0] >= .90 * projected and faces[1][0] >= .15 * projected:
+        elif len(faces) >= 2 and faces[0][0] + faces[1][0] >= .90 * projected and faces[1][0] >= .15 * projected:
             measured = faces[:2]
         else:
             measured = ()
         if all(slope >= 10 and azimuth is not None for _, slope, azimuth in measured):
             poses = tuple((azimuth, slope) for _, slope, azimuth in measured)
-    return RoofOption(tuple(ids), projected, parallel, poses)
+    return RoofOption(tuple(roof["group_ids"]), projected, parallel, poses)
 
 
-def roof_options(roof, groups):
-    ids = roof["group_ids"]
-    if len(ids) == 1:
-        return (measure_option(roof, ids),)
-    options = [measure_option(roof, (key,), groups[key]["_geometry"]) for key in ids]
-    # Compare whole connected arrays without counting arbitrary combinations of distant groups.
-    remaining = set(ids)
-    for key in ids:
-        if key not in remaining:
-            continue
-        connected = [key]
-        remaining.remove(key)
-        for member in connected:
-            near = [other for other in sorted(remaining)
-                    if groups[member]["_geometry"].distance(groups[other]["_geometry"]) <= 2]
-            remaining.difference_update(near)
-            connected.extend(near)
-        if len(connected) > 1:
-            geometry = unary_union([groups[k]["_geometry"] for k in connected])
-            options.append(measure_option(roof, sorted(connected), geometry))
-    return tuple(options)
+def roof_options(roof, _groups=None):
+    """Return the single building-wide option in the experiment interface."""
+    return (measure_building(roof),)
 
 
 def registered_poses(raw):

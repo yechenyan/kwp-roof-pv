@@ -29,10 +29,10 @@
   "total": "Total",
   "candidates": "Matching coverage",
   "candidate_coverage": "{listed:,} of {eligible:,} image-stage targets have geographic candidates. At least one roof scored {minimum} points or more for {ranked:,} targets. All candidate roofs scored below that threshold for {low:,} targets. Independent evidence confirms {verified} building identities.",
-  "postal_method": "The model considers roofs in the registered municipality and an unambiguous LGB postcode. It scores area, direction and tilt. Post-capture targets contribute to postcode totals.",
+  "postal_method": "Within the registered municipality and LGB postcode, the model scores each building's full observed PV group once for area, direction and tilt. Post-capture targets contribute to postcode totals.",
   "gis_title": "GIS layers",
   "gis": "The EPSG:3035 GeoPackage includes observed PV buildings, roof faces and registry postcode totals. The registry_building_candidates table retains a top-five score preview.",
   "sources": "Imagery, ALKIS, LoD2 and postcodes © GeoBasis-DE/LGB, dl-de/by-2-0. Registry © Bundesnetzagentur/MaStR, dl-de/by-2-0.",
   "running_header": "MUNICIPAL PV INVENTORY",
-  "joint_proposals": "The delivery map shows {proposals:,} joint matches and {coordinates:,} public-coordinate associations. The joint model prevents duplicated array claims and applies shared roof capacity. Building identities remain unverified."
+  "joint_proposals": "The delivery map shows {proposals:,} joint matches and {coordinates:,} public-coordinate associations. Each joint match uses one building's full observed PV group, which can be assigned only once. Building identities remain unverified."
 }

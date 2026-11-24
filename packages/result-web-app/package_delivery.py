@@ -5,17 +5,21 @@ import shutil
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
-from shapely.geometry import mapping, shape
-from shapely.ops import unary_union
+from shapely.geometry import shape
 
-from build import APP, GIS_DATA, REPORT_INPUTS, VERIFIED_BUILD_FILES, WEB_DATA, digest, ranking_files, read, write
+from build import APP, GIS_DATA, RANKING_INDEX, REPORT_INPUTS, VERIFIED_BUILD_FILES, WEB_DATA, digest, ranking_files, read, write
 from candidate_scoring import POINT_SCALE
 
 
 REPORTS = ("roof-pv-report.pdf", "roof-pv-report-zh.pdf")
+GUIDE = "roof-pv-guide-de.pdf"
 
 
-def release_fingerprints(source):
+def guide_inputs(source):
+    return (*REPORT_INPUTS, "records.json", RANKING_INDEX, *ranking_files(source))
+
+
+def release_fingerprints(source, *, results_only=False):
     verification = read(source / "verification.json")
     build_hashes = verification.get("build_files_sha256", {})
     if (not verification.get("building_evidence_and_postcode_reconciliation")
@@ -25,9 +29,10 @@ def release_fingerprints(source):
         if digest(source / name) != checksum:
             raise ValueError(f"Build file differs from verification: {name}")
 
-    report_inputs = {name: build_hashes[name] for name in REPORT_INPUTS}
+    input_names = guide_inputs(source) if results_only else REPORT_INPUTS
+    report_inputs = {name: build_hashes[name] for name in input_names}
     reports = {}
-    for name in REPORTS:
+    for name in (GUIDE,) if results_only else REPORTS:
         sidecar = (source / name).with_suffix(".provenance.json")
         if not sidecar.is_file():
             raise ValueError(f"Regenerate the report to record its build fingerprint: {name}")
@@ -40,7 +45,7 @@ def release_fingerprints(source):
 
 def package(destination=APP / "delivery-v4", *, results_only=False):
     source = APP / "dist"
-    verification, reports = release_fingerprints(source)
+    verification, reports = release_fingerprints(source, results_only=results_only)
     with TemporaryDirectory(dir=APP) as folder:
         stage = Path(folder) / "delivery"
         assemble(source, stage, verification, reports, results_only=results_only)
@@ -56,38 +61,43 @@ def package(destination=APP / "delivery-v4", *, results_only=False):
     print(f"Assembled uncompressed delivery in {destination.name}.")
 
 
-def published_matches(records, groups, metadata):
+def published_matches(records, groups, buildings, metadata):
     group_lookup = {group["properties"]["id"]: group for group in groups}
+    building_lookup = {building["properties"]["building_id"]: building for building in buildings}
     features = []
     for row in records:
         proposal = row.get("joint_proposal")
         if proposal:
             kind = "joint"
-            group_ids = proposal["group_ids"]
             building_id = proposal["building_id"]
+            observation = building_lookup[building_id]
+            if proposal["group_ids"] != observation["properties"]["group_ids"]:
+                raise ValueError(f"Joint match does not include the full building PV group: {row['solar_id']}")
+            group_count = len(proposal["group_ids"])
             score = proposal["score"]
             evidence_points = [value / POINT_SCALE for value in proposal["points"]]
         elif row["association_status"] == "inferred_image_association":
             kind = "coordinate"
-            group_ids = [row["group_id"]]
             building_id = None
+            observation = group_lookup[row["group_id"]]
+            group_count = 1
             score = row["score"]
             evidence_points = None
         else:
             continue
 
-        observations = [group_lookup[key] for key in group_ids]
-        outline = unary_union([shape(feature["geometry"]) for feature in observations])
+        geometry = observation["geometry"]
+        outline = shape(geometry)
         if outline.is_empty or not outline.is_valid:
             raise ValueError(f"Invalid matched array geometry: {row['solar_id']}")
         point = row["point"] if kind == "coordinate" else list(outline.representative_point().coords[0])
-        dates = sorted({date for feature in observations for date in feature["properties"]["capture_dates"]})
+        dates = observation["properties"]["capture_dates"]
         features.append({
-            "type": "Feature", "id": row["solar_id"], "geometry": mapping(outline),
+            "type": "Feature", "id": row["solar_id"], "geometry": geometry,
             "properties": {
                 "solar_id": row["solar_id"], "kind": kind, "point": point, "building_id": building_id,
                 "municipality": row["municipality"], "postcode": row["postcode"], "power_kw": row["power_kw"],
-                "commissioned": row["commissioned"], "capture_dates": dates, "group_count": len(group_ids),
+                "commissioned": row["commissioned"], "capture_dates": dates, "group_count": group_count,
                 "score": score, "evidence_points": evidence_points, "identity_verified": row["identity_verified"],
             },
         })
@@ -128,7 +138,8 @@ def assemble(source, output, verification, reports, *, results_only=False):
         for name in ("summary.json", "municipalities.geojson", "postcodes.geojson"):
             copy_checked(name, website / name)
         context = read(source / "context.json")
-        matches = published_matches(read(source / "records.json"), context["groups"], context["metadata"])
+        matches = published_matches(read(source / "records.json"), context["groups"],
+                                    context["observed_pv_buildings"], context["metadata"])
         write(website / "matches.geojson", matches)
         shutil.copy2(APP / "static/delivery.html", website / "index.html")
         for name in ("delivery.js", "delivery.css"):
@@ -150,15 +161,22 @@ def assemble(source, output, verification, reports, *, results_only=False):
     interpretation = (
         "The map shows one published result for each assigned record, including joint matches and public-coordinate associations. "
         "Purple markers show joint matches. Blue markers show public-coordinate associations. "
+        "Each joint match uses all observed PV on its building as one group. "
         "Selecting a marker or record opens its evidence. Building identities remain unverified.\n\n"
         if results_only else
         "The atlas opens on observed PV buildings and postcode totals. The registry review shows scored candidates "
         "and identifies joint proposals. The local annotation service handles confidence and reason edits.\n\n"
     )
-    (output / "README.md").write_text(
-        "# Rooftop PV inventory - project delivery\n\n"
-        "Study area: Hohen Neuendorf and Birkenwerder.\n\n"
+    title = "Rooftop PV matching results" if results_only else "Rooftop PV inventory and candidate review"
+    report_list = (
+        f"- `{GUIDE}`: German guide to the matching method and a worked example.\n"
+        if results_only else
         "- `roof-pv-report.pdf` and `roof-pv-report-zh.pdf`: inventory and postcode summaries.\n"
+    )
+    (output / "README.md").write_text(
+        f"# {title}\n\n"
+        "Study area: Hohen Neuendorf and Birkenwerder.\n\n"
+        + report_list +
         "- `geodata/roof-pv-results.gpkg`: primary GIS delivery; all spatial layers use EPSG:3035.\n"
         "- `geodata/results.geojson`: provisional public-coordinate associations in EPSG:4326.\n"
         "- `web/`: standalone read-only result website, local data and vendored Leaflet.\n\n"

@@ -29,10 +29,10 @@
   "total": "总计",
   "candidates": "匹配覆盖情况",
   "candidate_coverage": "{eligible:,} 条影像阶段的目标中，{listed:,} 条有同市镇、同邮编候选。{ranked:,} 条至少有一栋达到 {minimum} 分，另有 {low:,} 条的候选均低于门槛。已有独立证据确认 {verified} 条楼栋归属。",
-  "postal_method": "模型在登记的市镇和明确的 LGB 邮编区域内，按面积、朝向和倾角打分。拍摄后投运的登记计入邮编汇总。",
+  "postal_method": "在登记的市镇和 LGB 邮编范围内，每栋楼上已识别的光伏归为一组，按整组面积、朝向和倾角打一次分。拍摄后投运的登记计入邮编汇总。",
   "gis_title": "GIS 交付",
   "gis": "EPSG:3035 GeoPackage 包含已观测光伏建筑、屋面和登记邮编汇总。候选表保留按分数排序的前五名供参考。",
   "sources": "影像、ALKIS、LoD2 与邮编 © GeoBasis-DE/LGB，dl-de/by-2-0。登记数据 © Bundesnetzagentur/MaStR，dl-de/by-2-0。",
   "running_header": "市镇屋顶光伏清单",
-  "joint_proposals": "交付地图显示 {proposals:,} 条联合匹配和 {coordinates:,} 条公开坐标关联。联合分配避免重复使用同一组组件，并遵守屋顶共享容量限制。楼栋归属仍待独立核验。"
+  "joint_proposals": "交付地图显示 {proposals:,} 条联合匹配和 {coordinates:,} 条公开坐标关联。每条联合匹配使用一栋楼上已识别的整组光伏，每组最多分配一次。楼栋归属仍待独立核验。"
 }

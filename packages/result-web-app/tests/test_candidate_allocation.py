@@ -19,12 +19,10 @@ def test_joint_proposals_move_the_first_choice_to_resolve_shared_array_competiti
     assert stats["optimal_components"] == stats["components"] == 1
 
 
-def test_distinct_groups_can_share_one_roof_within_its_capacity():
-    first = Choice(0, 0, (3500, 1200, 600), "roof_parallel", ("a",))
-    second = Choice(0, 1, (3400, 1200, 600), "roof_parallel", ("b",))
+def test_a_merged_building_group_is_assigned_once():
+    first = Choice(0, 0, (3500, 1200, 600), "roof_parallel", ("a", "b"))
+    second = Choice(0, 0, (3400, 1200, 600), "roof_parallel", ("a", "b"))
     requests = (Request("one", "site-one", 2000, 100, (first,)),
                 Request("two", "site-two", 2000, 100, (second,)))
-    roomy, _ = assign(requests, (RoofBudget(4500, 250, (0, 0)),), ())
-    full, _ = assign(requests, (RoofBudget(3500, 250, (0, 0)),), ())
-    assert roomy == {"one": first, "two": second}
-    assert full == {"one": first}
+    selected, _ = assign(requests, (RoofBudget(4500, 250, (0, 0)),), (("a", "b"),))
+    assert selected == {"one": first}

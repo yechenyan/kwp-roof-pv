@@ -28,7 +28,8 @@ function showDetails(match) {
     ["Municipality", data.municipality], ["Postcode", data.postcode],
     ["Registered power", data.power_kw == null ? null : `${number(data.power_kw, 3)} kW`],
     ["Commissioned", data.commissioned], ["Survey dates", data.capture_dates.join(" / ")],
-    ["Building ID", data.building_id], ["Matched panel groups", data.group_count],
+    ["Building ID", data.building_id],
+    [data.kind === "joint" ? "Source groups merged" : "Matched panel groups", data.group_count],
   ];
   const details = document.createElement("dl");
   for (const [label, value] of fields) {

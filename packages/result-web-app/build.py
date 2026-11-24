@@ -29,7 +29,7 @@ APP = Path(__file__).resolve().parent
 RUN = "municipal-27320a7f3fb1"
 SNAPSHOT = "mastr-20261115-99075610"
 BATCH = "matching-1077534f5c31f8b6"
-VERSION = "building-postcode-lod2-evidence-v9"
+VERSION = "building-postcode-lod2-evidence-v10"
 RANKING_INDEX = "candidate-rankings/index.json"
 RANKING_SHARD_SIZE = 40
 WEB_DATA = ("records.json", "summary.json", "buildings.geojson", "municipalities.geojson",
@@ -84,8 +84,8 @@ def write_rankings(output, rankings, shortlists, snapshot):
                                   "threshold": MINIMUM_CANDIDATE_POINTS, "fallback_count": FALLBACK_COUNT,
                                   "area_modes": AREA_MODES,
                                   "array_options": [[{"groups": option.groups, "projected_m2": round(option.projected, 2),
-                                                       "parallel_m2": round(option.parallel, 2) if option.parallel else None}
-                                                     for option in options] for options in shortlists.options],
+                                                       "parallel_m2": round(option.parallel, 2) if option.parallel is not None else None}]
+                                                     for option in shortlists.measurements],
                                   "shards": shards})
 
 
@@ -235,7 +235,7 @@ def build(home, output, evidence_dir=APP / "evidence"):
     lod2 = load_roofs(lod2_path, manifest["artifacts"]["buildings.geojson"], digest(batch_folder / "groups.geojson"))
     observed = assemble_buildings(groups, cadastral, postcodes, lod2["buildings"])
     inventory, roof_faces = observation_features(observed, restore)
-    shortlists = BuildingShortlists(observed, by_group)
+    shortlists = BuildingShortlists(observed)
     storage_by_solar = defaultdict(list)
     for link in registry.data["storage_relationships"]:
         if link["relationship_status"] == "supported":
@@ -384,7 +384,7 @@ def build(home, output, evidence_dir=APP / "evidence"):
               "geometry_sources":{"postcode":postcode_provenance,"lod2_attribution":lod2["attribution"],"lod2_tiles":lod2["sources"]},
               "score_meaning":"Anonymous candidates use signed evidence points. Public-coordinate proposals use 0–100 technical compatibility. Neither is an identity probability.",
               "identity_policy":"Anonymous candidates and joint proposals are unverified. Post-capture units are included in postcode statistics. Public-coordinate associations remain provisional.",
-              "allocation_policy":"Anonymous candidates share their municipality and LGB postcode. Joint proposals use the candidate threshold, group exclusivity, roof capacity and a shared-location distance limit. Public-coordinate proposals retain their original workflow.",
+              "allocation_policy":"Anonymous candidates share their municipality and LGB postcode. Each building's full PV union is scored once per record and can be assigned to one anonymous record. Joint proposals observe the score threshold, roof capacity, existing reservations and a shared-location distance limit. Public-coordinate proposals use their original workflow.",
               "joint_allocation":allocation,
               "storage_policy":"Per-row totals deduplicate IDs within the row; cross-row totals must deduplicate storage/system IDs.",
               "personal_data_policy":"Technical allowlist only; no operator IDs, names, addresses, original XML or reviewer personal details."}

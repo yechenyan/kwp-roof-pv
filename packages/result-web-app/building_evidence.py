@@ -11,7 +11,7 @@ from shapely.geometry import MultiPolygon, mapping, shape
 from shapely.ops import transform, unary_union
 from shapely.strtree import STRtree
 
-from candidate_scoring import CandidateEvidence, FALLBACK_COUNT, MINIMUM_CANDIDATE_POINTS, POINT_SCALE, roof_options
+from candidate_scoring import CandidateEvidence, FALLBACK_COUNT, MINIMUM_CANDIDATE_POINTS, POINT_SCALE, measure_building
 from scoring import score_arrays
 
 
@@ -144,10 +144,10 @@ def observation_features(buildings, restore):
 
 
 class BuildingShortlists:
-    def __init__(self, buildings, groups=None):
+    def __init__(self, buildings):
         self.building_ids = [building["building_id"] for building in buildings]
         self.building_indices = {key: index for index, key in enumerate(self.building_ids)}
-        self.options = [roof_options(building, groups or {}) for building in buildings]
+        self.measurements = [measure_building(building) for building in buildings]
         self.by_postcode = defaultdict(list)
         self.by_municipality = defaultdict(list)
         for building in buildings:
@@ -173,12 +173,12 @@ class BuildingShortlists:
         comparisons = []
         for roof, previous in zip(candidates, previous_projection_scores):
             index = self.building_indices[roof["building_id"]]
-            options = self.options[index]
-            points, mode, option = evidence.compare(options)
+            option = self.measurements[index]
+            points, mode, _ = evidence.compare((option,))
             compared = (len(option.poses) == len(evidence.poses)
                         and any(bearing is not None or band is not None for bearing, band in evidence.poses)
                         and (len(option.poses) == 1 or all(bearing is not None for bearing, _ in evidence.poses)))
-            comparisons.append((index, points, mode, options.index(option), round(float(previous), 4), compared))
+            comparisons.append((index, points, mode, round(float(previous), 4), compared))
         comparisons.sort(key=lambda item: (-sum(item[1]), -item[1][0], item[0]))
         totals = [sum(points) for _, points, *_ in comparisons]
         top = totals[0]
@@ -199,10 +199,10 @@ class BuildingShortlists:
                   "alternatives": [{"building_id": self.building_ids[index], "score": sum(points) / POINT_SCALE,
                                     "projected_score": previous, "area_method": mode,
                                     "orientation_compared": bool(compared)}
-                                   for index, points, mode, _, previous, compared in comparisons[:FALLBACK_COUNT]]}
+                                   for index, points, mode, previous, compared in comparisons[:FALLBACK_COUNT]]}
         if full:
-            result["_ranking"] = [[index, *points, option, AREA_MODES.index(mode)]
-                                  for index, points, mode, option, _, _ in comparisons]
+            result["_ranking"] = [[index, *points, 0, AREA_MODES.index(mode)]
+                                  for index, points, mode, _, _ in comparisons]
         return result
 
     @staticmethod
